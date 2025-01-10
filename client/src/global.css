@@ -6,7 +6,9 @@
 
 body {
   margin: 0;
+  background-color: var(--background-color);
 }
+
 :root {
   --background-color: #f8f8f8;
   --main-color: #f06a0b;

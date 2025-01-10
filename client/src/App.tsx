@@ -1,7 +1,12 @@
 import "./App.css";
+import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <DetailRecipePage />
+    </>
+  );
 }
 
 export default App;
