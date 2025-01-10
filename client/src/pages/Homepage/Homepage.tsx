@@ -1,10 +1,10 @@
-import "../Homepage/Homepage.css";
+import "./Homepage.css";
 import "../../global.css";
 
 function Homepage() {
   return (
     <>
-      <main>
+      <main className="home-page">
         <section className="home-carousel">
           <h2>Nouvelles recettes</h2>
           <figure>
@@ -40,7 +40,7 @@ function Homepage() {
           </figure>
           <figure>
             <img
-              src="../src/assets/tests/bowl.png"
+              src="../src/assets/tests/healthy.png"
               alt=""
               className="inspirations"
             />
@@ -68,7 +68,7 @@ function Homepage() {
               alt=""
               className="inspirations"
             />
-            <figcaption>Rapide</figcaption>
+            <figcaption>Cocktail</figcaption>
           </figure>
         </section>
       </main>
