@@ -1,0 +1,17 @@
+.inspiration-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.inspiration-card img {
+  height: 10em;
+  width: 10em;
+  background-color: red;
+  border-radius: 8px;
+  transition: transform .2s;
+}
+.inspiration-card figcaption {
+  color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-weight: bold;
+}
