@@ -65,13 +65,13 @@
   border-radius: 8px;
   width: 13em;
 
-  && button {
+  & button {
     background-color: transparent;
     border: none;
     padding: 1em;
   }
 
-  && p {
+  & p {
     padding: 1em;
     border: 2px solid var(--main-color);
     border-top: none;
