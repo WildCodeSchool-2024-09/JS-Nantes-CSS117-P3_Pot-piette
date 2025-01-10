@@ -1,12 +1,7 @@
 import "./App.css";
-import InspirationCard from "./components/InspirationCard/InspirationCard";
 
 function App() {
-  return (
-    <>
-      <InspirationCard />
-    </>
-  );
+  return <></>;
 }
 
 export default App;
