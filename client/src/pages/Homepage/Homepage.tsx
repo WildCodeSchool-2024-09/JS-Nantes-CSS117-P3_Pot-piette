@@ -1,5 +1,4 @@
 import "./Homepage.css";
-import "../../global.css";
 
 function Homepage() {
   return (
