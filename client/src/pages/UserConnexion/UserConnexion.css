@@ -1,10 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
-  margin: 0;
-  padding: 0;
-}
-
 .login-container {
   display: flex;
   flex-direction: column;
@@ -12,7 +5,6 @@ body {
   justify-content: center;
   height: 100vh;
   background-color: #ffffff;
-  --main-font: "Quicksand";
 }
 
 .login-title {
@@ -36,7 +28,6 @@ body {
   font-size: 14px;
   margin-top: 10%;
   height: 10px;
-  --secondary-font: "Lato";
 }
 
 .login-button {
