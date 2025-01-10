@@ -1,4 +1,13 @@
 import "./detail-recipe-page.css";
+import { GoClock } from "react-icons/go";
+import {
+  IoIosAdd,
+  IoIosRemove,
+  IoIosStar,
+  IoIosStarOutline,
+  IoMdHeartEmpty,
+  IoMdShare,
+} from "react-icons/io";
 
 function DetailRecipePage() {
   return (
@@ -8,22 +17,35 @@ function DetailRecipePage() {
           Grillée de mogettes Ventre à choux
         </h1>
         <section className="info-detail-recipe">
-          <p>*****</p>
-          <p>45mn</p>
+          <p>
+            <IoIosStar />
+            <IoIosStarOutline />
+            <IoIosStarOutline />
+            <IoIosStarOutline />
+            <IoIosStarOutline />
+          </p>
+          <p>
+            <GoClock />
+            45mn
+          </p>
         </section>
         <img src="" alt="" className="img-detail-recipe" />
         <section className="share-and-like-detail-recipe">
-          <img src="" alt="" />
-          <img src="" alt="" />
+          <IoMdHeartEmpty />
+          <IoMdShare />
         </section>
       </header>
 
       <section className="ingredients-detail-recipe-container">
         <h2>Ingredients</h2>
         <section className="button-parts-detail-recipe">
-          <button type="button">-</button>
-          <p>4personnes</p>
-          <button type="button">+</button>
+          <button type="button">
+            <IoIosRemove />
+          </button>
+          <p>4 personnes</p>
+          <button type="button">
+            <IoIosAdd />
+          </button>
         </section>
         <ul>
           <li>

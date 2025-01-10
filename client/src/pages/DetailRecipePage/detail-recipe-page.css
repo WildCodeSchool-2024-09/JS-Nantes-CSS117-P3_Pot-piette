@@ -1,10 +1,43 @@
-.title-detail-recipe {
-  text-align: center;
-}
+/** Header detail recipe **/
 
 .header-detail-recipe {
   display: flex;
   flex-direction: column;
+}
+
+.title-detail-recipe {
+  text-align: center;
+}
+
+.info-detail-recipe {
+  & p {
+    display: flex;
+    align-items: center;
+  }
+  & svg {
+    color: var(--main-color);
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
+.img-detail-recipe {
+  /* CSS just for test emplacement of picture*/
+  height: 10em;
+  width: 80%;
+  background-color: blue;
+  /**********************************************/
+  align-self: center;
+}
+
+.share-and-like-detail-recipe {
+  padding: 1em 0;
+
+  & svg {
+    color: var(--main-color);
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .info-detail-recipe,
@@ -14,22 +47,70 @@
   justify-content: space-between;
 }
 
+/** Ingredients section **/
+
+.ingredients-detail-recipe-container {
+  padding: 2em 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .button-parts-detail-recipe {
   display: flex;
+  justify-content: center;
   justify-self: center;
   border: 2px solid var(--main-color);
   border-radius: 8px;
-  width: 10em;
+  width: 13em;
 
   && button {
     background-color: transparent;
     border: none;
+    padding: 1em;
   }
 
   && p {
+    padding: 1em;
     border: 2px solid var(--main-color);
     border-top: none;
     border-bottom: none;
     margin: 0;
   }
 }
+
+.ingredients-detail-recipe-container ul {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0;
+  height: 11em;
+  height: max-content;
+}
+
+.ingredients-detail-recipe-container li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  width: 20%;
+
+  & img {
+    /* CSS just for test emplacement of picture*/
+    background-color: red;
+    width: 100%;
+    height: 5em;
+    /**********************************************/
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+  }
+
+  & section {
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/** Preparation section **/
