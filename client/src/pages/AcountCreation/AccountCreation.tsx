@@ -4,9 +4,7 @@ function AccountCreation() {
   return (
     <section className="signup-container">
       <h1>INSCRIPTION</h1>
-      <p className="signup-subtitle">
-        Merci de rejoindre la communauté Pot'Piette
-      </p>
+      <p>Merci de rejoindre la communauté Pot'Piette</p>
       <form className="signup-form">
         <label htmlFor="email">E-mail</label>
         <input
