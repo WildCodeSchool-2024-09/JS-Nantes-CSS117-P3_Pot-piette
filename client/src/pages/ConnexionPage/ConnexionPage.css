@@ -6,14 +6,13 @@
   align-items: center;
   height: 100vh;
   background-color: #ffff;
-  --secondary-font: "Lato";
 }
 
 .btn {
   background-color: #f06a0b;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
