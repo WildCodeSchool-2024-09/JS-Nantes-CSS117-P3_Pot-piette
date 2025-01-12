@@ -31,6 +31,10 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+INSERT INTO recipe (title, picture, nb_parts, is_published)
+VALUES
+('hamburger Maison', 'hamburger.jpg', 1, 0),
+('hot-dog New Yorkais', 'hotDog.jpg', 1, 0);
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`
@@ -50,6 +54,11 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+INSERT INTO `potpiette`.`user` (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
+VALUES
+('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
+('Jean-Guy', 27, 'table basse', 'clown.jpg', CURDATE(), 'jean-guy@gmail.com', 'jaimelesucre', 0, 0);
 
 
 -- -----------------------------------------------------
@@ -88,6 +97,18 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+INSERT INTO `potpiette`.`ingredient` (name_ingredient, picture_ingredient)
+VALUES
+("moutarde", "moutarde.jpg"),
+("tomate", "tomate.jpg"),
+("oignon", "oignon.jpg"),
+("Pain pour hamburger", "Pain-hamburger.jpg"),
+("viande hachée", "viande-hachee.jpg"),
+("cheddar", "cheddar.jpg"),
+("salade", "salade.jpg"),
+("ketchup", "ketchup.jpg"),
+("Pain hot dog", "Pain-hot-dog.jpg"),
+("Saucisse", "Saucisse.jpg");
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`ingredient_recipe`
@@ -109,6 +130,12 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure)
+VALUES
+(0, 3, 1, 'pièce'),
+(0, 1, 3, 'tranches'),
+(0, 0, 1, 'cuillère');
+
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`tag`
@@ -120,6 +147,14 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`tag` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+INSERT INTO tag (tag_name)
+VALUES
+("Déssert"),
+("Rapide"),
+("Végétarien"),
+("Plat"),
+("Cocktail");
 
 
 -- -----------------------------------------------------
@@ -140,6 +175,10 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+INSERT INTO recipe_tag (recipe_id, tag_id)
+VALUES
+(0, 1);
+
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`step`
@@ -158,6 +197,13 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+INSERT INTO step (nb_step, content, recipe_id)
+VALUES
+(1, "Prendre le pain", 1),
+(2, "Mettre le steak dedans", 1),
+(3, "Mettre la tomate", 1),
+(4, "Ecraser le tout entre vos mains", 1),
+(5, "Dégustez!", 1);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
