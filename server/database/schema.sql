@@ -132,9 +132,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure)
 VALUES
-(0, 3, 1, 'pièce'),
-(0, 1, 3, 'tranches'),
-(0, 0, 1, 'cuillère');
+(1, 4, 1, 'pièce'),
+(1, 2, 3, 'tranches'),
+(1, 1, 1, 'cuillère');
 
 
 -- -----------------------------------------------------
@@ -177,7 +177,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO recipe_tag (recipe_id, tag_id)
 VALUES
-(0, 1);
+(1, 1);
 
 
 -- -----------------------------------------------------
