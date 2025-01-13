@@ -55,7 +55,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-INSERT INTO `potpiette`.`user` (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
+INSERT INTO user (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
 VALUES
 ('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
 ('Jean-Guy', 27, 'table basse', 'clown.jpg', CURDATE(), 'jean-guy@gmail.com', 'jaimelesucre', 0, 0);
@@ -97,7 +97,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-INSERT INTO `potpiette`.`ingredient` (name_ingredient, picture_ingredient)
+INSERT INTO ingredient (name_ingredient, picture_ingredient)
 VALUES
 ("moutarde", "moutarde.jpg"),
 ("tomate", "tomate.jpg"),
