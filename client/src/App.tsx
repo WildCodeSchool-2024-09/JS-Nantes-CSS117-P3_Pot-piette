@@ -1,11 +1,14 @@
+import "./App.css";
 import Header from "./components/Header";
+import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div>
-      <Header /> {}
-    </div>
+    <>
+      <Header />
+      <DetailRecipePage />
+    </>
   );
-};
+}
 
 export default App;
