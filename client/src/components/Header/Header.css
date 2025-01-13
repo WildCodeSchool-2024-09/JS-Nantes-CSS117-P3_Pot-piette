@@ -1,0 +1,68 @@
+/* Global styles for the header */
+.header {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list.left {
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.nav-list.right {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.nav-icon:hover {
+  opacity: 0.7;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: -20px;
+  z-index: 1;
+}
+
+.logo {
+  height: 150px;
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
