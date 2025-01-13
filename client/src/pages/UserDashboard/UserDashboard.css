@@ -1,0 +1,106 @@
+.userdash-container {
+  max-width: 425px;
+  margin: 0 auto;
+  padding: 20px;
+
+  background-color: #f8f8f8;
+}
+
+.userdash-container > h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.userdashform-group {
+  margin-top: 20%;
+  margin-bottom: 10%;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-group,
+.restrictions,
+.add-btn,
+.item {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #f06a0b;
+  border-radius: 8px;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.note {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
+
+.restrictions {
+  margin: 20px 0;
+  border-radius: 2px solid #f06a0b;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+.item > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid #f06a0b;
+}
+
+.item > p {
+  margin-top: 5px;
+  font-size: 12px;
+}
+.item-add-btn {
+  margin-top: -10%;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #f06a0b;
+  border-radius: 8px;
+  font-size: 24px;
+
+  cursor: pointer;
+}
+.item-add-btn > span {
+  align-items: center;
+}
+
+.save-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f06a0b;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
