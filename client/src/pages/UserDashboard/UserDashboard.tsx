@@ -14,7 +14,7 @@ function UserInfo() {
         </button>
       </div>
 
-      <section className="">
+      <section>
         <p>Email*</p>
         <div className="input-group">
           <input type="email" value="ingrid_ferran44@gmailcom" readOnly />
@@ -24,7 +24,7 @@ function UserInfo() {
         </div>
       </section>
 
-      <div className="">
+      <div>
         <p>Mot de passe*</p>
         <div className="input-group">
           <span>Modifier</span>
@@ -46,11 +46,11 @@ function UserInfo() {
       <h2>Mes Restrictions Alimentaire</h2>
       <div className="restrictions">
         <div className="item">
-          <img src="/path-to-image-mogette.png" alt="Mogette" />
+          <img src="" alt="Mogette" />
           <p>Mogette</p>
         </div>
         <div className="item">
-          <img src="/path-to-image-salt.png" alt="Sel" />
+          <img src="" alt="Sel" />
           <p>Sel</p>
         </div>
         <div className="item-add-btn">
