@@ -11,4 +11,13 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse };
+const read: RequestHandler = async (req, res, next) => {
+  try {
+    const recipeId = Number(req.params.id);
+    // const recipe = await recipeRepository.read(recipeId);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read };
