@@ -14,5 +14,8 @@ router.get("/api/items/:id", itemActions.read);
 router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
+import recipeActions from "./modules/recipe/recipeActions";
+
+router.get("/api/recipes", recipeActions.browse);
 
 export default router;
