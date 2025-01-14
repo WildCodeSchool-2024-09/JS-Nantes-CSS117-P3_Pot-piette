@@ -1,12 +1,12 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
 
 function App() {
   return (
     <>
       <Header />
-      <DetailRecipePage />
+      <ActivityPage />
     </>
   );
 }
