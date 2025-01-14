@@ -2,13 +2,16 @@ import "./ActivityPage.css";
 
 function ActivityPage() {
   return (
-    <section className="activities">
+    <section className="activity">
       <h1>Vos activités</h1>
 
       <section className="activitypublished-recipes">
         <h2>Mes recettes publiées</h2>
         <figure>
-          <img src="./src" alt="Recette publiée" />
+          <img
+            src="src\assets\tests\Hachis Parmentier.jpg"
+            alt="Recette publiée"
+          />
           <figcaption>
             <p>Voir plus</p>
           </figcaption>
@@ -17,14 +20,18 @@ function ActivityPage() {
 
       <section className="activitywait-recipes">
         <h2>Mes recettes en attente</h2>
-        <div className="activity-recipes-list">
-          <figure>
-            <img src="" alt="Recette en attente 1" />
+        <section className="activity-recipes-list">
+          <figure className="waitin-img">
+            <img
+              className="img1"
+              src="src\assets\tests\Tarte.jpg"
+              alt="Recette en attente 1"
+            />
           </figure>
-          <figure>
-            <img src="" alt="Recette en attente 2" />
+          <figure className="waitin-img">
+            <img src="src\assets\tests\Jambon.png" alt="Recette en attente 2" />
           </figure>
-        </div>
+        </section>
         <section>
           <p>Voir plus</p>
         </section>
@@ -32,7 +39,7 @@ function ActivityPage() {
 
       <section className="activityadd-recipe">
         <h2>Ajouter une recette</h2>
-        <span className="add-button">+</span>
+        <span className="activityadd-button">+</span>
       </section>
     </section>
   );
