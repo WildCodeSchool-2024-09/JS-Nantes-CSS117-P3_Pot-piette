@@ -33,7 +33,7 @@ function UserInfo() {
 
       <section>
         <p>Date de naissance*</p>
-        <section className="input-group">
+        <section className="dashinput-group">
           <input type="text" value="30/02/1981" readOnly />
           <button type="button" className="edit-btn">
             ✏️
@@ -46,12 +46,12 @@ function UserInfo() {
       <h2>Mes Restrictions Alimentaire</h2>
       <section className="restrictions">
         <section className="item">
-          <img src="" alt="Mogette" />
-          <p>Mogette</p>
+          <img src="src\assets\tests\Anchois.png" alt="Anchois" />
+          <p>Anchois</p>
         </section>
         <section className="item">
-          <img src="" alt="Sel" />
-          <p>Sel</p>
+          <img src="src\assets\tests\Jambon.png" alt="jambon" />
+          <p>Jambon</p>
         </section>
         <section className="item-add-btn">
           <span>+</span>
