@@ -5,58 +5,58 @@ function UserInfo() {
     <section className="userdash-container">
       <h1>Informations personnelles</h1>
 
-      <div className="userdashform-group">
+      <section className="userdashform-group">
         <p>Pseudonyme*</p>
 
         <input type="text" value="ingrid44" readOnly />
         <button type="button" className="edit-btn">
           ✏️
         </button>
-      </div>
+      </section>
 
       <section>
         <p>Email*</p>
-        <div className="input-group">
+        <section className="input-group">
           <input type="email" value="ingrid_ferran44@gmailcom" readOnly />
           <button type="button" className="edit-btn">
             ✏️
           </button>
-        </div>
+        </section>
       </section>
 
-      <div>
+      <section>
         <p>Mot de passe*</p>
         <div className="input-group">
           <span>Modifier</span>
         </div>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <p>Date de naissance*</p>
-        <div className="input-group">
+        <section className="input-group">
           <input type="text" value="30/02/1981" readOnly />
           <button type="button" className="edit-btn">
             ✏️
           </button>
-        </div>
-      </div>
+        </section>
+      </section>
 
       <p className="note">* Champs obligatoires</p>
 
       <h2>Mes Restrictions Alimentaire</h2>
-      <div className="restrictions">
-        <div className="item">
+      <section className="restrictions">
+        <section className="item">
           <img src="" alt="Mogette" />
           <p>Mogette</p>
-        </div>
-        <div className="item">
+        </section>
+        <section className="item">
           <img src="" alt="Sel" />
           <p>Sel</p>
-        </div>
-        <div className="item-add-btn">
+        </section>
+        <section className="item-add-btn">
           <span>+</span>
-        </div>
-      </div>
+        </section>
+      </section>
 
       <p className="note">*Champs obligatoires</p>
 
