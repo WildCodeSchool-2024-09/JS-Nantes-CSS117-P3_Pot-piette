@@ -5,7 +5,7 @@ function FormulaireContact() {
     <section className="contact-form-container">
       <h2>Nous contacter :</h2>
       <form className="contact-form">
-        <section className="form-group">
+        <section className="contactform-group">
           <input type="text" placeholder="Sujet ?" name="subject" />
         </section>
         <section className="contact-group">
