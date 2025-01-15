@@ -28,7 +28,17 @@ class RecipeRepository {
           )
         )
           FROM step
-          WHERE step.recipe_id = recipe.id) AS recipe_steps
+          WHERE step.recipe_id = recipe.id) AS recipe_steps,
+        (SELECT JSON_ARRAYAGG(
+          JSON_OBJECT(
+            'tag_name', tag.tag_name
+            )
+          )
+            FROM tag
+            JOIN recipe_tag
+            ON recipe_tag.tag_id = tag.id
+            WHERE recipe_tag.recipe_id = recipe.id
+        ) AS recipe_tag_list
       FROM recipe
       WHERE recipe.id = ?
       `,
