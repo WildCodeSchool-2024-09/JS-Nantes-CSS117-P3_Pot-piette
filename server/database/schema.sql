@@ -58,7 +58,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO user (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
 VALUES
 ('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
-('Jean-Guy', 27, 'table basse', 'clown.jpg', CURDATE(), 'jean-guy@gmail.com', 'jaimelesucre', 0, 0);
+('Jean', 27, 'homme', 'jean.jpg', CURDATE(), 'jean@gmail.com', 'jaimelesucre', 0, 0),
+('Mireille', 32, 'femme', 'mireille.jpg', CURDATE(), 'mireille@gmail.com', 'jaimepaslesucre', 0, 0),
+('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0),
 
 
 -- -----------------------------------------------------
@@ -150,7 +152,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO tag (tag_name)
 VALUES
-("Déssert"),
+("Dessert"),
 ("Rapide"),
 ("Végétarien"),
 ("Plat"),
@@ -177,7 +179,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO recipe_tag (recipe_id, tag_id)
 VALUES
-(1, 1);
+(1, 2);
 
 
 -- -----------------------------------------------------
