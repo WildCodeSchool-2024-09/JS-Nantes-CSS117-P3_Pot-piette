@@ -1,0 +1,91 @@
+.activity > h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.activitypublished-recipes {
+  margin-bottom: 40px;
+}
+.activitypublished-recipes > figure {
+  margin-right: 0;
+}
+
+.activitypublished-recipes > h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.activitypublished-recipes > img {
+  margin-bottom: 10px;
+}
+.activitypublished-recipes > section > p {
+  text-align: center;
+}
+
+.activitywait-recipes {
+  margin-bottom: 40px;
+}
+
+.activitywait-recipes > h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.activity-recipes-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 0%;
+}
+.activity-recipes-list > figure {
+  height: auto;
+}
+figure .waitin-img {
+  height: 225px;
+}
+
+.waitin-img {
+  flex: 1;
+  text-align: center;
+}
+
+.waitin-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.activitywait-recipes > section > p {
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.section-plus {
+  text-align: center;
+}
+
+.activityadd-recipe {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.activityadd-recipe > h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.activityadd-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: #f06a0b;
+  color: #fff;
+  font-size: 2em;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.activityadd-button:hover {
+  background-color: #0056b3;
+}
