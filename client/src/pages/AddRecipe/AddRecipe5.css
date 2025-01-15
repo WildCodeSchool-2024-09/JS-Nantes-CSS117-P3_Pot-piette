@@ -1,0 +1,14 @@
+.add-5-recipe-main {
+  height: 90vh;
+}
+.add-5-recipe-main > ul > li {
+  list-style-type: none;
+}
+.add-5-recipe-ingrediens {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-5-recipe-ingrediens > ul > li {
+  list-style-type: none;
+}
