@@ -18,12 +18,9 @@
 
 .activitypublished-recipes > img {
   margin-bottom: 10px;
-  width: 15%;
 }
-
-.activitypublished-recipes > figcaption > p {
-  cursor: pointer;
-  text-decoration: underline;
+.activitypublished-recipes > section > p {
+  text-align: center;
 }
 
 .activitywait-recipes {
@@ -61,6 +58,9 @@ figure .waitin-img {
   text-align: center;
   cursor: pointer;
   text-decoration: underline;
+}
+.section-plus {
+  text-align: center;
 }
 
 .activityadd-recipe {

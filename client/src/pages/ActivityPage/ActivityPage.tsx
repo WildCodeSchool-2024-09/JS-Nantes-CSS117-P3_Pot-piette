@@ -12,7 +12,7 @@ function ActivityPage() {
             src="src\assets\tests\Hachis Parmentier.jpg"
             alt="Recette publiée"
           />
-          <figcaption>
+          <figcaption className="section-plus">
             <p>Voir plus</p>
           </figcaption>
         </figure>
@@ -29,10 +29,13 @@ function ActivityPage() {
             />
           </figure>
           <figure className="waitin-img">
-            <img src="src\assets\tests\Jambon.png" alt="Recette en attente 2" />
+            <img
+              src="src\assets\tests\Hachis Parmentier.jpg"
+              alt="Recette en attente 2"
+            />
           </figure>
         </section>
-        <section>
+        <section className="section-plus">
           <p>Voir plus</p>
         </section>
       </section>
