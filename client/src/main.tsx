@@ -7,6 +7,11 @@ import "./global.css";
 
 // Import the main app component
 import App from "./App";
+import AccountCreation from "./pages/AcountCreation/AccountCreation";
+import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
+import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
+import Homepage from "./pages/Homepage/Homepage";
+import UserConnexion from "./pages/UserConnexion/UserConnexion";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -20,8 +25,30 @@ import App from "./App";
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
   {
-    path: "/", // La route par défaut pour l'accueil
-    element: <App />, // Le composant de base
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+      {
+        path: "/account",
+        element: <AccountCreation />,
+      },
+      {
+        path: "/connexion",
+        element: <ConnexionPage />,
+      },
+      {
+        path: "/recipe",
+        element: <DetailRecipePage />,
+      },
+      {
+        path: "/login",
+        element: <UserConnexion />,
+      },
+    ],
   },
 ]);
 

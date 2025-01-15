@@ -1,6 +1,6 @@
 import "./UserConnexion.css";
 
-function Login() {
+function UserConnexion() {
   return (
     <section className="login-container">
       <h1 className="login-title">CONNEXION</h1>
@@ -30,4 +30,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default UserConnexion;
