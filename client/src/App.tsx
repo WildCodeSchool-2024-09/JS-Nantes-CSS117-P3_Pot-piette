@@ -7,8 +7,8 @@ function App() {
   return (
     <>
       <Header />
-      <Footer />
       <Outlet />
+      <Footer />
     </>
   );
 }
