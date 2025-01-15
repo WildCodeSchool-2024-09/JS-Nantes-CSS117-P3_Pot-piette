@@ -31,10 +31,14 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Preload data recipe
+-- -----------------------------------------------------
+
 INSERT INTO recipe (title, picture, nb_parts, is_published)
 VALUES
-('hamburger Maison', 'hamburger.jpg', 1, 0),
-('hot-dog New Yorkais', 'hotDog.jpg', 1, 0);
+('Le hamburger', 'hamburger.jpg', 1, 0),
+('Hot Dog New Yorkais', 'hotDog.jpg', 1, 0);
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`
@@ -54,6 +58,10 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Preload data comment
+-- -----------------------------------------------------
 
 INSERT INTO user (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
 VALUES
@@ -99,18 +107,23 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Preload data ingredient
+-- -----------------------------------------------------
+
 INSERT INTO ingredient (name_ingredient, picture_ingredient)
 VALUES
-("moutarde", "moutarde.jpg"),
-("tomate", "tomate.jpg"),
-("oignon", "oignon.jpg"),
+("Moutarde", "moutarde.jpg"),
+("Tomate", "tomate.jpg"),
+("Oignon", "oignon.jpg"),
 ("Pain pour hamburger", "Pain-hamburger.jpg"),
 ("viande hachée", "viande-hachee.jpg"),
-("cheddar", "cheddar.jpg"),
-("salade", "salade.jpg"),
+("Cheddar", "cheddar.jpg"),
+("Salade", "salade.jpg"),
 ("ketchup", "ketchup.jpg"),
 ("Pain hot dog", "Pain-hot-dog.jpg"),
-("Saucisse", "Saucisse.jpg");
+("Saucisse", "Saucisse.jpg"),
+("Cornichon", "cornichon.jpg");
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`ingredient_recipe`
@@ -132,11 +145,17 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Preload data ingredient_recipe
+-- -----------------------------------------------------
+
 INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure)
 VALUES
 (1, 4, 1, 'pièce'),
 (1, 2, 3, 'tranches'),
-(1, 1, 1, 'cuillère');
+(1, 1, 1, 'cuillère'),
+(1, 3, 1, 'émincé'),
+(1, 7, 1, 'feuille');
 
 
 -- -----------------------------------------------------
@@ -150,12 +169,17 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Preload data tags
+-- -----------------------------------------------------
+
 INSERT INTO tag (tag_name)
 VALUES
 ("Dessert"),
 ("Rapide"),
 ("Végétarien"),
 ("Plat"),
+("Healthy"),
 ("Cocktail");
 
 
@@ -176,6 +200,10 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe_tag` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Preload data recipe_tag
+-- -----------------------------------------------------
 
 INSERT INTO recipe_tag (recipe_id, tag_id)
 VALUES
@@ -199,13 +227,18 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Preload data steps
+-- -----------------------------------------------------
+
 INSERT INTO step (nb_step, content, recipe_id)
 VALUES
-(1, "Prendre le pain", 1),
-(2, "Mettre le steak dedans", 1),
-(3, "Mettre la tomate", 1),
-(4, "Ecraser le tout entre vos mains", 1),
-(5, "Dégustez!", 1);
+(1, "Prendre le pain de votre choix, cela peut être un pain à burger industriel même si l'on aurait envie de vous conseiller un buns maison ou de chez votre boulanger préféré. Coupez le en deux. ", 1),
+(2, "Emincez un oignon (rouge ou blanc) et faites le revenir dans une poêle légèrement beurré jusquà ce qu'il ai une belle couleur légèrement brune. Réservez.", 1),
+(3, "Lavez soigneusement et coupez la tomate en tranche et réservez.", 1),
+(4, "Détachez et lavez votre ou vos feuilles de salades et réservez.", 1),
+(5, "Faites cuire à votre convenance votre steak haché. Vous pouvez mettre un peu de beurre si vous le souhaitez sinon le gras de votre steak fera l'affaire.", 1),
+(6, "Assemblez! Dégustez!", 1);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
