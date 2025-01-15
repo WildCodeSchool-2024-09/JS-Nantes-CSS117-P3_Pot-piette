@@ -7,24 +7,22 @@ function ActivityPage() {
 
       <section className="activitypublished-recipes">
         <h2>Mes recettes publiées</h2>
-        <figure>
-          <img src="./src" alt="Recette publiée" />
-          <figcaption>
-            <p>Voir plus</p>
-          </figcaption>
-        </figure>
+
+        <img
+          src="src/assets/test/Hachis Parmentier.jpg"
+          alt="Hachis Parmentier"
+        />
+
+        <p>Voir plus</p>
       </section>
 
       <section className="activitywait-recipes">
         <h2>Mes recettes en attente</h2>
-        <div className="activity-recipes-list">
-          <figure>
-            <img src="" alt="Recette en attente 1" />
-          </figure>
-          <figure>
-            <img src="" alt="Recette en attente 2" />
-          </figure>
-        </div>
+
+        <img src="src\assets\tests\Anchois.png" alt="Anchois" />
+
+        <img src="src\assets\tests\Jambon.png" alt="Jambon" />
+
         <section>
           <p>Voir plus</p>
         </section>
