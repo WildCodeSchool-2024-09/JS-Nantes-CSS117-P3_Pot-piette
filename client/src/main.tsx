@@ -8,11 +8,11 @@ import "./global.css";
 // Import the main app component
 import App from "./App";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
 import UserConnexion from "./pages/UserConnexion/UserConnexion";
-import ActivityPage from "./pages/ActivityPage/ActivityPage";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
