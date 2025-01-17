@@ -10,9 +10,11 @@ class RecipeRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      `SELECT recipe.title, recipe.picture, recipe.nb_parts,
+      `SELECT recipe.title, recipe.picture, recipe.nb_parts, recipe.time_to_cook, recipe.preparation_time,
         (SELECT JSON_ARRAYAGG(
           JSON_OBJECT(
+            'id', ingredient.id,
+            'picture', ingredient.picture_ingredient,
             'name', ingredient.name_ingredient,
             'quantity', ingredient_recipe.quantity,
             'measure', ingredient_recipe.measure
@@ -23,6 +25,7 @@ class RecipeRepository {
           ON ingredient.id = ingredient_recipe.ingredient_id) AS ingredients_list,
         (SELECT JSON_ARRAYAGG(
           JSON_OBJECT(
+            'id', step.id,
             'nb_step', step.nb_step,
             'content', step.content
           )
@@ -31,6 +34,7 @@ class RecipeRepository {
           WHERE step.recipe_id = recipe.id) AS recipe_steps,
         (SELECT JSON_ARRAYAGG(
           JSON_OBJECT(
+            'id', tag.id,
             'tag_name', tag.tag_name
             )
           )
