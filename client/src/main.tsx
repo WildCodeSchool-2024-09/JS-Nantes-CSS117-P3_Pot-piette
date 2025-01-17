@@ -14,6 +14,7 @@ import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
 import UserConnexion from "./pages/UserConnexion/UserConnexion";
+import AddRecipe_2 from "./pages/AddRecipe/AddRecipe_2";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -57,8 +58,12 @@ const router = createBrowserRouter([
         element: <ActivityPage />,
       },
       {
-        path: "/add",
+        path: "/add-recipe",
         element: <AddRecipe />,
+      },
+      {
+        path: "/add-recipe-2",
+        element: <AddRecipe_2 />,
       },
     ],
   },
