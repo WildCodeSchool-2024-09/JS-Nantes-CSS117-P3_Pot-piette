@@ -8,6 +8,7 @@ import "./global.css";
 // Import the main app component
 import App from "./App";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <UserConnexion />,
+      },
+      {
+        path: "/My_Activity",
+        element: <ActivityPage />,
       },
     ],
   },
