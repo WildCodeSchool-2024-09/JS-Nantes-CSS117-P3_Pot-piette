@@ -19,4 +19,10 @@ import recipeActions from "./modules/recipe/recipeActions";
 router.get("/api/recipes", recipeActions.browse);
 router.get("/api/recipes/:id", recipeActions.read);
 
+/* ************************************************************************* */
+
+import userActions from "./modules/user/userActions";
+
+router.get("/api/users", userActions.browse);
+
 export default router;
