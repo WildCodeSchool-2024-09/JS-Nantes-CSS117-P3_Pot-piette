@@ -2,17 +2,18 @@ import "./AddRecipe5.css";
 
 function AddRecipe5() {
   return (
-    <main className="add-5-recipe-main">
+    <section className="add-5-recipe-main">
       <section>
         <h1>Grillée de mogette</h1>
       </section>
-      <section className="add-5-recipe-ingrediens">
+      <article className="add-5-recipe-ingrediens">
         <h2>Ingrédients</h2>
-
+        <button type="button" aria-label="Modifier le titre">
+          ✏️
+        </button>
+      </article>
+      <section className="add-5-list">
         <ul>
-          <button type="button" aria-label="Modifier le titre">
-            ✏️
-          </button>
           <li>
             <img src="src\assets\tests\Anchois.png" alt="Anchois" />
             <span>Mogette</span>
@@ -28,25 +29,28 @@ function AddRecipe5() {
           </li>
         </ul>
       </section>
-      <section>
+
+      <article className="add-5-recipe">
         <h2>Préparation de la recette</h2>
         <ul>
           <li>
             <span>Étape 1</span>
-            <button
-              type="button"
-              className="edit-button"
-              aria-label="Modifier l'étape"
-            >
-              ✏️
-            </button>
-            <button
-              type="button"
-              className="add-5-delete-button"
-              aria-label="Supprimer l'étape"
-            >
-              ❌
-            </button>
+            <section>
+              <button
+                type="button"
+                className="edit-button"
+                aria-label="Modifier l'étape"
+              >
+                ✏️
+              </button>
+              <button
+                type="button"
+                className="add-5-delete-button"
+                aria-label="Supprimer l'étape"
+              >
+                ❌
+              </button>
+            </section>
           </li>
           <li className="add-5-step">
             <button type="button" aria-label="Ajouter une étape">
@@ -54,13 +58,13 @@ function AddRecipe5() {
             </button>
           </li>
         </ul>
-      </section>
+      </article>
       <section className="add-5-validate-">
         <button type="submit" className="submit-button">
           Envoyer
         </button>
       </section>
-    </main>
+    </section>
   );
 }
 export default AddRecipe5;

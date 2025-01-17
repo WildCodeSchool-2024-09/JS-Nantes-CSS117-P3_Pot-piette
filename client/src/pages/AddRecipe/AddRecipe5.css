@@ -1,108 +1,18 @@
-/*.add-5-recipe-main {
-  height: 90vh;
-}
-.add-5-recipe-main > ul > li {
-  list-style-type: none;
-}
-.add-5-recipe-ingrediens {
+.add-recipe-main {
   display: flex;
-  flex-direction: column;
 }
-
-.add-5-recipe-ingrediens > ul > li {
-  list-style-type: none;
-}*/
-
-/* AddRecipe5.css */
-
-/*.add-5-recipe-main {
-  padding: 20px;
-  background-color: #f8f8f8;
-  color: #333;
-}
-
-.add-5-recipe-main > h1 {
+.add-recipe-main,
+h1 {
   text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
 }
 
-.add-5-recipe-ingrediens > h2 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+.add-recipe-ingrediens,
+h2 {
+  text-align: center;
 }
 
-.add-5-recipe-ingrediens > ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.add-recipe-ingrediens,
+ul {
+  list-style-type: none;
 }
-
-.add-5-recipe-ingrediens > li {
-  border: 1px solid #ffa500;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-}
-
-.add-5-recipe-ingrediens > img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-
-.add-5-recipe-ingrediens > span {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.add-5-recipe-ingrediens > button {
-  background-color: transparent;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #ffa500;
-}
-
-.add-step {
-  font-size: 1.5rem;
-  border: 2px solid #ffa500;
-  border-radius: 8px;
-  padding: 10px 15px;
-  background-color: #fff;
-}
-
-.edit-button,
-.delete-button {
-  font-size: 0.8rem;
-  color: #333;
-  background-color: transparent;
-  border: none;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-button.submit-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #ffa500;
-  color: #fff;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button.submit-button:hover {
-  background-color: #e59400;
-}*/
-
