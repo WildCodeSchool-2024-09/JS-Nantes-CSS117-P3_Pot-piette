@@ -5,7 +5,7 @@ function ActivityPage() {
     <section className="activities">
       <h1>Vos activités</h1>
 
-      <section>
+      <article className="activity-published-recipe">
         <h2>Mes recettes publiées</h2>
 
         <img
@@ -14,9 +14,9 @@ function ActivityPage() {
         />
 
         <p>Voir plus</p>
-      </section>
+      </article>
 
-      <section className="waiting-recipe">
+      <article className="activity-waiting-recipe">
         <h2>Mes recettes en attente</h2>
 
         <img src="src\assets\tests\Anchois.png" alt="Anchois" />
@@ -24,11 +24,13 @@ function ActivityPage() {
         <img src="src\assets\tests\Jambon.png" alt="Jambon" />
 
         <p>Voir plus</p>
-      </section>
+      </article>
 
       <section className="activity-add-recipe">
         <h2>Ajouter une recette</h2>
-        <span className="activity-add-button">+</span>
+        <button type="button" className="activity-add-button">
+          +
+        </button>
       </section>
     </section>
   );
