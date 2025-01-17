@@ -42,20 +42,20 @@ function AddRecipe5() {
             </button>
             <button
               type="button"
-              className="delete-button"
+              className="add-5-delete-button"
               aria-label="Supprimer l'étape"
             >
               ❌
             </button>
           </li>
-          <li className="add-step">
+          <li className="add-5-step">
             <button type="button" aria-label="Ajouter une étape">
               +
             </button>
           </li>
         </ul>
       </section>
-      <section className="recette-footer">
+      <section className="add-5-validate-">
         <button type="submit" className="submit-button">
           Envoyer
         </button>
