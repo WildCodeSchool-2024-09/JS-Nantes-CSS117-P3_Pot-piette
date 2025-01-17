@@ -16,3 +16,13 @@ h2 {
 ul {
   list-style-type: none;
 }
+
+.add-5-validate > button {
+  border-radius: 8px;
+  border: 1px solid #f06a0b;
+  background-color: #f06a0b;
+  color: #f8f8f8;
+  height: 50px;
+  width: 100px;
+  text-align: center;
+}

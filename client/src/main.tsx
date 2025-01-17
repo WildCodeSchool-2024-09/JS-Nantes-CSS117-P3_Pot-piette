@@ -8,6 +8,8 @@ import "./global.css";
 // Import the main app component
 import App from "./App";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
+import ActivityPage from "./pages/ActivityPage/ActivityPage";
+import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import AddRecipe5 from "./pages/AddRecipe/AddRecipe5";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
@@ -42,16 +44,26 @@ const router = createBrowserRouter([
         element: <ConnexionPage />,
       },
       {
-        path: "/recipe",
+        path: "/recipe/:id",
         element: <DetailRecipePage />,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/api/recipes/${params.id}`),
       },
       {
         path: "/login",
         element: <UserConnexion />,
       },
       {
+        path: "/My_Activity",
+        element: <ActivityPage />,
+      },
+      {
+        path: "/add",
+        element: <AddRecipe />,
+      },
+      {
         path: "/addrecipe5",
-        element: <AddRecipe5 />,
+        element: <AddRecipe />,
       },
     ],
   },

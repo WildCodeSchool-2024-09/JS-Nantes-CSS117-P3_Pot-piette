@@ -59,7 +59,7 @@ function AddRecipe5() {
           </li>
         </ul>
       </article>
-      <section className="add-5-validate-">
+      <section className="add-5-validate">
         <button type="submit" className="submit-button">
           Envoyer
         </button>

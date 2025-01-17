@@ -26,19 +26,17 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe` (
   `picture` VARCHAR(150) NOT NULL,
   `nb_parts` INT NOT NULL,
   `is_published` TINYINT NOT NULL DEFAULT '0',
+  `time_to_cook` INT NOT NULL,
+  `preparation_time` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
--- -----------------------------------------------------
--- Preload data recipe
--- -----------------------------------------------------
-
-INSERT INTO recipe (title, picture, nb_parts, is_published)
+INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time)
 VALUES
-('Le hamburger', 'hamburger.jpg', 1, 0),
-('Hot Dog New Yorkais', 'hotDog.jpg', 1, 0);
+('Le hamburger Maison', 'hamburger.jpg', 1, 0, 10, 45),
+('Le hot dog New Yorkais', 'hotDog.jpg', 1, 0, 5, 10);
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`
@@ -68,7 +66,7 @@ VALUES
 ('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
 ('Jean', 27, 'homme', 'jean.jpg', CURDATE(), 'jean@gmail.com', 'jaimelesucre', 0, 0),
 ('Mireille', 32, 'femme', 'mireille.jpg', CURDATE(), 'mireille@gmail.com', 'jaimepaslesucre', 0, 0),
-('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0),
+('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0);
 
 
 -- -----------------------------------------------------
