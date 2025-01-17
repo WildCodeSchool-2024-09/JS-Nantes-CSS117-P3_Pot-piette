@@ -7,22 +7,26 @@ export interface Recipe {
 export interface RecipeDetailI extends Recipe {
   nb_parts: number;
   time_to_cook: number;
-  ingredient_list: IngredientI[];
+  ingredients_list: IngredientI[];
   recipe_steps: StepI[];
   recipe_tag_list: TagI[];
 }
 
 interface IngredientI {
+  id: number;
+  picture: string;
   name: string;
   measure: string;
   quantity: number;
 }
 
 interface StepI {
+  id: number;
   content: string;
   nb_step: number;
 }
 
 interface TagI {
+  id: number;
   tag_name: string;
 }
