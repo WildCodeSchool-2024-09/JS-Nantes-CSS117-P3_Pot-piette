@@ -2,7 +2,7 @@ import "./ActivityPage.css";
 
 function ActivityPage() {
   return (
-    <section className="activities">
+    <section className="activity">
       <h1>Vos activités</h1>
 
       <article className="activity-published-recipe">
