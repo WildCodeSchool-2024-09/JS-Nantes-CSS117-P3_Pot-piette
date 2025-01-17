@@ -41,8 +41,10 @@ const router = createBrowserRouter([
         element: <ConnexionPage />,
       },
       {
-        path: "/recipe",
+        path: "/recipe/:id",
         element: <DetailRecipePage />,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/api/recipes/${params.id}`),
       },
       {
         path: "/login",

@@ -26,15 +26,17 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe` (
   `picture` VARCHAR(150) NOT NULL,
   `nb_parts` INT NOT NULL,
   `is_published` TINYINT NOT NULL DEFAULT '0',
+  `time_to_cook` INT NOT NULL,
+  `preparation_time` INT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-INSERT INTO recipe (title, picture, nb_parts, is_published)
+INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time)
 VALUES
-('hamburger Maison', 'hamburger.jpg', 1, 0),
-('hot-dog New Yorkais', 'hotDog.jpg', 1, 0);
+('hamburger Maison', 'hamburger.jpg', 1, 0, 10, 45),
+('hot-dog New Yorkais', 'hotDog.jpg', 1, 0, 5, 10);
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`

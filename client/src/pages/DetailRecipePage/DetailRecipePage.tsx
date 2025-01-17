@@ -8,14 +8,15 @@ import {
   IoMdHeartEmpty,
   IoMdShare,
 } from "react-icons/io";
+// import { useLoaderData } from "react-router-dom";
 
 function DetailRecipePage() {
+  // const data = useLoaderData();
+
   return (
     <>
       <header className="header-detail-recipe">
-        <h1 className="title-detail-recipe">
-          Grillée de mogettes Ventre à choux
-        </h1>
+        <h1 className="title-detail-recipe">titre</h1>
         <section className="info-detail-recipe">
           <p>
             <IoIosStar />
