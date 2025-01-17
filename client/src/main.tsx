@@ -9,6 +9,7 @@ import "./global.css";
 import App from "./App";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
+import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/My_Activity",
         element: <ActivityPage />,
+      },
+      {
+        path: "/add",
+        element: <AddRecipe />,
       },
     ],
   },
