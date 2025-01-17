@@ -1,9 +1,12 @@
 export interface Recipe {
   title: string;
   picture: string;
+  preparation_time: number;
+}
+
+export interface RecipeDetailI extends Recipe {
   nb_parts: number;
   time_to_cook: number;
-  preparation_time: number;
   ingredient_list: IngredientI[];
   recipe_steps: StepI[];
   recipe_tag_list: TagI[];
