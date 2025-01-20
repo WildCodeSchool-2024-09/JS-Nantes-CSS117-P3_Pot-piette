@@ -1,0 +1,177 @@
+/* AddRecipe4.css */
+
+/* Mobile-first styles */
+.addrecip4 .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addrecip4 .title h1 {
+  margin: 5;
+}
+
+.addrecip4 .clickable-crayon a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.h1-title {
+  position: relative;
+  right: -30px;
+}
+
+.h3-ingredients {
+  position: relative;
+  right: -30px;
+}
+
+.ingredients h3 {
+  position: relative;
+  right: -30px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.clickable-crayon svg {
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.clickable-crayon svg:hover {
+  transform: scale(1.1);
+}
+
+.img-ingredients h5 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+section img {
+  width: 80px;
+  height: auto;
+  display: inline-block;
+  margin: 10px auto;
+  position: relative;
+  border: 2px solid #f06a0b;
+  border-radius: 12px;
+}
+.img-ingredients-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.plus1 {
+  position: relative;
+  top: -20px;
+  right: -30px;
+  align-self: center;
+}
+.plat1 img,
+.plat2 img {
+  width: 60px;
+  height: auto;
+}
+
+.plat1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  top: -10px;
+}
+.plat2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  left: -40px;
+  top: -10px;
+}
+.plat-1,
+.plat-2 {
+  position: relative;
+  top: -10px;
+  border: 2px solid #f06a0b;
+  border-radius: 8px;
+  padding: 1px;
+
+  display: inline-block;
+  margin-top: 2px;
+  width: 100%;
+}
+
+.préparation {
+  position: relative;
+  right: -30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto;
+}
+
+button {
+  flex: 0 0 40%;
+  max-width: 120px;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #f06a0b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+button.precedent {
+  margin-right: 5px;
+}
+
+button.suivant {
+  margin-left: 5px;
+}
+
+button:hover {
+  background-color: #f06a0b;
+}
+
+/* Tablet and larger devices */
+@media (min-width: 768px) {
+  .AddRecipe4 {
+    margin: 20px;
+    padding: 25px;
+  }
+
+  .AddRecipe4 h1 {
+    font-size: 28px;
+  }
+
+  .Image-Ingredients h3 {
+    font-size: 20px;
+  }
+
+  .Image-Ingredients img {
+    width: 48%;
+    margin-right: 4%;
+  }
+
+  section h3 {
+    font-size: 20px;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+}
