@@ -2,64 +2,56 @@ import "./AddRecipe5.css";
 
 function AddRecipe5() {
   return (
-    <section className="add-5-recipe-main">
-      <section>
+    <section>
+      <article>
         <h1>Grillée de mogette</h1>
-      </section>
-      <article className="add-5-recipe-ingrediens">
-        <h2>Ingrédients</h2>
-        <button type="button" aria-label="Modifier le titre">
-          ✏️
-        </button>
+
+        <div className="add-5-ingredient">
+          <h2>Ingrédients</h2>
+          <button type="button" aria-label="Modifier le titre">
+            ✏️
+          </button>
+        </div>
       </article>
-      <section className="add-5-list">
-        <ul>
-          <li>
-            <img src="src\assets\tests\Anchois.png" alt="Anchois" />
-            <span>Mogette</span>
-          </li>
-          <li>
-            <img src="src\assets\tests\Jambon.png" alt="Jambon" />
-            <span>Sel</span>
-          </li>
-          <li>
-            <button type="button" aria-label="Ajouter un ingrédient">
-              +
-            </button>
-          </li>
-        </ul>
+
+      <section className="add-5-container">
+        <div className="add-5-1">
+          <img src="src\assets\tests\Anchois.png" alt="Anchois" />
+          <span>Mogette</span>
+        </div>
+        <div className="add-5-2">
+          <img src="src\assets\tests\Jambon.png" alt="Jambon" />
+          <span>Sel</span>
+        </div>
+        <div className="add-5-2-button">
+          <button type="button" aria-label="Ajouter un ingrédient">
+            <button type="button"> + </button>
+          </button>
+        </div>
       </section>
 
-      <article className="add-5-recipe">
+      <article>
         <h2>Préparation de la recette</h2>
-        <ul>
-          <li>
-            <span>Étape 1</span>
-            <section>
-              <button
-                type="button"
-                className="edit-button"
-                aria-label="Modifier l'étape"
-              >
-                ✏️
-              </button>
-              <button
-                type="button"
-                className="add-5-delete-button"
-                aria-label="Supprimer l'étape"
-              >
-                ❌
-              </button>
-            </section>
-          </li>
-          <li className="add-5-step">
-            <button type="button" aria-label="Ajouter une étape">
-              +
-            </button>
-          </li>
-        </ul>
+
+        <span>Étape 1</span>
       </article>
-      <section className="add-5-validate">
+      <section className="add-5-recipe">
+        <div className="add-5-list-button">
+          <button type="button" aria-label="Modifier l'étape">
+            ✏️
+          </button>
+          <button type="button" aria-label="Supprimer l'étape">
+            ❌
+          </button>
+        </div>
+        <div className="add-5-add">
+          <button type="button" aria-label="Ajouter une étape">
+            +
+          </button>
+        </div>
+      </section>
+
+      <section>
         <button type="submit" className="submit-button">
           Envoyer
         </button>
