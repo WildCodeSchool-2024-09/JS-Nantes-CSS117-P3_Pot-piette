@@ -1,16 +1,16 @@
-import "./AddRecipe5.css";
+import "./AddRecipe6.css";
 
 import { FaPlus } from "react-icons/fa6";
 import { GoPencil } from "react-icons/go";
 import { RxCross1 } from "react-icons/rx";
 
-function AddRecipe5() {
+function AddRecipe6() {
   return (
-    <section className="container-add-5">
+    <section className="container-add-6">
       <article>
         <h1>Grillée de mogette</h1>
 
-        <div className="add-5-ingredient">
+        <div className="add-6-ingredient">
           <h2>Ingrédients</h2>
           <a href="./.">
             <GoPencil />
@@ -18,16 +18,16 @@ function AddRecipe5() {
         </div>
       </article>
 
-      <section className="add-5-container">
-        <div className="add-5-1">
+      <section className="add-6-container">
+        <div className="add-6-1">
           <img src="src\assets\tests\Anchois.png" alt="Anchois" />
           <span>Mogette</span>
         </div>
-        <div className="add-5-2">
+        <div className="add-6-2">
           <img src="src\assets\tests\Jambon.png" alt="Jambon" />
           <span>Sel</span>
         </div>
-        <div className="add-5-2-button">
+        <div className="add-6-2-button">
           <button type="button" aria-label="Ajouter un ingrédient">
             <FaPlus />
           </button>
@@ -39,8 +39,8 @@ function AddRecipe5() {
 
         <span>Étape 1</span>
       </article>
-      <section className="add-5-recipe">
-        <div className="add-5-list-button">
+      <section className="add-6-recipe">
+        <div className="add-6-list-button">
           <a href="./.">
             <GoPencil />
           </a>
@@ -48,7 +48,7 @@ function AddRecipe5() {
             <RxCross1 />
           </a>
         </div>
-        <div className="add-5-add">
+        <div className="add-6-add">
           <FaPlus />
         </div>
       </section>
@@ -61,4 +61,4 @@ function AddRecipe5() {
     </section>
   );
 }
-export default AddRecipe5;
+export default AddRecipe6;

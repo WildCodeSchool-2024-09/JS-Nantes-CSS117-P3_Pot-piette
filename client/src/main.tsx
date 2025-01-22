@@ -10,7 +10,7 @@ import App from "./App";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
-import AddRecipe5 from "./pages/AddRecipe/AddRecipe5";
+import AddRecipe6 from "./pages/AddRecipe/AddRecipe6";
 import AddRecipe_2 from "./pages/AddRecipe/AddRecipe_2";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
@@ -67,8 +67,8 @@ const router = createBrowserRouter([
         element: <AddRecipe_2 />,
       },
       {
-        path: "/add-recipe-5",
-        element: <AddRecipe5 />,
+        path: "/add-recipe-6",
+        element: <AddRecipe6 />,
       },
     ],
   },
