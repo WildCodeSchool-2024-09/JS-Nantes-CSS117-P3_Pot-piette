@@ -120,6 +120,8 @@ VALUES
 ("Salade", "salade.jpg"),
 ("ketchup", "ketchup.jpg"),
 ("Pain hot dog", "Pain-hot-dog.jpg"),
+("Oeuf", "oeuf.jpg"),
+("Jambon", "jambon.jpg"),
 ("Saucisse", "Saucisse.jpg"),
 ("Cornichon", "cornichon.jpg");
 
@@ -153,7 +155,12 @@ VALUES
 (1, 2, 3, 'tranches'),
 (1, 1, 1, 'cuillère'),
 (1, 3, 1, 'émincé'),
-(1, 7, 1, 'feuille');
+(1, 7, 1, 'feuille'),
+(2, 9, 1, 'pièce'),
+(2, 7, 3, 'tranches'),
+(2, 8, 1, 'cuillère'),
+(2, 5, 1, 'émincé'),
+(2, 6, 1, 'feuille');
 
 
 -- -----------------------------------------------------
@@ -236,7 +243,13 @@ VALUES
 (3, "Lavez soigneusement et coupez la tomate en tranche et réservez.", 1),
 (4, "Détachez et lavez votre ou vos feuilles de salades et réservez.", 1),
 (5, "Faites cuire à votre convenance votre steak haché. Vous pouvez mettre un peu de beurre si vous le souhaitez sinon le gras de votre steak fera l'affaire.", 1),
-(6, "Assemblez! Dégustez!", 1);
+(6, "Assemblez! Dégustez!", 1),
+(1, "Prendre le pain de votre choix, cela peut être un pain à burger industriel même si l'on aurait envie de vous conseiller un buns maison ou de chez votre boulanger préféré. Coupez le en deux. ", 2),
+(2, "hot dog", 2),
+(3, "Lavez soigneusement et coupez la tomate en tranche et réservez.", 2),
+(4, "Détachez et lavez votre ou vos feuilles de salades et réservez.", 2),
+(5, "Faites cuire à votre convenance votre steak haché. Vous pouvez mettre un peu de beurre si vous le souhaitez sinon le gras de votre steak fera l'affaire.", 2),
+(6, "Assemblez votre hotdog! Dégustez!", 2);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

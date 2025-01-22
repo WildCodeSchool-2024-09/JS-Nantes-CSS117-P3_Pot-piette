@@ -1,6 +1,6 @@
 import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
-import type { RecipeI } from "../../types/recipe/recipe";
+import type { IngredientsRecipeI, RecipeI } from "../../types/recipe/recipe";
 
 class RecipeRepository {
   async readAll() {
@@ -23,7 +23,8 @@ class RecipeRepository {
         )
           FROM ingredient_recipe
           JOIN ingredient
-          ON ingredient.id = ingredient_recipe.ingredient_id) AS ingredients_list,
+          ON ingredient.id = ingredient_recipe.ingredient_id
+          WHERE ingredient_recipe.recipe_id = recipe.id) AS ingredients_list,
         (SELECT JSON_ARRAYAGG(
           JSON_OBJECT(
             'id', step.id,
@@ -53,7 +54,7 @@ class RecipeRepository {
     return rows;
   }
 
-  async create(recipe: RecipeI) {
+  async createRecipe(recipe: RecipeI) {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time) VALUES (? , ? ,? , ?, ?, ?)",
       [
@@ -63,6 +64,20 @@ class RecipeRepository {
         recipe.time_to_cook,
         recipe.nb_parts,
         recipe.preparation_time,
+      ],
+    );
+
+    return result.insertId;
+  }
+
+  async addIngredients(recipeIngredients: IngredientsRecipeI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure) VALUES (?, ? ,?,? )",
+      [
+        recipeIngredients.recipe_id,
+        recipeIngredients.ingredient_id,
+        recipeIngredients.quantity,
+        recipeIngredients.measure,
       ],
     );
 

@@ -30,12 +30,25 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    console.warn(req.body);
-    const insertId = await recipeRepository.create(req.body);
+    const recipeData = await recipeRepository.createRecipe(req.body);
 
-    if (insertId) {
+    const ingredients = req.body.ingredients_list;
+
+    for (const element of ingredients) {
+      const ingredientsData = {
+        recipe_id: recipeData,
+        ingredient_id: element.id,
+        measure: element.measure,
+        quantity: element.quantity,
+      };
+
+      console.warn(ingredientsData);
+
+      await recipeRepository.addIngredients(ingredientsData);
+    }
+
+    if (recipeData) {
       res.status(201).send(`New recipe ${req.body.title} added!`);
-      // res.json(insertId);
     } else {
       res.status(422).send("It's a new error!");
     }

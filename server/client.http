@@ -1,18 +1,27 @@
-GET http://localhost:3310/api/recipes/3
+GET http://localhost:3310/api/recipes/5
 
 ###
 
 POST http://localhost:3310/api/recipe/create HTTP/1.1
 content-type: application/json
 
-{
-  "title": "Sandwich au jambon",
-  "picture": "sandwich-jabon.jpg",
-  "time_to_cook": "10",
-  "is_published" : 0,
-  "nb_parts": "1",
-  "preparation_time" : "15"
-}
-
-
-
+  {
+    "title": "Omelette au jambon",
+    "picture": "omelette.jpg",
+    "nb_parts": 4,
+    "is_published":0,
+    "time_to_cook": 10,
+    "preparation_time": 45,
+    "ingredients_list": [
+      {
+        "id": 1,
+        "measure": "pièce",
+        "quantity": 6
+      },
+      {
+        "id": 4,
+        "measure": "tranches",
+        "quantity": 3
+      }
+    ]
+  }
