@@ -28,4 +28,20 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    console.warn(req.body);
+    const insertId = await recipeRepository.create(req.body);
+
+    if (insertId) {
+      res.status(201).send(`New recipe ${req.body.title} added!`);
+      // res.json(insertId);
+    } else {
+      res.status(422).send("It's a new error!");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, add };

@@ -1,4 +1,18 @@
-GET http://localhost:3310/api/recipes/1
+GET http://localhost:3310/api/recipes/3
+
+###
+
+POST http://localhost:3310/api/recipe/create HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Sandwich au jambon",
+  "picture": "sandwich-jabon.jpg",
+  "time_to_cook": "10",
+  "is_published" : 0,
+  "nb_parts": "1",
+  "preparation_time" : "15"
+}
 
 
 

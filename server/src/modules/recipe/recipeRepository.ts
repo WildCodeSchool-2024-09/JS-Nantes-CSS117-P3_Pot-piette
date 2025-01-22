@@ -1,5 +1,6 @@
-import type { Rows } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
+import type { RecipeI } from "../../types/recipe/recipe";
 
 class RecipeRepository {
   async readAll() {
@@ -50,6 +51,22 @@ class RecipeRepository {
     );
 
     return rows;
+  }
+
+  async create(recipe: RecipeI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time) VALUES (? , ? ,? , ?, ?, ?)",
+      [
+        recipe.title,
+        recipe.picture,
+        recipe.is_published,
+        recipe.time_to_cook,
+        recipe.nb_parts,
+        recipe.preparation_time,
+      ],
+    );
+
+    return result.insertId;
   }
 }
 
