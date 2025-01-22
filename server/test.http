@@ -2,7 +2,7 @@ GET http://localhost:3310/api/users
 
 ###
 
-POST http://localhost:3310/api/users HTTP/1.1
+POST http://localhost:3310/api/users/ HTTP/1.1
 content-type: application/json
 
 
@@ -19,3 +19,19 @@ content-type: application/json
 }
 
 ###
+
+PUT http://localhost:3310/api/users/4 HTTP/1.1
+content-type: application/json
+
+
+{
+    "name": "John",
+    "age": "72",
+    "genre": "homme",
+    "picture": "john.jpg",
+    "inscription_date": "2021-09-01",
+    "email": "john@gmail.com",
+    "password": "JohnmaispasDoe",
+    "is_admin": "0",
+    "is_modo": "0"
+}

@@ -29,4 +29,42 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const {
+      name,
+      age,
+      genre,
+      picture,
+      inscription_date,
+      email,
+      password,
+      is_admin,
+      is_modo,
+    } = req.body;
+    const { id } = req.params;
+
+    const editUser = await userRepository.update({
+      name,
+      age,
+      genre,
+      picture,
+      inscription_date,
+      email,
+      password,
+      is_admin,
+      is_modo,
+      id,
+    });
+
+    if (editUser) {
+      res.sendStatus(204);
+    } else {
+      res.status(403).send("An error has occured");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, add, edit };
