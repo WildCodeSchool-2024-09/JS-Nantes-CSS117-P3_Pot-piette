@@ -2,7 +2,7 @@ import "./AddRecipe5.css";
 
 function AddRecipe5() {
   return (
-    <section>
+    <section className="container-add-5">
       <article>
         <h1>Grillée de mogette</h1>
 
