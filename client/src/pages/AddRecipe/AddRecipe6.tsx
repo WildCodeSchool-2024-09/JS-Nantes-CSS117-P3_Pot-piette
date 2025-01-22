@@ -12,9 +12,8 @@ function AddRecipe6() {
 
         <div className="add-6-ingredient">
           <h2>Ingrédients</h2>
-          <a href="./.">
-            <GoPencil />
-          </a>
+
+          <GoPencil />
         </div>
       </article>
 
@@ -41,12 +40,9 @@ function AddRecipe6() {
       </article>
       <section className="add-6-recipe">
         <div className="add-6-list-button">
-          <a href="./.">
-            <GoPencil />
-          </a>
-          <a href="./.">
-            <RxCross1 />
-          </a>
+          <GoPencil />
+
+          <RxCross1 />
         </div>
         <div className="add-6-add">
           <FaPlus />
