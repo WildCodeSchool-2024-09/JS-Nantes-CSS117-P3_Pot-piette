@@ -1,0 +1,51 @@
+.container-add-6,
+button {
+  all: unset;
+}
+.container-add-5 {
+  margin-left: 5%;
+}
+.add-5-ingredient {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.add-5-ingredient > button {
+  height: 40px;
+  width: 40px;
+  margin-top: 15px;
+}
+.add-5-container {
+  display: flex;
+  gap: 16px;
+}
+.add-5-1,
+.add-5-2,
+.add-5-2-button {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.add-5-1 > span {
+  border: 1px solid #f06a0b;
+  margin-top: 10%;
+  height: 50px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+.add-5-2 > span {
+  border: 1px solid #f06a0b;
+  margin-top: 10%;
+  height: 50px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+}
+.add-5-2-button {
+  border: 1px solid #f06a0b;
+  height: 135px;
+  width: 135px;
+  align-items: center;
+  justify-content: center;
+}
