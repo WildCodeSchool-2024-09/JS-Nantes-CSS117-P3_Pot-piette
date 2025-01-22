@@ -13,4 +13,20 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const addUser = await userRepository.create(req.body);
+
+    if (addUser) {
+      res
+        .status(201)
+        .send(`The user ${req.body.name} has been added succesfully`);
+    } else {
+      res.status(404).send("An error has occured");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, add };
