@@ -1,4 +1,5 @@
 import "./AddRecipe5.css";
+import { GoPencil } from "react-icons/go";
 
 function AddRecipe5() {
   return (
@@ -37,9 +38,9 @@ function AddRecipe5() {
       </article>
       <section className="add-5-recipe">
         <div className="add-5-list-button">
-          <button type="button" aria-label="Modifier l'étape">
-            ✏️
-          </button>
+          <a href="./.">
+            <GoPencil />
+          </a>
           <button type="button" aria-label="Supprimer l'étape">
             ❌
           </button>
