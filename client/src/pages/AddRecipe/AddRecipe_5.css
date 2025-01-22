@@ -1,9 +1,9 @@
-.container-add-6,
+/*.container-add-5,
 button {
   all: unset;
 }
 .container-add-5 {
-  margin-left: 5%;
+  margin-left: 2%;
 }
 .add-5-ingredient {
   display: flex;
@@ -17,7 +17,7 @@ button {
 }
 .add-5-container {
   display: flex;
-  gap: 16px;
+  gap: 8px;
 }
 .add-5-1,
 .add-5-2,
@@ -48,4 +48,47 @@ button {
   width: 135px;
   align-items: center;
   justify-content: center;
+}
+*/
+
+.more-ingredient-5 {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--secondary-color);
+  height: 5em;
+  width: 5em;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.dialog-content-5 {
+  display: flex;
+  flex-direction: column;
+}
+
+#dial-box {
+  border-radius: 8px;
+  border: 2px solid var(--main-color);
+}
+
+.dialog-ingredient-5 input {
+  border: none;
+  width: 8em;
+  margin: 0 0.3em;
+}
+
+#dial-box-5 h2 {
+  margin: 0 0 1.5em 0;
+}
+
+.dialog-ingredient-5 input:active {
+  border: none;
+}
+.dialog-ingredient-5 input::placeholder {
+  text-decoration: underline var(--secondary-color);
+}
+#close-modal-5-button {
+  width: 100%;
+  text-align: end;
+  border: none;
 }
