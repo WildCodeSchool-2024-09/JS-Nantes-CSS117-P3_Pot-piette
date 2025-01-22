@@ -11,7 +11,7 @@ import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import AddRecipe_2 from "./pages/AddRecipe/AddRecipe_2";
-import AddRecipe5 from "./pages/AddRecipe/AddRecipe_5";
+import AddRecipe_3 from "./pages/AddRecipe/addRecipe_3";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
@@ -67,8 +67,8 @@ const router = createBrowserRouter([
         element: <AddRecipe_2 />,
       },
       {
-        path: "/add-recipe-5",
-        element: <AddRecipe5 />,
+        path: "/add-recipe-3",
+        element: <AddRecipe_3 />,
       },
     ],
   },
