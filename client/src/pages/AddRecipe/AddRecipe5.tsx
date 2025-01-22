@@ -1,5 +1,8 @@
 import "./AddRecipe5.css";
+
+import { FaPlus } from "react-icons/fa6";
 import { GoPencil } from "react-icons/go";
+import { RxCross1 } from "react-icons/rx";
 
 function AddRecipe5() {
   return (
@@ -9,9 +12,9 @@ function AddRecipe5() {
 
         <div className="add-5-ingredient">
           <h2>Ingrédients</h2>
-          <button type="button" aria-label="Modifier le titre">
-            ✏️
-          </button>
+          <a href="./.">
+            <GoPencil />
+          </a>
         </div>
       </article>
 
@@ -26,7 +29,7 @@ function AddRecipe5() {
         </div>
         <div className="add-5-2-button">
           <button type="button" aria-label="Ajouter un ingrédient">
-            <button type="button"> + </button>
+            <FaPlus />
           </button>
         </div>
       </section>
@@ -41,14 +44,12 @@ function AddRecipe5() {
           <a href="./.">
             <GoPencil />
           </a>
-          <button type="button" aria-label="Supprimer l'étape">
-            ❌
-          </button>
+          <a href="./.">
+            <RxCross1 />
+          </a>
         </div>
         <div className="add-5-add">
-          <button type="button" aria-label="Ajouter une étape">
-            +
-          </button>
+          <FaPlus />
         </div>
       </section>
 
