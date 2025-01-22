@@ -3,7 +3,7 @@ import "./AddRecipe_5.css";
 import { FaPlus } from "react-icons/fa6";
 import { GoPencil } from "react-icons/go";
 
-function AddRecipe5() {
+function AddRecipe_5() {
   return (
     <section className="container-add-5">
       <article>
@@ -37,7 +37,7 @@ function AddRecipe5() {
     </section>
   );
 }
-export default AddRecipe5;
+export default AddRecipe_5;
 
 /*function AddRecipe5() {
   const dialogRef = useRef<HTMLDialogElement>(null);
