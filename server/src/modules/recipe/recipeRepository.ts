@@ -4,6 +4,7 @@ import type {
   IngredientsRecipeI,
   RecipeI,
   StepI,
+  TagI,
 } from "../../types/recipe/recipe";
 
 class RecipeRepository {
@@ -97,11 +98,13 @@ class RecipeRepository {
     return result.insertId;
   }
 
-  async addTag() {
+  async addTag(recipe_tag: TagI) {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO recipe_tag (recipe_id, tag_id) VALUES (?, ?)",
-      [],
+      [recipe_tag.recipe_id, recipe_tag.tag_id],
     );
+
+    return result.insertId;
   }
 }
 

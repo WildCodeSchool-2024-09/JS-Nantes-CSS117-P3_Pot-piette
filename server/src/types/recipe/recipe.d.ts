@@ -20,3 +20,8 @@ export interface StepI {
   content: string;
   recipe_id: number;
 }
+
+export interface TagI {
+  tag_id: number;
+  recipe_id: number;
+}
