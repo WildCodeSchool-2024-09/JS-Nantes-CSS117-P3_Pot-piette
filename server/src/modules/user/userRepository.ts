@@ -4,7 +4,9 @@ import type { User } from "./user";
 
 class UserRepository {
   async readAll() {
-    const [rows] = await databaseClient.query<Rows>("SELECT * FROM user");
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT name, email FROM user",
+    );
 
     return rows as User[];
   }
@@ -26,6 +28,26 @@ class UserRepository {
     );
 
     return result.insertId;
+  }
+
+  async update(user: User) {
+    const [result] = await databaseClient.query<Result>(
+      "UPDATE user SET name = ?, age = ?, genre = ?, picture = ?, inscription_date = ?, email = ?, password = ?, is_admin = ?, is_modo = ? WHERE id = ?",
+      [
+        user.name,
+        user.age,
+        user.genre,
+        user.picture,
+        user.inscription_date,
+        user.email,
+        user.password,
+        user.is_admin,
+        user.is_modo,
+        user.id,
+      ],
+    );
+
+    return result.affectedRows;
   }
 }
 
