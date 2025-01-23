@@ -25,5 +25,7 @@ router.post("/api/recipe/create", recipeActions.add);
 import userActions from "./modules/user/userActions";
 
 router.get("/api/users", userActions.browse);
+router.post("/api/users", userActions.add);
+router.put("/api/users/:id", userActions.edit);
 
 export default router;
