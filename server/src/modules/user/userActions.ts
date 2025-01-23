@@ -31,36 +31,17 @@ const add: RequestHandler = async (req, res, next) => {
 
 const edit: RequestHandler = async (req, res, next) => {
   try {
-    const {
-      name,
-      age,
-      genre,
-      picture,
-      inscription_date,
-      email,
-      password,
-      is_admin,
-      is_modo,
-    } = req.body;
     const { id } = req.params;
+    const user = req.body;
 
-    const editUser = await userRepository.update({
-      name,
-      age,
-      genre,
-      picture,
-      inscription_date,
-      email,
-      password,
-      is_admin,
-      is_modo,
-      id,
-    });
+    user.id = id;
+
+    const editUser = await userRepository.update(user);
 
     if (editUser) {
       res.sendStatus(204);
     } else {
-      res.status(403).send("An error has occured");
+      res.status(403).send("An error has occurred");
     }
   } catch (err) {
     console.error(err);
