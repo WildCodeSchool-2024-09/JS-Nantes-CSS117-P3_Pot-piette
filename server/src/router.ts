@@ -20,6 +20,11 @@ router.get("/api/recipes", recipeActions.browse);
 router.get("/api/recipes/:id", recipeActions.read);
 
 /* ************************************************************************* */
+import ingredientsActions from "./modules/ingredients/ingredientsActions";
+
+router.get("/api/ingredients", ingredientsActions.browse);
+
+/* ************************************************************************* */
 
 import userActions from "./modules/user/userActions";
 
