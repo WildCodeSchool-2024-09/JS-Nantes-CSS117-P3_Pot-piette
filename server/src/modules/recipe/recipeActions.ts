@@ -33,6 +33,7 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     const recipeData = await recipeRepository.createRecipe(req.body);
 
+    // For add all the ingredients to this recipe
     const ingredients = req.body.ingredients_list;
 
     for (const element of ingredients) {
@@ -43,12 +44,25 @@ const add: RequestHandler = async (req, res, next) => {
         quantity: element.quantity,
       };
 
-      console.warn(ingredientsData);
-
       await recipeRepository.addIngredients(ingredientsData);
     }
 
-    if (recipeData && ingredients) {
+    // For add our own recipe steps
+    const steps = req.body.recipe_steps;
+
+    console.warn(steps);
+
+    for (const step of steps) {
+      const stepsData = {
+        recipe_id: recipeData,
+        nb_step: step.nb_step,
+        content: step.content,
+      };
+
+      await recipeRepository.addSteps(stepsData);
+    }
+
+    if (recipeData && ingredients && steps) {
       res.status(201).send(`New recipe ${req.body.title} added!`);
     } else {
       res.status(422).send("Your recipe doesn't work! Sorry!");

@@ -14,3 +14,9 @@ export interface IngredientsRecipeI {
   quantity: number;
   measure: string;
 }
+
+export interface StepI {
+  nb_step: number;
+  content: string;
+  recipe_id: number;
+}

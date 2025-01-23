@@ -1,6 +1,10 @@
 import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
-import type { IngredientsRecipeI, RecipeI } from "../../types/recipe/recipe";
+import type {
+  IngredientsRecipeI,
+  RecipeI,
+  StepI,
+} from "../../types/recipe/recipe";
 
 class RecipeRepository {
   async readAll() {
@@ -82,6 +86,22 @@ class RecipeRepository {
     );
 
     return result.insertId;
+  }
+
+  async addSteps(step: StepI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO step (nb_step, content, recipe_id) VALUES (?,?,?)",
+      [step.nb_step, step.content, step.recipe_id],
+    );
+
+    return result.insertId;
+  }
+
+  async addTag() {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO recipe_tag (recipe_id, tag_id) VALUES (?, ?)",
+      [],
+    );
   }
 }
 
