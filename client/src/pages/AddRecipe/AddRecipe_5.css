@@ -1,4 +1,4 @@
-/*.container-add-5,
+.container-add-5,
 button {
   all: unset;
 }
@@ -49,8 +49,8 @@ button {
   align-items: center;
   justify-content: center;
 }
-*/
 
+/* Mise en place de la boîte modale*/
 .more-ingredient-5 {
   position: absolute;
   border-radius: 50%;
@@ -61,20 +61,30 @@ button {
   cursor: pointer;
 }
 
-.dialog-content-5 {
-  display: flex;
-  flex-direction: column;
-}
-
 #dial-box {
   border-radius: 8px;
   border: 2px solid var(--main-color);
+  width: 100%;
+  height: 50%;
 }
 
 .dialog-ingredient-5 input {
   border: none;
   width: 8em;
   margin: 0 0.3em;
+}
+.dialog-etape {
+  border: 1px solid #f8f8f8;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.dialog-etape > input {
+  height: 50px;
+  width: 100%;
+}
+.dialog-etape > button {
+  margin-right: 45%;
 }
 
 #dial-box-5 h2 {
@@ -88,6 +98,58 @@ button {
   text-decoration: underline var(--secondary-color);
 }
 #close-modal-5-button {
+  width: 100%;
+  text-align: end;
+  border: none;
+}
+.button-5-validate {
+  border: 1px solid #f06a0b;
+  color: #f0f0f0;
+  background-color: #f06a0b;
+  border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  margin-left: 30%;
+  margin-top: 10%;
+}
+.more-ingredient-three {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--secondary-color);
+  height: 5em;
+  width: 5em;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#dial-box {
+  border-radius: 8px;
+  border: 2px solid var(--main-color);
+}
+
+.dialog-ingredient input {
+  border: none;
+  width: 8em;
+  margin: 0 0.3em;
+}
+
+#dial-box h2 {
+  margin: 0 0 1.5em 0;
+}
+
+.dialog-ingredient input:active {
+  border: none;
+}
+.dialog-ingredient input::placeholder {
+  text-decoration: underline var(--secondary-color);
+}
+#close-modal-button {
   width: 100%;
   text-align: end;
   border: none;

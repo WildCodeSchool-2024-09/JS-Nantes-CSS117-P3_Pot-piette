@@ -1,9 +1,18 @@
 import "./AddRecipe_5.css";
-
+import { useRef } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { GoPencil } from "react-icons/go";
 
 function AddRecipe_5() {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  function handleClose() {
+    dialogRef.current?.close();
+  }
+
+  function handleSubmit() {
+    dialogRef.current?.showModal();
+  }
   return (
     <section className="container-add-5">
       <article>
@@ -24,75 +33,64 @@ function AddRecipe_5() {
           <img src="src\assets\tests\Jambon.png" alt="Jambon" />
           <span>Sel</span>
         </div>
-        <div className="add-5-2-button">
-          <button type="button" aria-label="Ajouter un ingrédient">
-            <FaPlus />
+        <form encType="multipart/form-data" className="add-ingredient">
+          <FaPlus className="more-ingredient-three" onClick={handleSubmit} />
+          <input type="file" name="avatar" />
+        </form>
+        <dialog ref={dialogRef} id="dial-box">
+          <button id="close-modal-button" type="button" onClick={handleClose}>
+            X
           </button>
-        </div>
+          <section id="dialog-content-5">
+            <section id="data">
+              <h2>Ingrédient</h2>
+              <section className="dialog-etape">
+                <input
+                  type="text"
+                  name="Ingrédient"
+                  id=""
+                  placeholder="Ajouter votre ingrédient"
+                />
+
+                <button className="button-5-validate" type="button">
+                  Ajouter
+                </button>
+              </section>
+            </section>
+          </section>
+        </dialog>
       </section>
       <article>
         <h2>Préparation de la recette</h2>
         <span>Étape 1</span>
       </article>
-    </section>
-  );
-}
-export default AddRecipe_5;
-
-/*function AddRecipe5() {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  function handleClose() {
-    dialogRef.current?.close();
-  }
-
-  function handleSubmit() {
-    dialogRef.current?.showModal();
-  }
-
-  return (
-    <main className="add-recipe-5">
-      <h1>Grillé de mogette</h1>
-      <h2>Ingrédients</h2>
-
-      <form encType="multipart/form-data" className="add-ingredient-5">
-        <FaPlus className="more-ingredient-5" onClick={handleSubmit} />
+      <form encType="multipart/form-data" className="add-ingredient">
+        <FaPlus className="more-ingredient-three" onClick={handleSubmit} />
         <input type="file" name="avatar" />
       </form>
       <dialog ref={dialogRef} id="dial-box">
-        <button id="close-modal-5-button" type="button" onClick={handleClose}>
+        <button id="close-modal-button" type="button" onClick={handleClose}>
           X
         </button>
         <section id="dialog-content-5">
           <section id="data">
-            <h2>Ingredient</h2>
-            <section className="dialog-ingredient-5">
+            <h2>Etape</h2>
+            <section className="dialog-etape">
               <input
                 type="text"
-                name="ingrédient"
+                name="Etape"
                 id=""
-                placeholder="Ingrédient"
+                placeholder="Ajouter votre étape"
               />
-              <input
-                type="number"
-                min="0"
-                name="Quantité"
-                id=""
-                placeholder="Quantité"
-              />
-              <input type="text" name="Unité" id="" placeholder="Unité" />
+
+              <button className="button-5-validate" type="button">
+                Ajouter
+              </button>
             </section>
           </section>
         </section>
       </dialog>
-      <h2>Préparation de la recette</h2>
-
-      <form encType="multipart/form-data" className="add-ingredient-5">
-        <FaPlus className="more-ingredient-5" />
-        <input type="file" name="avatar" />
-      </form>
-    </main>
+    </section>
   );
 }
-
-export default AddRecipe5;*/
+export default AddRecipe_5;
