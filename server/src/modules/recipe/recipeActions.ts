@@ -28,6 +28,7 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
+// Action POST for add a new recipe
 const add: RequestHandler = async (req, res, next) => {
   try {
     const recipeData = await recipeRepository.createRecipe(req.body);
@@ -47,10 +48,10 @@ const add: RequestHandler = async (req, res, next) => {
       await recipeRepository.addIngredients(ingredientsData);
     }
 
-    if (recipeData) {
+    if (recipeData && ingredients) {
       res.status(201).send(`New recipe ${req.body.title} added!`);
     } else {
-      res.status(422).send("It's a new error!");
+      res.status(422).send("Your recipe doesn't work! Sorry!");
     }
   } catch (err) {
     next(err);
