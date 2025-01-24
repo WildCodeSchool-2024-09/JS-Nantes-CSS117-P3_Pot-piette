@@ -33,10 +33,7 @@ function AddRecipe_5() {
           <img src="src\assets\tests\Jambon.png" alt="Jambon" />
           <span>Sel</span>
         </div>
-        <form encType="multipart/form-data" className="add-ingredient">
-          <FaPlus className="more-ingredient-three" onClick={handleSubmit} />
-          <input type="file" name="avatar" />
-        </form>
+
         <dialog ref={dialogRef} id="dial-box">
           <button id="close-modal-button" type="button" onClick={handleClose}>
             X
