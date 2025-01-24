@@ -1,6 +1,6 @@
 import type { Result, Rows } from "../../../database/client";
-import type { IngredientUnique } from "../../types/recipe/recipe";
 import databaseClient from "../../../database/client";
+import type { IngredientUnique } from "../../types/recipe/recipe";
 
 class IngredientsRepository {
   async readAll() {

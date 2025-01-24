@@ -26,7 +26,7 @@ export interface TagI {
   recipe_id: number;
 }
 
-export interface IngredientUnique{
-  name_ingredient:string;
-  picture_ingredient:string;
+export interface IngredientUnique {
+  name_ingredient: string;
+  picture_ingredient: string;
 }
