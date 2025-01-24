@@ -25,7 +25,7 @@ const add: RequestHandler = async (req, res, next) => {
       res.status(404).send("An error has occured");
     }
   } catch (err) {
-    console.error(err);
+    next(err);
   }
 };
 
@@ -44,8 +44,24 @@ const edit: RequestHandler = async (req, res, next) => {
       res.status(403).send("An error has occurred");
     }
   } catch (err) {
-    console.error(err);
+    next(err);
   }
 };
 
-export default { browse, add, edit };
+const deleteUser: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const deleteResult = await userRepository.delete(id);
+
+    if (deleteResult) {
+      res.status(204).send();
+    } else {
+      res.status(404).send("User not found or could not be deleted");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, edit, deleteUser };

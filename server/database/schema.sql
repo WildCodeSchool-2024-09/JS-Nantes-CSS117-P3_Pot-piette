@@ -66,7 +66,9 @@ VALUES
 ('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
 ('Jean', 27, 'homme', 'jean.jpg', CURDATE(), 'jean@gmail.com', 'jaimelesucre', 0, 0),
 ('Mireille', 32, 'femme', 'mireille.jpg', CURDATE(), 'mireille@gmail.com', 'jaimepaslesucre', 0, 0),
-('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0);
+('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0),
+('Martinne', 50, 'femme', 'martinne.jpg', CURDATE(), 'martine@outlook.com', '$argon2id$v=19$m=16,t=2,p=1$eE9lT0VEMEdiUTYyalEwcw$uKYx68AOBwpnFU23IYPeXg', 0, 0);
+
 
 
 -- -----------------------------------------------------
