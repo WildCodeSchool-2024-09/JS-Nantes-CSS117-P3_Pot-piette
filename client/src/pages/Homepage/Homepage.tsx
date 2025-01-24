@@ -1,14 +1,24 @@
+import { useEffect, useState } from "react";
+import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
 
 function Homepage() {
+  const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/recipe/latest")
+      .then((response) => response.json()) // On convertit la réponse en JSON
+      .then((lastRecipe) => setLastRecipe(lastRecipe[0])); // Le changement de data devient character(appelé de base) et .results qui est le tableau dans l'API
+  }, []);
+
   return (
     <>
       <main className="home-page">
         <section className="home-carousel">
           <h2>Nouvelles recettes</h2>
           <figure>
-            <img src="../src/assets/tests/Tarte.jpg" alt="" />
-            <figcaption>Tarte au citron meringuée</figcaption>
+            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+            <figcaption>{lastRecipe?.title}</figcaption>
           </figure>
         </section>
         <section className="home-search">

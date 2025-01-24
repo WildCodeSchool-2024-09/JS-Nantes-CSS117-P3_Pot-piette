@@ -19,6 +19,7 @@ import recipeActions from "./modules/recipe/recipeActions";
 router.get("/api/recipes", recipeActions.browse);
 router.get("/api/recipes/:id", recipeActions.read);
 router.post("/api/recipe/create", recipeActions.add);
+router.get("/api/recipe/latest", recipeActions.latest);
 
 /* ************************************************************************* */
 import ingredientsActions from "./modules/ingredients/ingredientsActions";

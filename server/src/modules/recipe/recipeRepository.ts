@@ -14,6 +14,14 @@ class RecipeRepository {
     return rows;
   }
 
+  async lastRecipe() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recipe ORDER BY id DESC LIMIT 1",
+    );
+
+    return rows;
+  }
+
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT recipe.title, recipe.picture, recipe.nb_parts, recipe.time_to_cook, recipe.preparation_time,
