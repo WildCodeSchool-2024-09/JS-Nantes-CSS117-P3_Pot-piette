@@ -1,5 +1,11 @@
-import type { Rows } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
+import type {
+  IngredientsRecipeI,
+  RecipeI,
+  StepI,
+  TagI,
+} from "../../types/recipe/recipe";
 
 class RecipeRepository {
   async readAll() {
@@ -22,7 +28,8 @@ class RecipeRepository {
         )
           FROM ingredient_recipe
           JOIN ingredient
-          ON ingredient.id = ingredient_recipe.ingredient_id) AS ingredients_list,
+          ON ingredient.id = ingredient_recipe.ingredient_id
+          WHERE ingredient_recipe.recipe_id = recipe.id) AS ingredients_list,
         (SELECT JSON_ARRAYAGG(
           JSON_OBJECT(
             'id', step.id,
@@ -50,6 +57,54 @@ class RecipeRepository {
     );
 
     return rows;
+  }
+
+  async createRecipe(recipe: RecipeI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time) VALUES (? , ? ,? , ?, ?, ?)",
+      [
+        recipe.title,
+        recipe.picture,
+        recipe.is_published,
+        recipe.time_to_cook,
+        recipe.nb_parts,
+        recipe.preparation_time,
+      ],
+    );
+
+    return result.insertId;
+  }
+
+  async addIngredients(recipeIngredients: IngredientsRecipeI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure) VALUES (?, ? ,?,? )",
+      [
+        recipeIngredients.recipe_id,
+        recipeIngredients.ingredient_id,
+        recipeIngredients.quantity,
+        recipeIngredients.measure,
+      ],
+    );
+
+    return result.insertId;
+  }
+
+  async addSteps(step: StepI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO step (nb_step, content, recipe_id) VALUES (?,?,?)",
+      [step.nb_step, step.content, step.recipe_id],
+    );
+
+    return result.insertId;
+  }
+
+  async addTag(recipe_tag: TagI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO recipe_tag (recipe_id, tag_id) VALUES (?, ?)",
+      [recipe_tag.recipe_id, recipe_tag.tag_id],
+    );
+
+    return result.insertId;
   }
 }
 
