@@ -6,6 +6,7 @@ export interface RecipeI {
   time_to_cook: number;
   nb_parts: number;
   preparation_time: number;
+  user_id: number;
 }
 
 export interface IngredientsRecipeI {
