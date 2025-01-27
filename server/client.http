@@ -25,3 +25,18 @@ content-type: application/json
       }
     ]
   }
+
+
+### 
+
+GET http://localhost:3310/api/ingredients
+
+###
+
+POST http://localhost:3310/api/ingredients HTTP/1.1
+content-type: application/json
+
+  {
+    "name_ingredient": "Pâte à tarte",
+    "picture_ingredient": "https://media.istockphoto.com/id/500803741/fr/photo/faire-cuire-les-ingr%C3%A9dients-p%C3%A2te-et-le-rouleau-%C3%A0-p%C3%A2tisserie.jpg?s=612x612&w=0&k=20&c=gdy8JWORE41o-gPqpU6oY_roA957OYoKpRSSs7xAnhY="
+  }
