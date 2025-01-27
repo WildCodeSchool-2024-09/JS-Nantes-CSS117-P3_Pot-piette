@@ -6,9 +6,9 @@ function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3310/api/recipe/latest")
-      .then((response) => response.json()) // On convertit la réponse en JSON
-      .then((lastRecipe) => setLastRecipe(lastRecipe[0])); // Le changement de data devient character(appelé de base) et .results qui est le tableau dans l'API
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/latest`)
+      .then((response) => response.json())
+      .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
   }, []);
 
   return (

@@ -18,6 +18,7 @@ CREATE SCHEMA IF NOT EXISTS `potpiette` DEFAULT CHARACTER SET utf8mb4 COLLATE ut
 USE `potpiette` ;
 
 -- -----------------------------------------------------
+<<<<<<< HEAD
 -- Table `potpiette`.`recipe`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `potpiette`.`recipe` (
@@ -39,6 +40,8 @@ VALUES
 ('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10);
 
 -- -----------------------------------------------------
+=======
+>>>>>>> 2480ba72a58c1e309f0d1c607fce2e9cf60e93a4
 -- Table `potpiette`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
@@ -56,6 +59,32 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
+-- Table `potpiette`.`recipe`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `potpiette`.`recipe` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(100) NOT NULL,
+  `picture` VARCHAR(255) NOT NULL,
+  `nb_parts` INT NOT NULL,
+  `is_published` TINYINT NOT NULL DEFAULT '0',
+  `time_to_cook` INT NOT NULL,
+  `preparation_time` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`)
+  REFERENCES `potpiette`.`user` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time, user_id)
+VALUES
+('Le hamburger Maison', 'https://media.istockphoto.com/id/1498243668/fr/photo/cheeseburger-savoureux-avec-laitue-fromage-cheddar-tomate-et-cornichons-petit-pain-burger-aux.jpg?s=612x612&w=0&k=20&c=CbU_yIAqD1cIG5P0x6TFjpoHMDEPcllouQQAMf3xdgY=', 1, 0, 10, 45, 2),
+('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10, 1);
+
+
 
 -- -----------------------------------------------------
 -- Preload data comment
@@ -271,7 +300,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO recipe_tag (recipe_id, tag_id)
 VALUES
-(1, 2);
+(1, 2),
+(2,1);
 
 
 -- -----------------------------------------------------

@@ -25,6 +25,7 @@ router.get("/api/recipe/latest", recipeActions.latest);
 import ingredientsActions from "./modules/ingredients/ingredientsActions";
 
 router.get("/api/ingredients", ingredientsActions.browse);
+router.post("/api/ingredients", ingredientsActions.add);
 
 /* ************************************************************************* */
 

@@ -6,6 +6,7 @@ export interface RecipeI {
   time_to_cook: number;
   nb_parts: number;
   preparation_time: number;
+  user_id: number;
 }
 
 export interface IngredientsRecipeI {
@@ -24,4 +25,9 @@ export interface StepI {
 export interface TagI {
   tag_id: number;
   recipe_id: number;
+}
+
+export interface IngredientUnique {
+  name_ingredient: string;
+  picture_ingredient: string;
 }
