@@ -26,7 +26,11 @@ import ingredientsActions from "./modules/ingredients/ingredientsActions";
 router.get("/api/ingredients", ingredientsActions.browse);
 
 /* ************************************************************************* */
+import tagsActions from "./modules/tags/tagsActions";
 
+router.get("/api/tags/:id", tagsActions.read);
+
+/* ************************************************************************* */
 import userActions from "./modules/user/userActions";
 
 router.get("/api/users", userActions.browse);

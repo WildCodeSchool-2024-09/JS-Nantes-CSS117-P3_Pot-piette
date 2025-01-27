@@ -30,3 +30,9 @@ interface TagI {
   id: number;
   tag_name: string;
 }
+
+export interface RecipeByTag {
+  title: string;
+  picture: string;
+  id: number;
+}
