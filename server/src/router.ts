@@ -17,5 +17,22 @@ router.post("/api/items", itemActions.add);
 import recipeActions from "./modules/recipe/recipeActions";
 
 router.get("/api/recipes", recipeActions.browse);
+router.get("/api/recipes/:id", recipeActions.read);
+router.post("/api/recipe/create", recipeActions.add);
+router.get("/api/recipe/latest", recipeActions.latest);
+
+/* ************************************************************************* */
+import ingredientsActions from "./modules/ingredients/ingredientsActions";
+
+router.get("/api/ingredients", ingredientsActions.browse);
+router.post("/api/ingredients", ingredientsActions.add);
+
+/* ************************************************************************* */
+
+import userActions from "./modules/user/userActions";
+
+router.get("/api/users", userActions.browse);
+router.post("/api/users", userActions.add);
+router.put("/api/users/:id", userActions.edit);
 
 export default router;

@@ -1,14 +1,24 @@
+import { useEffect, useState } from "react";
+import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
 
 function Homepage() {
+  const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/latest`)
+      .then((response) => response.json())
+      .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
+  }, []);
+
   return (
     <>
       <main className="home-page">
         <section className="home-carousel">
           <h2>Nouvelles recettes</h2>
           <figure>
-            <img src="../src/assets/tests/Tarte.jpg" alt="" />
-            <figcaption>Tarte au citron meringuée</figcaption>
+            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+            <figcaption>{lastRecipe?.title}</figcaption>
           </figure>
         </section>
         <section className="home-search">
