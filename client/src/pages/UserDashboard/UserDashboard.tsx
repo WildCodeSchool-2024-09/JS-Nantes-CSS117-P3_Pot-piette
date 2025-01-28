@@ -41,8 +41,6 @@ function UserInfo() {
         </section>
       </section>
 
-      <p className="note">* Champs obligatoires</p>
-
       <h2>Mes Restrictions Alimentaire</h2>
       <section className="restrictions">
         <section className="item">
