@@ -12,6 +12,7 @@ content-type: application/json
     "is_published":0,
     "time_to_cook": 10,
     "preparation_time": 45,
+    "user_id": 3,
     "ingredients_list": [
       {
         "id": 1,
@@ -23,9 +24,41 @@ content-type: application/json
         "measure": "tranches",
         "quantity": 3
       }
+    ],
+    "recipe_steps": [
+      {
+        "id": 1,
+        "content": "Prendre le pain de votre choix, cela peut être un pain à burger industriel même si l'on aurait envie de vous conseiller un buns maison ou de chez votre boulanger préféré. Coupez le en deux. ",
+        "nb_step": 1
+      },
+      {
+        "id": 2,
+        "content": "Emincez un oignon (rouge ou blanc) et faites le revenir dans une poêle légèrement beurré jusquà ce qu'il ai une belle couleur légèrement brune. Réservez.",
+        "nb_step": 2
+      }
+    ], 
+    "recipe_tag_list" : [
+      {
+        "tag_id" : 3
+      }
     ]
+  }
+
+
+### 
+
+GET http://localhost:3310/api/ingredients
+
+###
+
+POST http://localhost:3310/api/ingredients HTTP/1.1
+content-type: application/json
+
+  {
+    "name_ingredient": "Pâte à tarte",
+    "picture_ingredient": "https://media.istockphoto.com/id/500803741/fr/photo/faire-cuire-les-ingr%C3%A9dients-p%C3%A2te-et-le-rouleau-%C3%A0-p%C3%A2tisserie.jpg?s=612x612&w=0&k=20&c=gdy8JWORE41o-gPqpU6oY_roA957OYoKpRSSs7xAnhY="
   }
 
 ###
 
-GET http://localhost:3310/api/tags/2
+GET http://localhost:3310/api/recipe/latest

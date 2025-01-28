@@ -239,11 +239,11 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO tag (tag_name)
 VALUES
-("Dessert"),
 ("Rapide"),
-("Végétarien"),
 ("Plat"),
 ("Healthy"),
+("Végétarien"),
+("Dessert"),
 ("Cocktail");
 
 
@@ -273,6 +273,7 @@ INSERT INTO recipe_tag (recipe_id, tag_id)
 VALUES
 (1, 2),
 (2, 2);
+
 
 
 -- -----------------------------------------------------

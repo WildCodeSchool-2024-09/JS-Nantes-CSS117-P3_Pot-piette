@@ -14,9 +14,17 @@ class RecipeRepository {
     return rows;
   }
 
+  async lastRecipe() {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recipe ORDER BY id DESC LIMIT 1",
+    );
+
+    return rows;
+  }
+
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      `SELECT recipe.title, recipe.picture, recipe.nb_parts, recipe.time_to_cook, recipe.preparation_time,
+      `SELECT recipe.title, recipe.picture, recipe.nb_parts, recipe.time_to_cook, recipe.preparation_time, user.name,
         (SELECT JSON_ARRAYAGG(
           JSON_OBJECT(
             'id', ingredient.id,
@@ -51,6 +59,7 @@ class RecipeRepository {
             WHERE recipe_tag.recipe_id = recipe.id
         ) AS recipe_tag_list
       FROM recipe
+      JOIN user ON recipe.user_id = user.id
       WHERE recipe.id = ?
       `,
       [id],
@@ -61,7 +70,7 @@ class RecipeRepository {
 
   async createRecipe(recipe: RecipeI) {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time) VALUES (? , ? ,? , ?, ?, ?)",
+      "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time, user_id) VALUES (? , ? ,? , ?, ?, ?, ?)",
       [
         recipe.title,
         recipe.picture,
@@ -69,6 +78,7 @@ class RecipeRepository {
         recipe.time_to_cook,
         recipe.nb_parts,
         recipe.preparation_time,
+        recipe.user_id,
       ],
     );
 

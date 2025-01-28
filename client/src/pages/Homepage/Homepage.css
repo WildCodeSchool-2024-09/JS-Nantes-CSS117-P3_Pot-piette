@@ -45,20 +45,24 @@ figcaption {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0px;
-}
-.home-inspirations figure > img {
-  border: 2px var(--main-color) solid;
-  border-radius: 8px;
-  width: 20vw;
-  background-color: white;
+  & svg {
+    height: 5.5em;
+  }
 }
 
 .home-inspirations figure > figcaption {
   text-align: center;
 }
 
-.home-inspirations figure > img:hover {
-  border: 2px green solid;
+.inspirations {
+  border: 2px var(--secondary-color) solid;
+  border-radius: 8px;
+  width: 20vw;
+  transition: border 0.3s ease-in-out;
+}
+
+.selected {
+  border: 2px var(--main-color) solid;
 }
 
 .recipe-grid {
