@@ -1,7 +1,6 @@
 import { hash } from "argon2";
 import { verify } from "argon2";
 import type { RequestHandler } from "express";
-
 import { sign } from "jsonwebtoken";
 import userRepository from "./user/userRepository";
 

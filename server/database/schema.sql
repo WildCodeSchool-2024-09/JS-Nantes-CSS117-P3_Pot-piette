@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
   `genre` VARCHAR(20) NULL DEFAULT NULL,
   `picture` VARCHAR(100) NULL DEFAULT NULL,
   `inscription_date` DATE NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
   `is_admin` TINYINT NOT NULL,
   `is_modo` TINYINT NOT NULL,
