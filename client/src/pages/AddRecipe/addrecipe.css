@@ -3,12 +3,6 @@
   padding: 2em;
 }
 
-.add-recipe h1,
-h2 {
-  font-family: var(--secondary-font);
-  color: var(--secondary-color);
-}
-
 .categories-form {
   display: grid;
   gap: 20px;
@@ -32,16 +26,12 @@ h2 {
 }
 
 .category img {
-  border: 2px solid #ffa500;
+  border: 2px solid var(--main-color);
   border-radius: 8px;
   width: 5em;
   height: 5em;
 }
 
-.category p {
-  font-size: 1em;
-  color: var(--secondary-color);
-}
 .add-recipe select {
   border-radius: 2px var(--main-color) solid;
   height: 3.5em;
@@ -68,8 +58,6 @@ h2 {
 }
 
 .number-selector label {
-  font-family: var(--secondary-font);
-  color: var(--secondary-color);
   width: 3.5em;
   font-size: 1.3em;
 }
