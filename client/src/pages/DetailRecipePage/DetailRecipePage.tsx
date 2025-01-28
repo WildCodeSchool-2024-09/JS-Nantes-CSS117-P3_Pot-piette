@@ -8,14 +8,17 @@ import {
   IoMdHeartEmpty,
   IoMdShare,
 } from "react-icons/io";
+import { useLoaderData } from "react-router-dom";
+import type { RecipeDetailI } from "../../types/detail-recipe";
 
 function DetailRecipePage() {
+  const data = useLoaderData() as RecipeDetailI[];
+  const recipeDetail = data[0];
+
   return (
     <>
       <header className="header-detail-recipe">
-        <h1 className="title-detail-recipe">
-          Grillée de mogettes Ventre à choux
-        </h1>
+        <h1 className="title-detail-recipe">{recipeDetail.title}</h1>
         <section className="info-detail-recipe">
           <p>
             <IoIosStar />
@@ -26,12 +29,19 @@ function DetailRecipePage() {
           </p>
           <p>
             <GoClock />
-            45mn
+            {`${recipeDetail.time_to_cook} mn`}
           </p>
         </section>
-        <img src="" alt="" className="img-detail-recipe" />
+        <img
+          src={recipeDetail.picture}
+          alt={`Representation of ${recipeDetail.title} recipe`}
+          className="img-detail-recipe"
+        />
         <section className="share-and-like-detail-recipe">
           <IoMdHeartEmpty />
+          {recipeDetail.recipe_tag_list.map((tag) => {
+            return <p key={tag.id}>{tag.tag_name}</p>;
+          })}
           <IoMdShare />
         </section>
       </header>
@@ -42,81 +52,41 @@ function DetailRecipePage() {
           <button type="button">
             <IoIosRemove />
           </button>
-          <p>4 personnes</p>
+          <p>{`${recipeDetail.nb_parts} personnes`}</p>
           <button type="button">
             <IoIosAdd />
           </button>
         </section>
         <ul>
-          <li>
-            <img src="" alt="" />
-            <section>
-              <p>Sel</p>
-              <p>1 pincée</p>
-            </section>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <section>
-              <p>Sel</p>
-              <p>1 pincée</p>
-            </section>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <section>
-              <p>Sel</p>
-              <p>1 pincée</p>
-            </section>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <section>
-              <p>Sel</p>
-              <p>1 pincée</p>
-            </section>
-          </li>
+          {recipeDetail.ingredients_list.map((ingredient) => {
+            return (
+              <li key={ingredient.id}>
+                <img
+                  src={ingredient.picture}
+                  alt={`Representation of ${ingredient.name} ingredient`}
+                />
+                <section>
+                  <p>{ingredient.name}</p>
+                  <p>
+                    {ingredient.quantity} {ingredient.measure}
+                  </p>
+                </section>
+              </li>
+            );
+          })}
         </ul>
       </section>
       <section className="preparation-detail-recipe-container">
         <h2>Préparation</h2>
         <ul>
-          <li>
-            <h3>Etape 1</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              reprehenderit ipsam enim atque, quos, reiciendis beatae alias modi
-              nam perferendis accusamus quae. Dolorum omnis cupiditate et optio
-              voluptate tempora libero!
-            </p>
-          </li>
-          <li>
-            <h3>Etape 2</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              reprehenderit ipsam enim atque, quos, reiciendis beatae alias modi
-              nam perferendis accusamus quae. Dolorum omnis cupiditate et optio
-              voluptate tempora libero!
-            </p>
-          </li>
-          <li>
-            <h3>Etape 3</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              reprehenderit ipsam enim atque, quos, reiciendis beatae alias modi
-              nam perferendis accusamus quae. Dolorum omnis cupiditate et optio
-              voluptate tempora libero!
-            </p>
-          </li>
-          <li>
-            <h3>Etape 4</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              reprehenderit ipsam enim atque, quos, reiciendis beatae alias modi
-              nam perferendis accusamus quae. Dolorum omnis cupiditate et optio
-              voluptate tempora libero!
-            </p>
-          </li>
+          {recipeDetail.recipe_steps.map((step) => {
+            return (
+              <li key={step.id}>
+                <h3>{`Etape ${step.nb_step}`}</h3>
+                <p>{step.content}</p>
+              </li>
+            );
+          })}
         </ul>
       </section>
     </>
