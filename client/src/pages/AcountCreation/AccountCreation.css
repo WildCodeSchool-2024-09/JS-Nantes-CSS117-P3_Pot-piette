@@ -5,14 +5,7 @@
   padding: 20px;
 }
 
-.signup-container > h1 {
-  font-size: 24px;
-  color: #2c3e50;
-}
-
 .signup-container > p {
-  font-size: 16px;
-  color: #7f8c8d;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -25,29 +18,28 @@
 }
 
 .signup-form label {
-  font-size: 14px;
-  color: #34495e;
   margin-bottom: 5px;
 }
 
 .signup-form input {
   padding: 10px;
-  font-size: 14px;
+  color: var(--secondary-color);
   margin-bottom: 15px;
   border: 1px solid #bdc3c7;
   border-radius: 8px;
 }
 
 .signup-form input:focus {
-  border-color: #3498db;
+  border-color: var(--main-color);
   outline: none;
 }
 
 .signup-button {
-  background-color: #f06a0b;
-  color: white;
+  background-color: var(--main-color);
+  color: var(--background-color);
   padding: 10px;
   font-size: 16px;
+  font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
