@@ -1,47 +1,28 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { IoSearch, IoPerson } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
-const Header: React.FC = () => {
+function Header() {
   return (
     <>
-      {/* NavBar */}
       <header className="header">
-        <nav className="nav">
-          {/* Left Menu */}
-          <ul className="nav-list left">
-            <li>
-              <Link to="/">
-                <img
-                  src="https://i.ibb.co/W07r41p/menu-hamburger.png"
-                  alt="Menu"
-                  className="nav-icon"
-                />
-              </Link>
-            </li>
-          </ul>
+        {/* Burger Menu */}
+        <section className="burger-menu">
+          <Link to="/">
+            <RxHamburgerMenu />
+          </Link>
+        </section>
 
-          {/* Right Icones */}
-          <ul className="nav-list right">
-            <li>
-              <Link to="/">
-                <img
-                  src="https://i.ibb.co/ZJH0xp6/chercher.png"
-                  alt="Recherche"
-                  className="nav-icon"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link to="/">
-                <img
-                  src="https://i.ibb.co/qmk9DRT/utilisateur.png"
-                  alt="Utilisateur"
-                  className="nav-icon"
-                />
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        {/* nav-list */}
+        <ul className="nav-list">
+          <li>
+            <IoSearch />
+          </li>
+          <li>
+            <IoPerson />
+          </li>
+        </ul>
       </header>
 
       {/* Center Logo */}
@@ -56,6 +37,6 @@ const Header: React.FC = () => {
       </div>
     </>
   );
-};
+}
 
 export default Header;
