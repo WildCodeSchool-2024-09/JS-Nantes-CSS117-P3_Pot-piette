@@ -22,6 +22,10 @@ function AddRecipe() {
 
   const [tag, setTags] = useState<string>("");
   const [parts, setParts] = useState("");
+  const [prepHours, setPrepHours] = useState("");
+  const [prepMinutes, setPrepMinutes] = useState("");
+  const [cookHours, setCookHours] = useState("");
+  const [cookMinutes, setCookMinutes] = useState("");
 
   const handleTag = (e: React.MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;
@@ -35,16 +39,23 @@ function AddRecipe() {
     const title = data.title;
     const category = tag;
     const nbParts = parts;
-    console.warn("data = ", data);
-    console.warn("title =", title);
+    const prepTimeHour = Number.parseInt(prepHours) || 0;
+    const prepTimeMinutes = Number.parseInt(prepMinutes) || 0;
+    const cookTimeHour = Number.parseInt(cookHours) || 0;
+    const cookTimeMinutes = Number.parseInt(cookMinutes) || 0;
+    const totalPrepMinutes: number = prepTimeHour * 60 + prepTimeMinutes;
+    const totalCookMinutes: number = cookTimeHour * 60 + cookTimeMinutes;
+    const prep = totalPrepMinutes;
+    const cook = totalCookMinutes;
+    console.warn("Prep time = ", prep);
 
     const recette = {
       title,
       picture: "omelette.jpg",
       nb_parts: nbParts,
       is_published: 0,
-      time_to_cook: 10,
-      preparation_time: 45,
+      time_to_cook: cook,
+      preparation_time: prep,
       user_id: 3,
       ingredients_list: [
         {
@@ -173,10 +184,8 @@ function AddRecipe() {
           onChange={(e) => setParts(e.target.value)}
         />
         <p>Personnes</p>
-        <button type="submit">Valider</button>
-      </form>
-      <h2>Temps de préparation</h2>
-      <form action="prep-number" method="post" className="number-selector">
+        <h2>Temps de préparation</h2>
+
         <input
           id="prep-hour"
           type="number"
@@ -185,8 +194,10 @@ function AddRecipe() {
           min="0"
           max="10"
           required
+          value={prepHours}
+          onChange={(e) => setPrepHours(e.target.value)}
         />
-        <label htmlFor="person">Heures</label>
+        <label htmlFor="prep-hours">Heures</label>
         <input
           id="prep-minutes"
           type="number"
@@ -195,11 +206,13 @@ function AddRecipe() {
           min="0"
           max="59"
           required
+          value={prepMinutes}
+          onChange={(e) => setPrepMinutes(e.target.value)}
         />
-        <label htmlFor="person">Minutes</label>
-      </form>
-      <h2>Temps de Cuisson</h2>
-      <form action="cook-number" method="post" className="number-selector">
+        <label htmlFor="prep-minutes">Minutes</label>
+
+        <h2>Temps de Cuisson</h2>
+
         <input
           id="cook-hour"
           type="number"
@@ -208,6 +221,8 @@ function AddRecipe() {
           min="0"
           max="10"
           required
+          value={cookHours}
+          onChange={(e) => setCookHours(e.target.value)}
         />
         <label htmlFor="person">Heures</label>
         <input
@@ -218,9 +233,14 @@ function AddRecipe() {
           min="0"
           max="59"
           required
+          value={cookMinutes}
+          onChange={(e) => setCookMinutes(e.target.value)}
         />
         <label htmlFor="person">Minutes</label>
+        <button type="submit">Valider</button>
       </form>
+      {/* A déplacer */}
+
       <h2>Photos</h2>
 
       <form
