@@ -21,6 +21,7 @@ function AddRecipe() {
   }
 
   const [tag, setTags] = useState<string>("");
+  const [parts, setParts] = useState("");
 
   const handleTag = (e: React.MouseEvent<HTMLButtonElement>) => {
     const value = e.currentTarget.value;
@@ -33,14 +34,14 @@ function AddRecipe() {
     const data = Object.fromEntries(formData.entries());
     const title = data.title;
     const category = tag;
+    const nbParts = parts;
     console.warn("data = ", data);
     console.warn("title =", title);
-    console.warn("tag = ", category);
 
     const recette = {
       title,
       picture: "omelette.jpg",
-      nb_parts: 4,
+      nb_parts: nbParts,
       is_published: 0,
       time_to_cook: 10,
       preparation_time: 45,
@@ -158,11 +159,8 @@ function AddRecipe() {
             </button>
           </div>
         </form>
-        <button type="submit">Valider</button>
-      </form>
 
-      <h2>Nombre de part</h2>
-      <form action="part-number" method="post" className="number-selector">
+        <h2>Nombre de part</h2>
         <input
           id="part"
           type="number"
@@ -171,8 +169,11 @@ function AddRecipe() {
           min="0"
           max="10"
           required
+          value={parts}
+          onChange={(e) => setParts(e.target.value)}
         />
-        <label htmlFor="part">Personnes</label>
+        <p>Personnes</p>
+        <button type="submit">Valider</button>
       </form>
       <h2>Temps de préparation</h2>
       <form action="prep-number" method="post" className="number-selector">
