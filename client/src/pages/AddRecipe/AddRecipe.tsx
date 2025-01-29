@@ -1,4 +1,4 @@
-import { type ChangeEvent, useRef } from "react";
+import { type ChangeEvent, useRef, useState } from "react";
 import "./addrecipe.css";
 import { FaPlus } from "react-icons/fa6";
 
@@ -20,13 +20,22 @@ function AddRecipe() {
     dialogStep.current?.showModal();
   }
 
+  const [tag, setTags] = useState<string>("");
+
+  const handleTag = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const value = e.currentTarget.value;
+    setTags(value);
+  };
+
   const handleRecette = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     const title = data.title;
+    const category = tag;
     console.warn("data = ", data);
     console.warn("title =", title);
+    console.warn("tag = ", category);
 
     const recette = {
       title,
@@ -64,7 +73,7 @@ function AddRecipe() {
       ],
       recipe_tag_list: [
         {
-          tag_id: 3,
+          tag_id: category,
         },
       ],
     };
@@ -90,56 +99,62 @@ function AddRecipe() {
             <button
               type="button"
               name="category"
-              value="Rapide"
+              value="1"
               className="category"
+              onClick={handleTag}
             >
               <img src="" alt="Rapide" />
               <p>Rapide</p>
             </button>
             <button
-              type="submit"
+              type="button"
               name="category"
-              value="Plat"
+              value="2"
               className="category"
+              onClick={handleTag}
             >
-              <img src="cutlery-icon.png" alt="Plat" />
+              <img src="" alt="Plat" />
               <p>Plat</p>
             </button>
             <button
-              type="submit"
+              type="button"
               name="category"
-              value="Végé"
+              value="3"
               className="category"
-            >
-              <img src="" alt="Végé" />
-              <p>Végé</p>
-            </button>
-            <button
-              type="submit"
-              name="category"
-              value="Cocktail"
-              className="category"
+              onClick={handleTag}
             >
               <img src="" alt="Salade" />
               <p>Salade</p>
             </button>
             <button
-              type="submit"
+              type="button"
               name="category"
-              value="Salade"
+              value="4"
               className="category"
+              onClick={handleTag}
+            >
+              <img src="" alt="Végé" />
+              <p>Végé</p>
+            </button>
+            <button
+              type="button"
+              name="category"
+              value="5"
+              className="category"
+              onClick={handleTag}
+            >
+              <img src="" alt="Desserts" />
+              <p>Dessert</p>
+            </button>
+            <button
+              type="button"
+              name="category"
+              value="6"
+              className="category"
+              onClick={handleTag}
             >
               <img src="" alt="Cocktail" />
               <p>Cocktail</p>
-            </button>
-            <button
-              type="submit"
-              name="category"
-              value="Desserts"
-              className="category"
-            >
-              <img src="cake-icon.png" alt="Desserts" />
-              <p>Desserts</p>
             </button>
           </div>
         </form>
