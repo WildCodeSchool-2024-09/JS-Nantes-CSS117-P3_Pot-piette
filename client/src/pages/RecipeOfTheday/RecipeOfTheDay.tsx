@@ -1,4 +1,6 @@
 import "./RecipeOfTheDay.css";
+import { MdOutlineAccessTime } from "react-icons/md";
+import { PiChefHatThin } from "react-icons/pi";
 
 function RecipeOfTheDay() {
   return (
@@ -11,17 +13,16 @@ function RecipeOfTheDay() {
       </section>
       <section className="clock-and-chef">
         <figure className="clock-container">
-          <img src="photos/Clock (1).png" alt="Clock" className="clock" />
+          <MdOutlineAccessTime />
           <figcaption>Préparation</figcaption>
+          <h6>45 mn</h6>
         </figure>
 
         <figure className="chef-hat-container">
-          <img
-            src="photos/chef-hat-svgrepo-com 1.png"
-            alt="Chef-Hat"
-            className="chef-hat"
-          />
+          <PiChefHatThin />
+
           <figcaption>type</figcaption>
+          <h6>Tradition</h6>
         </figure>
       </section>
     </section>
