@@ -34,10 +34,6 @@
   border: 2px var(--main-color) solid;
 }
 
-figcaption {
-  font-weight: bold;
-}
-
 .home-inspirations {
   display: flex;
   flex-wrap: wrap;

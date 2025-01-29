@@ -42,4 +42,5 @@ p,
 figcaption {
   font-family: var(--primary-font);
   color: var(--secondary-color);
+  font-weight: bold;
 }
