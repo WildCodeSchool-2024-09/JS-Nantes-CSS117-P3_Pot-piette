@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { IoSearch, IoPerson } from "react-icons/io5";
+import { IoPerson, IoSearch } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 function Header() {
