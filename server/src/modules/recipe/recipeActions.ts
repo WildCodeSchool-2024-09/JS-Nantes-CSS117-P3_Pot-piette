@@ -12,6 +12,16 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const addTitle: RequestHandler = async (req, res, next) => {
+  try {
+    console.warn(req.body);
+    const insertTitle = await recipeRepository.createTitle(req.body);
+    res.status(201).json({ insertTitle });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const latest: RequestHandler = async (req, res, next) => {
   try {
     const recipes = await recipeRepository.lastRecipe();
@@ -92,4 +102,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, latest };
+export default { browse, read, add, latest, addTitle };
