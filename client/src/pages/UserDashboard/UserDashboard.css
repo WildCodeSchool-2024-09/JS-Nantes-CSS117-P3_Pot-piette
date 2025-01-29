@@ -24,7 +24,7 @@
 .item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .userdash-container,
@@ -52,6 +52,8 @@ input {
 
 .restrictions {
   margin: 20px 0;
+  display: flex;
+  align-items: start;
   border-radius: 2px solid #f06a0b;
 }
 
@@ -59,6 +61,7 @@ input {
   display: flex;
   flex-direction: column;
 }
+
 .item > img {
   width: 50px;
   height: 50px;
@@ -70,16 +73,16 @@ input {
   margin-top: 5px;
   font-size: 12px;
 }
+
 .item-add-btn {
-  margin-top: -10%;
   width: 50px;
   height: 50px;
   border: 1px solid #f06a0b;
   border-radius: 8px;
   font-size: 24px;
-
   cursor: pointer;
 }
+
 .item-add-btn > span {
   align-items: center;
 }
