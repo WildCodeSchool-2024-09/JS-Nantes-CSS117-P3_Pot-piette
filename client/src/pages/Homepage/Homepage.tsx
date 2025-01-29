@@ -4,12 +4,19 @@ import "./Homepage.css";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/recipe/latest`)
       .then((response) => response.json())
       .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
   }, []);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipes?query=${search}`)
+      .then((res) => res.json())
+      .then((search) => setSearch(search));
+  });
 
   return (
     <>
@@ -21,13 +28,27 @@ function Homepage() {
             <figcaption>{lastRecipe?.title}</figcaption>
           </figure>
         </section>
+
         <section className="home-search">
-          <input
-            type="search"
-            id="site-search"
-            name="search"
-            placeholder="Cherchez votre recette"
-          />
+          {/*<form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const data = new FormData(e.currentTarget);
+              const formData = Object.fromEntries(data.entries());
+              const search = formData.search as string;
+              setSearch(search);
+            }}
+          >
+            <input
+              type="search"
+              id="site-search"
+              name="search"
+              placeholder="Cherchez votre recette"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button type="submit"> Rechercher</button>
+          </form>*/}
         </section>
         <h2>Inspirations</h2>
         <section className="home-inspirations">

@@ -1,4 +1,7 @@
-GET http://localhost:3310/api/recipes/3
+GET http://localhost:3310/api/recipes/
+
+###
+GET http://localhost:3310/api/recipes/search?query=z
 
 ###
 
