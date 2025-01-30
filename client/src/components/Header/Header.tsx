@@ -1,38 +1,46 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useState } from "react";
 import { IoPerson, IoSearch } from "react-icons/io5";
-import { RxHamburgerMenu } from "react-icons/rx";
 
 function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
     <>
-      <header className="header">
-        {/* Burger Menu */}
-        <section className="burger-menu">
-          <Link to="/">
-            <RxHamburgerMenu />
+      <nav className="header-nav">
+        <button
+          type="button"
+          className={`burger ${isOpen ? "open " : ""}`}
+          onClick={toggleMenu}
+        >
+          <div> </div>
+          <div> </div>
+          <div> </div>
+        </button>
+        <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
+          <Link to="/account" onClick={toggleMenu}>
+            S'inscrire
           </Link>
-        </section>
-
-        {/* nav-list */}
-        <ul className="nav-list">
+          <Link to="/login" onClick={toggleMenu}>
+            Se connecter
+          </Link>
+        </nav>
+        <ul>
           <li>
             <IoSearch />
           </li>
           <li>
-            <IoPerson />
+            <Link to="/connexion">
+              <IoPerson />
+            </Link>
           </li>
         </ul>
-      </header>
-
-      {/* Center Logo */}
+      </nav>
       <div className="logo-container">
         <Link to="/">
-          <img
-            src="https://i.ibb.co/1v4Z0cL/PAUPIETTE-01-1.png"
-            alt="Logo"
-            className="logo"
-          />
+          <img src="./logoWhite.png" alt="Logo" className="logo" />
         </Link>
       </div>
     </>
