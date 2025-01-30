@@ -2,6 +2,7 @@ interface Recipe {
   id: number;
   title: string;
   picture: string;
+  preparation_time: number;
 }
 
 interface RecipeListProps {
@@ -17,6 +18,7 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
             <li key={recipe.id}>
               <h3>{recipe.title}</h3>
               <img src={recipe.picture} alt={recipe.title} />
+              <h3>{recipe.preparation_time}</h3>
             </li>
           ))}
         </ul>

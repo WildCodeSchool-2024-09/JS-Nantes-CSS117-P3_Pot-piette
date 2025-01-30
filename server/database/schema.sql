@@ -36,8 +36,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time)
 VALUES
 ('Le hamburger Maison', 'https://media.istockphoto.com/id/1498243668/fr/photo/cheeseburger-savoureux-avec-laitue-fromage-cheddar-tomate-et-cornichons-petit-pain-burger-aux.jpg?s=612x612&w=0&k=20&c=CbU_yIAqD1cIG5P0x6TFjpoHMDEPcllouQQAMf3xdgY=', 1, 0, 10, 45),
-('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10);
-
+('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10),
+('Le raclette', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10);
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`
 -- -----------------------------------------------------

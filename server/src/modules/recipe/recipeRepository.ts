@@ -16,7 +16,7 @@ class RecipeRepository {
 
   async searchRecipes(query: string) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT * FROM recipe WHERE title LIKE ?",
+      "SELECT * FROM recipe JOIN ingredient WHERE title LIKE ?",
       [`%${query}%`],
     );
     return rows;

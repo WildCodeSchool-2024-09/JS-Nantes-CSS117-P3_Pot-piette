@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
   const [search, setSearch] = useState("");
+  const [recipes, setRecipes] = useState<
+    { title: string; id: number; picture: string }[]
+  >([]);
+
+  function handleRecipe(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const formData = Object.fromEntries(data.entries());
+    const search = formData.search;
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipes/search?query=${search}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecipes(data.recipes);
+      });
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/recipe/latest`)
+
       .then((response) => response.json())
       .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
   }, []);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/recipes?query=${search}`)
-      .then((res) => res.json())
-      .then((search) => setSearch(search));
-  });
 
   return (
     <>
@@ -29,16 +39,10 @@ function Homepage() {
           </figure>
         </section>
 
+        {/* Mise en place de la fonction Recherche*/}
+
         <section className="home-search">
-          {/*<form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const data = new FormData(e.currentTarget);
-              const formData = Object.fromEntries(data.entries());
-              const search = formData.search as string;
-              setSearch(search);
-            }}
-          >
+          <form onSubmit={handleRecipe}>
             <input
               type="search"
               id="site-search"
@@ -47,8 +51,9 @@ function Homepage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+
             <button type="submit"> Rechercher</button>
-          </form>*/}
+          </form>
         </section>
         <h2>Inspirations</h2>
         <section className="home-inspirations">
@@ -100,6 +105,16 @@ function Homepage() {
             />
             <figcaption>Cocktail</figcaption>
           </figure>
+        </section>
+        <section className="search-container">
+          {recipes.map((recipe) => {
+            return (
+              <div key={recipe.id} className="search-result">
+                <img src={recipe.picture} alt={recipe.title} />
+                <figcaption>{recipe.title}</figcaption>
+              </div>
+            );
+          })}
         </section>
       </main>
     </>
