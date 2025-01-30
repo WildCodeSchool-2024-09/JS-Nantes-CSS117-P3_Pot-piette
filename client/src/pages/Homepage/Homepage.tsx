@@ -12,8 +12,6 @@ function Homepage() {
       .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
   }, []);
 
-  console.warn(lastRecipe);
-
   return (
     <>
       <main className="home-page">
