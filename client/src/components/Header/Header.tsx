@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <>
-      <nav className="header-nav">
+      <header className="header-nav">
         <button
           type="button"
           className={`burger ${isOpen ? "open " : ""}`}
@@ -27,6 +27,9 @@ function Header() {
             Se connecter
           </Link>
         </nav>
+        <Link to="/">
+          <img src="./logoWhite.png" alt="Logo" className="logo" />
+        </Link>
         <ul>
           <li>
             <IoSearch />
@@ -37,12 +40,7 @@ function Header() {
             </Link>
           </li>
         </ul>
-      </nav>
-      <div className="logo-container">
-        <Link to="/">
-          <img src="./logoWhite.png" alt="Logo" className="logo" />
-        </Link>
-      </div>
+      </header>
     </>
   );
 }

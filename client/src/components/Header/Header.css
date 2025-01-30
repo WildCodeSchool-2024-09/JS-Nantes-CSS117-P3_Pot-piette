@@ -3,10 +3,11 @@
   justify-content: space-between;
   align-items: center;
   background-color: #ffff;
-  /* position: fixed; */
+  position: fixed;
   padding: 1em;
   height: 4em;
   width: 100%;
+  margin: 0 0 2em 0;
   & a {
     background-color: transparent;
   }
@@ -22,16 +23,12 @@
   }
 }
 
-.logo-container {
-  display: flex;
-  justify-content: center;
+.logo {
+  width: 9em;
   background-color: transparent;
-  & img {
-    width: 10em;
-    position: relative;
-    top: -2em;
-    background-color: transparent;
-  }
+  top: 4em;
+  left: 1.5em;
+  position: relative;
 }
 
 .header-nav ul {
