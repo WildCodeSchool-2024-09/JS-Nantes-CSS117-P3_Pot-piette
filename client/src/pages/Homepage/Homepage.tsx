@@ -1,6 +1,7 @@
 import { type ChangeEvent, useEffect, useState } from "react";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
@@ -34,7 +35,9 @@ function Homepage() {
         <section className="home-carousel">
           <h2>Nouvelles recettes</h2>
           <figure>
-            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+            <Link to={`/recipe/${lastRecipe?.id}`}>
+              <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+            </Link>
             <figcaption>{lastRecipe?.title}</figcaption>
           </figure>
         </section>

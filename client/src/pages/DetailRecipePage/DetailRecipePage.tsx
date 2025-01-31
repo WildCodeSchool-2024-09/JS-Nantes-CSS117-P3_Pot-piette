@@ -16,7 +16,7 @@ function DetailRecipePage() {
   const recipeDetail = data[0];
 
   return (
-    <>
+    <main>
       <header className="header-detail-recipe">
         <h1 className="title-detail-recipe">{recipeDetail.title}</h1>
         <section className="info-detail-recipe">
@@ -89,7 +89,7 @@ function DetailRecipePage() {
           })}
         </ul>
       </section>
-    </>
+    </main>
   );
 }
 
