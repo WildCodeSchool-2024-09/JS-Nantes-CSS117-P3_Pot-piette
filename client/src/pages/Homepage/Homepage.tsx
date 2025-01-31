@@ -41,18 +41,33 @@ function Homepage() {
 
         {/* Mise en place de la fonction Recherche*/}
 
-        <section className="home-search">
+        <section>
           <form onSubmit={handleRecipe}>
-            <input
-              type="search"
-              id="site-search"
-              name="search"
-              placeholder="Cherchez votre recette"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-
-            <button type="submit"> Rechercher</button>
+            <div className="home-search">
+              <input
+                type="search"
+                id="site-search"
+                name="search"
+                placeholder="Cherchez votre recette"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              {search === "" ? (
+                <button type="submit" className="search-button" disabled>
+                  <img
+                    src="https://i.ibb.co/ZJH0xp6/chercher.png"
+                    alt="Recherche"
+                  />
+                </button>
+              ) : (
+                <button type="submit" className="search-button">
+                  <img
+                    src="https://i.ibb.co/ZJH0xp6/chercher.png"
+                    alt="Recherche"
+                  />
+                </button>
+              )}
+            </div>
           </form>
         </section>
         <h2>Inspirations</h2>
