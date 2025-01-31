@@ -13,7 +13,7 @@ class UserRepository {
 
   async readAll() {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT name, email, password FROM user",
+      "SELECT name, email FROM user",
     );
 
     return rows as User[];
@@ -63,8 +63,7 @@ class UserRepository {
       "DELETE FROM user WHERE id = ?",
       [id],
     );
-
-    return result.affectedRows > 0;
+    return result.affectedRows;
   }
 
   async getUserById(id: number) {
