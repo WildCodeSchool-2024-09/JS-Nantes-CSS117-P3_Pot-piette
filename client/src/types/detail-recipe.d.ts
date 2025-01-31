@@ -30,3 +30,17 @@ interface TagI {
   id: number;
   tag_name: string;
 }
+
+interface IngredientII {
+  id: number;
+  name_ingredient: string;
+  picture_ingredient: string;
+}
+
+interface IngredientListI {
+  id: number;
+  quantity: string;
+  measure: string;
+  name_ingredient: string;
+  picture_ingredient: string;
+}
