@@ -6,26 +6,32 @@ function RecipeOfTheDay() {
   return (
     <section className="recipe-container">
       <h1>Recette du jour</h1>
-      <section className="photo-recip">
-        <img src="photos/image 22.png" alt="photo-recipe" />
 
-        <h3 className="recipe-title">Grille de mogettes Vendeenne</h3>
-      </section>
-      <section className="clock-and-chef">
-        <figure className="clock-container">
-          <MdOutlineAccessTime />
+      <div className="photo-recip">
+        <img
+          src="https://cache.marieclaire.fr/data/photo/w1000_ci/61/recette-tonkotsu-ramen.webp"
+          alt="photo-recipe"
+        />
+        <div className="recipe-title">
+          <h3>Grille de mogettes Vendéenne</h3>
+        </div>
+      </div>
+
+      <div className="clock-and-chef">
+        <div className="clock-container">
+          <MdOutlineAccessTime className="icon" />
           <figcaption>Préparation</figcaption>
           <h6>45 mn</h6>
-        </figure>
+        </div>
 
-        <figure className="chef-hat-container">
-          <PiChefHatThin />
-
-          <figcaption>type</figcaption>
+        <div className="chef-hat-container">
+          <PiChefHatThin className="icon" />
+          <figcaption>Type</figcaption>
           <h6>Tradition</h6>
-        </figure>
-      </section>
+        </div>
+      </div>
     </section>
   );
 }
+
 export default RecipeOfTheDay;
