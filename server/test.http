@@ -4,6 +4,7 @@ GET http://localhost:3310/api/users
 
 POST http://localhost:3310/api/users HTTP/1.1
 content-type: application/json
+Authorization: Baerer Voici mon token
 
 
 {
@@ -62,4 +63,19 @@ content-type: application/json
     "email": "martine@outlook.com",
     "password": "Alaplage"
 }
-    
+
+###
+POST http://localhost:3310/api/login HTTP/1.1
+content-type: application/json,
+Authorization: Bearer 
+
+{
+  "email": "john@gmail.com",
+  "user": "John"
+}
+
+
+###
+
+GET /api/users HTTP/1.1
+Authorization: Bearer $argon2id$v=19$m=65536,t=3,p=4$vf2PrM+r/8q/lts14q9syg$Pm/H26eLzPLUMI2foLebDWkcEJ+5XflHQQMaPKNCu/o

@@ -66,6 +66,14 @@ class UserRepository {
 
     return result.affectedRows > 0;
   }
+
+  async getUserById(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, name, email, is_admin, is_modo FROM user WHERE id = ?",
+      [id],
+    );
+    return rows[0];
+  }
 }
 
 export default new UserRepository();

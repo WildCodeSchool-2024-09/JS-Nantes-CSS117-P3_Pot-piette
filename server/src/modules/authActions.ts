@@ -1,7 +1,7 @@
-import { hash } from "argon2";
-import { verify } from "argon2";
+import { hash, verify } from "argon2";
 import type { RequestHandler } from "express";
 import { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import userRepository from "./user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
@@ -24,7 +24,7 @@ const login: RequestHandler = async (req, res, next) => {
     if (!secretKey) {
       throw new Error("Secret key is not defined");
     }
-    const token = sign(payload, secretKey, { expiresIn: "1h" });
+    const token = sign(payload, secretKey, { expiresIn: "1d" });
 
     res.json({ token, user: user.email });
   } else {
@@ -43,4 +43,45 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { login, hashPassword };
+export const verifyToken: RequestHandler = async (req, res, next) => {
+  try {
+    const authorization = req.get("Authorization");
+
+    if (!authorization) {
+      console.error("Authorization header is missing");
+      throw res.status(401).json({ message: "jwt must be provided" });
+    }
+    const [type, token] = authorization.split(" ");
+
+    if (type !== "Bearer") {
+      console.error("Authorization header must be Bearer");
+      throw res
+        .status(401)
+        .json({ message: "Authorization header must be Bearer" });
+    }
+
+    if (!token) {
+      console.error("Token is missing");
+      throw res.status(401).json({ message: "jwt must be provided" });
+    }
+
+    const secretKey = process.env.APP_SECRET;
+
+    if (!secretKey) {
+      console.error("Secret key is not defined");
+      throw res.status(500).json({ message: "Server configuration error" });
+    }
+    jwt.verify(token, secretKey, (err, decoded) => {
+      if (err) {
+        console.error("Token is invalid");
+        throw res.status(401).json({ message: "Invalid token" });
+      }
+      req.body = decoded;
+      next();
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { login, hashPassword, verifyToken };
