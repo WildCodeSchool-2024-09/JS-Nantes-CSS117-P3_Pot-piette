@@ -1,12 +1,12 @@
-export interface Recipe {
+export interface RecipeI {
   title: string;
   picture: string;
-  preparation_time: number;
 }
 
-export interface RecipeDetailI extends Recipe {
+export interface RecipeDetailI extends RecipeI {
   nb_parts: number;
   time_to_cook: number;
+  preparation_time: number;
   ingredients_list: IngredientI[];
   recipe_steps: StepI[];
   recipe_tag_list: TagI[];

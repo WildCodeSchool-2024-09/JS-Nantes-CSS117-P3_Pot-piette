@@ -44,7 +44,9 @@ figcaption {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0px;
+  gap: 1em 2em;
+  margin: 0;
+  padding: 2em 0;
   & svg {
     height: 5.5em;
   }
@@ -57,8 +59,13 @@ figcaption {
 .inspirations {
   border: 2px var(--secondary-color) solid;
   border-radius: 8px;
-  width: 20vw;
   transition: border 0.3s ease-in-out;
+  & figure {
+    margin: 0;
+  }
+  & svg {
+    width: 20vw;
+  }
 }
 
 .selected {

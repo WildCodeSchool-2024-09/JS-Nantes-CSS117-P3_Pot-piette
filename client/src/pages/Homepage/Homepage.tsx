@@ -12,7 +12,8 @@ function Homepage() {
   const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeByTag[]>(
     null,
   );
-  const TAG_IDS: { [key: string]: number } = {
+
+  const tagIds: { [key: string]: number } = {
     Rapide: 1,
     Plat: 2,
     Healthy: 3,
@@ -29,7 +30,7 @@ function Homepage() {
 
   useEffect(() => {
     if (selectedTag) {
-      const tagId = TAG_IDS[selectedTag];
+      const tagId = tagIds[selectedTag];
       fetch(`${import.meta.env.VITE_API_URL}/api/tags/${tagId}`)
         .then((response) => {
           if (!response.ok) {
@@ -58,143 +59,103 @@ function Homepage() {
   };
 
   return (
-    <>
-      <main className="home-page">
-        <section className="home-carousel">
-          <h2>Nouvelles recettes</h2>
+    <main className="home-page">
+      <section className="home-carousel">
+        <h2>Nouvelles recettes</h2>
+        <figure>
+          <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+          <figcaption>{lastRecipe?.title}</figcaption>
+        </figure>
+      </section>
+      <section className="home-search">
+        <input
+          type="search"
+          id="site-search"
+          name="search"
+          placeholder="Cherchez votre recette"
+        />
+      </section>
+      <h2>Inspirations</h2>
+      <section className="home-inspirations">
+        <button
+          type="button"
+          onClick={() => handleInspirationClick("Rapide")}
+          className={`inspirations ${selectedTag === "Rapide" ? "selected" : ""}`}
+        >
           <figure>
-            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
-            <figcaption>{lastRecipe?.title}</figcaption>
-          </figure>
-        </section>
-        <section className="home-search">
-          <input
-            type="search"
-            id="site-search"
-            name="search"
-            placeholder="Cherchez votre recette"
-          />
-        </section>
-        <h2>Inspirations</h2>
-        <section className="home-inspirations">
-          <figure>
-            <PiHamburger
-              onClick={() => handleInspirationClick("Rapide")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleInspirationClick("Rapide");
-                }
-              }}
-              className={`inspirations ${selectedTag === "Rapide" ? "selected" : ""}`}
-            />
+            <PiHamburger />
 
             <figcaption>Rapide</figcaption>
           </figure>
-          <figure
-            onClick={() => handleInspirationClick("Plat")}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleInspirationClick("Plat");
-              }
-            }}
-          >
-            <PiForkKnife
-              onClick={() => handleInspirationClick("Plat")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleInspirationClick("Plat");
-                }
-              }}
-              className={`inspirations ${selectedTag === "Plat" ? "selected" : ""}`}
-            />
+        </button>
 
+        <button
+          type="button"
+          className={`inspirations ${selectedTag === "Plat" ? "selected" : ""}`}
+          onClick={() => {
+            handleInspirationClick("Plat");
+          }}
+        >
+          <figure>
+            <PiForkKnife />
             <figcaption>Plat</figcaption>
           </figure>
+        </button>
+
+        <button
+          type="button"
+          className={`inspirations ${selectedTag === "Healthy" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick("Healthy")}
+        >
           <figure>
-            <LuSalad
-              onClick={() => handleInspirationClick("Healthy")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleInspirationClick("Healthy");
-                }
-              }}
-              className={`inspirations ${selectedTag === "Healthy" ? "selected" : ""}`}
-            />
+            <LuSalad />
 
             <figcaption>Healthy</figcaption>
           </figure>
-          <figure
-            onClick={() => handleInspirationClick("Végétarien")}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleInspirationClick("Végétarien");
-              }
-            }}
-          >
-            <PiCarrot
-              onClick={() => handleInspirationClick("Végétarien")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleInspirationClick("Végétarien");
-                }
-              }}
-              className={`inspirations ${selectedTag === "Végétarien" ? "selected" : ""}`}
-            />
+        </button>
+
+        <button
+          type="button"
+          className={`inspirations ${selectedTag === "Végétarien" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick("Végétarien")}
+        >
+          <figure>
+            <PiCarrot />
 
             <figcaption>Végétarien</figcaption>
           </figure>
-          <figure
-            onClick={() => handleInspirationClick("Dessert")}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleInspirationClick("Dessert");
-              }
-            }}
-          >
-            <LuCakeSlice
-              onClick={() => handleInspirationClick("Dessert")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleInspirationClick("Dessert");
-                }
-              }}
-              className={`inspirations ${selectedTag === "Dessert" ? "selected" : ""}`}
-            />
+        </button>
+
+        <button
+          type="button"
+          className={`inspirations ${selectedTag === "Dessert" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick("Dessert")}
+        >
+          <figure>
+            <LuCakeSlice />
 
             <figcaption>Dessert</figcaption>
           </figure>
-          <figure
-            onClick={() => handleInspirationClick("Cocktail")}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                handleInspirationClick("Cocktail");
-              }
-            }}
-          >
-            <LiaGlassMartiniAltSolid
-              onClick={() => handleInspirationClick("Cocktail")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  handleInspirationClick("Cocktail");
-                }
-              }}
-              className={`inspirations ${selectedTag === "Cocktail" ? "selected" : ""}`}
-            />
+        </button>
+
+        <button
+          type="button"
+          className={`inspirations ${selectedTag === "Cocktail" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick("Cocktail")}
+        >
+          <figure>
+            <LiaGlassMartiniAltSolid />
 
             <figcaption>Cocktail</figcaption>
           </figure>
-        </section>
-        <section className="inspirationcards">
-          {filteredRecipes?.map((el) => (
-            <InspirationCard
-              key={el.id}
-              picture={el.picture}
-              title={el.title}
-            />
-          ))}
-        </section>
-      </main>
-    </>
+        </button>
+      </section>
+      <section className="inspirationcards">
+        {filteredRecipes?.map((el) => (
+          <InspirationCard key={el.id} picture={el.picture} title={el.title} />
+        ))}
+      </section>
+    </main>
   );
 }
 
