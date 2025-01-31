@@ -12,6 +12,16 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const latest: RequestHandler = async (req, res, next) => {
+  try {
+    const recipes = await recipeRepository.lastRecipe();
+
+    res.json(recipes);
+  } catch (err) {
+    next(err);
+  }
+};
+
 //Action GET for get just one recipe with dynamic id
 const read: RequestHandler = async (req, res, next) => {
   try {
@@ -82,4 +92,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+export default { browse, read, add, latest };
