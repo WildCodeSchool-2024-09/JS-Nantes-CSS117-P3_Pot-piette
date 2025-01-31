@@ -26,7 +26,6 @@ import ingredientsActions from "./modules/ingredients/ingredientsActions";
 router.get("/api/ingredients", ingredientsActions.browse);
 
 /* ************************************************************************* */
-import { verifyToken } from "./modules/authActions";
 import userActions from "./modules/user/userActions";
 import verify from "./services/verify";
 
@@ -37,14 +36,13 @@ router.post(
   authActions.hashPassword,
   userActions.add,
 );
-router.put("/api/users/:id", verifyToken, userActions.edit);
-router.delete("/users/:id", verifyToken, userActions.deleteUser);
+router.put("/api/users/:id", userActions.edit);
+router.delete("/users/:id", userActions.deleteUser);
 
 /* ************************************************************************* */
 
 import authActions from "./modules/authActions";
 
-router.post("/api/signup", authActions.hashPassword, userActions.add);
-router.post("/api/login", verifyToken, authActions.login);
+router.post("/api/login", authActions.login);
 
 export default router;

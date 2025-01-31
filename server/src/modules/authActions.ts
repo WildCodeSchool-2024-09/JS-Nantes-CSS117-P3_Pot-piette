@@ -1,35 +1,41 @@
 import { hash, verify } from "argon2";
 import type { RequestHandler } from "express";
-import { sign } from "jsonwebtoken";
 import jwt from "jsonwebtoken";
 import userRepository from "./user/userRepository";
 
-const login: RequestHandler = async (req, res, next) => {
-  const { email, password } = req.body;
-  const user = await userRepository.getUsersByEmail(email);
+const login: RequestHandler = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  if (user === null || user === undefined) {
-    res.sendStatus(404);
-    return;
-  }
+    const user = await userRepository.getUsersByEmail(email);
 
-  const isVerified = await verify(user.password, password);
+    if (user === null || user === undefined) {
+      res.sendStatus(404);
+      return;
+    }
 
-  if (isVerified) {
+    const verifyPassword = await verify(user.password, password);
+
+    if (!verifyPassword) {
+      res.status(404).send("Password don't match");
+      return;
+    }
+
     const payload = {
       id: user.id,
       email: user.email,
     };
+
     const secretKey = process.env.APP_SECRET;
+
     if (!secretKey) {
-      throw new Error("Secret key is not defined");
+      throw new Error("APP_SECRET is not defined");
     }
-    const token = sign(payload, secretKey, { expiresIn: "1d" });
+
+    const token = jwt.sign(payload, secretKey, { expiresIn: "1d" });
 
     res.json({ token, user: user.email });
-  } else {
-    res.sendStatus(422);
-  }
+  } catch (err) {}
 };
 
 const hashPassword: RequestHandler = async (req, res, next) => {
@@ -48,39 +54,29 @@ export const verifyToken: RequestHandler = async (req, res, next) => {
     const authorization = req.get("Authorization");
 
     if (!authorization) {
-      console.error("Authorization header is missing");
       throw res.status(401).json({ message: "jwt must be provided" });
     }
     const [type, token] = authorization.split(" ");
 
     if (type !== "Bearer") {
-      console.error("Authorization header must be Bearer");
       throw res
         .status(401)
         .json({ message: "Authorization header must be Bearer" });
     }
 
     if (!token) {
-      console.error("Token is missing");
       throw res.status(401).json({ message: "jwt must be provided" });
     }
 
     const secretKey = process.env.APP_SECRET;
 
     if (!secretKey) {
-      console.error("Secret key is not defined");
-      throw res.status(500).json({ message: "Server configuration error" });
+      throw new Error("APP_SECRET is not defined");
     }
-    jwt.verify(token, secretKey, (err, decoded) => {
-      if (err) {
-        console.error("Token is invalid");
-        throw res.status(401).json({ message: "Invalid token" });
-      }
-      req.body = decoded;
-      next();
-    });
+
+    jwt.verify(token, secretKey);
   } catch (err) {
-    next(err);
+    res.status(401).send(err);
   }
 };
 

@@ -1,6 +1,5 @@
 import argon2 from "argon2";
 import type { RequestHandler } from "express";
-import jwt from "jsonwebtoken";
 import userRepository from "./userRepository";
 
 // Action GET for get all users
@@ -14,22 +13,6 @@ const browse: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-
-// const add: RequestHandler = async (req, res, next) => {
-//   try {
-//     const addUser = await userRepository.create(req.body);
-
-//     if (addUser) {
-//       res
-//         .status(201)
-//         .send(`The user ${req.body.name} has been added succesfully`);
-//     } else {
-//       res.status(404).send("An error has occured");
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// };
 
 const add: RequestHandler = async (req, res, next) => {
   try {
@@ -59,25 +42,8 @@ const add: RequestHandler = async (req, res, next) => {
       is_modo,
     });
 
-    const newUser = await userRepository.getUserById(insertId);
-
-    if (newUser) {
-      const payload = {
-        id: newUser.id,
-        email: newUser.email,
-      };
-
-      const secretKey = process.env.APP_SECRET;
-      if (!secretKey) {
-        throw new Error("APP_SECRET is not defined");
-      }
-
-      const token = jwt.sign(payload, secretKey, { expiresIn: "1d" });
-
-      res.status(201).json({
-        token: token,
-        user: newUser.email,
-      });
+    if (insertId) {
+      res.sendStatus(204);
     } else {
       res.status(404).send("An error has occurred while creating the user.");
     }
@@ -139,9 +105,7 @@ const hashPassword: RequestHandler = async (req, res, next) => {
     } else {
       res.sendStatus(403);
     }
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) {}
 };
 
 export default { browse, add, edit, deleteUser, hashPassword };
