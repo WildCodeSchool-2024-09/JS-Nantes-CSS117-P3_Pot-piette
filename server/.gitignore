@@ -1,3 +1,5 @@
 node_modules
 coverage
 .env
+server.http
+test.http
