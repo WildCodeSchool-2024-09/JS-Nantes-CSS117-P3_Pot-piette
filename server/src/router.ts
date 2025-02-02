@@ -31,12 +31,24 @@ router.post("/api/ingredients", ingredientsActions.add);
 import tagsActions from "./modules/tags/tagActions";
 
 router.get("/api/tags/:id", tagsActions.read);
-
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
+import verify from "./services/verify";
 
 router.get("/api/users", userActions.browse);
-router.post("/api/users", userActions.add);
+router.post(
+  "/api/users",
+  verify.checkFields,
+  authActions.hashPassword,
+  userActions.add,
+);
 router.put("/api/users/:id", userActions.edit);
+router.delete("/users/:id", userActions.deleteUser);
+
+/* ************************************************************************* */
+
+import authActions from "./modules/authActions";
+
+router.post("/api/login", authActions.login);
 
 export default router;

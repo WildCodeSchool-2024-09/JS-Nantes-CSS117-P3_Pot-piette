@@ -1,3 +1,4 @@
+import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import userRepository from "./userRepository";
 
@@ -15,17 +16,39 @@ const browse: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const addUser = await userRepository.create(req.body);
+    const {
+      name,
+      age,
+      genre,
+      picture,
+      inscription_date,
+      email,
+      password,
+      is_admin,
+      is_modo,
+    } = req.body;
 
-    if (addUser) {
-      res
-        .status(201)
-        .send(`The user ${req.body.name} has been added succesfully`);
+    const hashedPassword = await argon2.hash(password);
+
+    const insertId = await userRepository.create({
+      name,
+      age,
+      genre,
+      picture,
+      inscription_date,
+      email,
+      password: hashedPassword,
+      is_admin,
+      is_modo,
+    });
+
+    if (insertId) {
+      res.sendStatus(204);
     } else {
-      res.status(404).send("An error has occured");
+      res.status(404).send("An error has occurred while creating the user.");
     }
   } catch (err) {
-    console.error(err);
+    next(err);
   }
 };
 
@@ -44,8 +67,45 @@ const edit: RequestHandler = async (req, res, next) => {
       res.status(403).send("An error has occurred");
     }
   } catch (err) {
-    console.error(err);
+    next(err);
   }
 };
 
-export default { browse, add, edit };
+const deleteUser: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const deleteResult = await userRepository.delete(id);
+
+    if (deleteResult) {
+      res.status(204).send();
+    } else {
+      res.status(404).send("User not found or could not be deleted");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const hashPassword: RequestHandler = async (req, res, next) => {
+  const hashOptions = {
+    type: argon2.argon2id,
+    memoryCost: 2 ** 17,
+    hashLength: 50,
+    parallelism: 1,
+    iteration: 2,
+  };
+  try {
+    const { password } = req.body;
+
+    const hash = await argon2.hash(password, hashOptions);
+    if (hash) {
+      req.body.password = hash;
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {}
+};
+
+export default { browse, add, edit, deleteUser, hashPassword };

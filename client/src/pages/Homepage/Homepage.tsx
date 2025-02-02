@@ -4,6 +4,7 @@ import "./Homepage.css";
 import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
+import { Link } from "react-router-dom";
 import type { RecipeByTag } from "../../types/detail-recipe";
 
 function Homepage() {
@@ -63,7 +64,9 @@ function Homepage() {
       <section className="home-carousel">
         <h2>Nouvelles recettes</h2>
         <figure>
-          <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+          <Link to={`/recipe/${lastRecipe?.id}`}>
+            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+          </Link>
           <figcaption>{lastRecipe?.title}</figcaption>
         </figure>
       </section>
@@ -152,7 +155,12 @@ function Homepage() {
       </section>
       <section className="inspirationcards">
         {filteredRecipes?.map((el) => (
-          <InspirationCard key={el.id} picture={el.picture} title={el.title} />
+          <InspirationCard
+            key={el.id}
+            picture={el.picture}
+            title={el.title}
+            id={0}
+          />
         ))}
       </section>
     </main>

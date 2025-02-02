@@ -28,15 +28,18 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe` (
   `is_published` TINYINT NOT NULL DEFAULT '0',
   `time_to_cook` INT NOT NULL,
   `preparation_time` INT NOT NULL,
-  PRIMARY KEY (`id`))
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`)
+  REFERENCES `potpiette`.`user` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
-INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time)
+INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time, user_id)
 VALUES
-('Le hamburger Maison','https://media.istockphoto.com/id/1498243668/fr/photo/cheeseburger-savoureux-avec-laitue-fromage-cheddar-tomate-et-cornichons-petit-pain-burger-aux.jpg?s=612x612&w=0&k=20&c=CbU_yIAqD1cIG5P0x6TFjpoHMDEPcllouQQAMf3xdgY=', 1, 0, 10, 45),
-('Le hot dog New Yorkais','https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10);
+('Le hamburger Maison', 'https://media.istockphoto.com/id/1498243668/fr/photo/cheeseburger-savoureux-avec-laitue-fromage-cheddar-tomate-et-cornichons-petit-pain-burger-aux.jpg?s=612x612&w=0&k=20&c=CbU_yIAqD1cIG5P0x6TFjpoHMDEPcllouQQAMf3xdgY=', 1, 0, 10, 45, 1),
+('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10, 2);
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`
@@ -48,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
   `genre` VARCHAR(20) NULL DEFAULT NULL,
   `picture` VARCHAR(100) NULL DEFAULT NULL,
   `inscription_date` DATE NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
   `is_admin` TINYINT NOT NULL,
   `is_modo` TINYINT NOT NULL,
@@ -57,16 +60,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
--- -----------------------------------------------------
--- Preload data comment
--- -----------------------------------------------------
-
-INSERT INTO user (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
-VALUES
-('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
-('Jean', 27, 'homme', 'jean.jpg', CURDATE(), 'jean@gmail.com', 'jaimelesucre', 0, 0),
-('Mireille', 32, 'femme', 'mireille.jpg', CURDATE(), 'mireille@gmail.com', 'jaimepaslesucre', 0, 0),
-('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0);
 
 
 -- -----------------------------------------------------

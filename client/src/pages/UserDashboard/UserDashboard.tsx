@@ -1,5 +1,5 @@
 import "./UserDashboard.css";
-
+import { GoPencil } from "react-icons/go";
 function UserInfo() {
   return (
     <section className="userdash-container">
@@ -10,7 +10,7 @@ function UserInfo() {
 
         <input type="text" value="ingrid44" readOnly />
         <button type="button" className="edit-btn">
-          ✏️
+          <GoPencil />
         </button>
       </section>
 
@@ -19,7 +19,7 @@ function UserInfo() {
         <section className="input-group">
           <input type="email" value="ingrid_ferran44@gmailcom" readOnly />
           <button type="button" className="edit-btn">
-            ✏️
+            <GoPencil />
           </button>
         </section>
       </section>
@@ -36,12 +36,10 @@ function UserInfo() {
         <section className="dashinput-group">
           <input type="text" value="30/02/1981" readOnly />
           <button type="button" className="edit-btn">
-            ✏️
+            <GoPencil />
           </button>
         </section>
       </section>
-
-      <p className="note">* Champs obligatoires</p>
 
       <h2>Mes Restrictions Alimentaire</h2>
       <section className="restrictions">

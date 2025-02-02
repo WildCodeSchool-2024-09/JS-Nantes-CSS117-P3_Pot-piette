@@ -1,61 +1,48 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useState } from "react";
+import { IoPerson, IoSearch } from "react-icons/io5";
 
-const Header: React.FC = () => {
+function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
     <>
-      {/* NavBar */}
-      <header className="header">
-        <nav className="nav">
-          {/* Left Menu */}
-          <ul className="nav-list left">
-            <li>
-              <Link to="/">
-                <img
-                  src="https://i.ibb.co/W07r41p/menu-hamburger.png"
-                  alt="Menu"
-                  className="nav-icon"
-                />
-              </Link>
-            </li>
-          </ul>
-
-          {/* Right Icones */}
-          <ul className="nav-list right">
-            <li>
-              <Link to="/">
-                <img
-                  src="https://i.ibb.co/ZJH0xp6/chercher.png"
-                  alt="Recherche"
-                  className="nav-icon"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link to="/">
-                <img
-                  src="https://i.ibb.co/qmk9DRT/utilisateur.png"
-                  alt="Utilisateur"
-                  className="nav-icon"
-                />
-              </Link>
-            </li>
-          </ul>
+      <header className="header-nav">
+        <button
+          type="button"
+          className={`burger ${isOpen ? "open " : ""}`}
+          onClick={toggleMenu}
+        >
+          <div> </div>
+          <div> </div>
+          <div> </div>
+        </button>
+        <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
+          <Link to="/account" onClick={toggleMenu}>
+            S'inscrire
+          </Link>
+          <Link to="/login" onClick={toggleMenu}>
+            Se connecter
+          </Link>
         </nav>
-      </header>
-
-      {/* Center Logo */}
-      <div className="logo-container">
         <Link to="/">
-          <img
-            src="https://i.ibb.co/1v4Z0cL/PAUPIETTE-01-1.png"
-            alt="Logo"
-            className="logo"
-          />
+          <img src="./logoWhite.png" alt="Logo" className="logo" />
         </Link>
-      </div>
+        <ul>
+          <li>
+            <IoSearch />
+          </li>
+          <li>
+            <Link to="/connexion">
+              <IoPerson />
+            </Link>
+          </li>
+        </ul>
+      </header>
     </>
   );
-};
+}
 
 export default Header;
