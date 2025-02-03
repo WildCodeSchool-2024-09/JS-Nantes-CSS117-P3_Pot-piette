@@ -8,12 +8,12 @@
   color: #ff6347;
 }
 
-/* Conteneur de l'image et du titre */
 .photo-recip {
   display: flex;
   align-items: center;
-  gap: 2rem; /* Ajoute un espace entre l'image et le titre */
+  gap: 2rem;
   width: 100%;
+  position: relative;
 }
 
 .photo-recip img {
@@ -21,35 +21,34 @@
   height: auto;
   border-radius: 45%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform: translate(-15px, -10px);
 }
 
-/* Titre de la recette */
-.recipe-title {
+.recipe-title h3 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   margin-top: -45px;
-}
-
-.recipe-title h3 {
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+
   text-transform: capitalize;
 }
 
-/* Conteneur du temps et du chef */
 .clock-and-chef {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem; /* Espacement entre les icônes */
+  gap: 3rem;
   margin-top: -3rem;
   margin-left: 8rem;
   position: relative;
 }
 
-/* Style des icônes */
 .clock-container,
 .chef-hat-container {
   text-align: center;
@@ -78,8 +77,8 @@
   top: 10px;
 }
 
-.clock-container h6,
-.chef-hat-container h6 {
+.clock-container p,
+.chef-hat-container p {
   margin: 0;
   font-size: 1rem;
   font-weight: bold;

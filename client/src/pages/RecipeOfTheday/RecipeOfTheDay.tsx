@@ -12,22 +12,21 @@ function RecipeOfTheDay() {
           src="https://cache.marieclaire.fr/data/photo/w1000_ci/61/recette-tonkotsu-ramen.webp"
           alt="photo-recipe"
         />
-        <div className="recipe-title">
-          <h3>Grille de mogettes Vendéenne</h3>
-        </div>
+
+        <h3 className="recipe-title">Grille de mogettes Vendéenne</h3>
       </div>
 
       <div className="clock-and-chef">
         <div className="clock-container">
           <MdOutlineAccessTime className="icon" />
           <figcaption>Préparation</figcaption>
-          <h6>45 mn</h6>
+          <p>45 mn</p>
         </div>
 
         <div className="chef-hat-container">
           <PiChefHatThin className="icon" />
           <figcaption>Type</figcaption>
-          <h6>Tradition</h6>
+          <p>Tradition</p>
         </div>
       </div>
     </section>
