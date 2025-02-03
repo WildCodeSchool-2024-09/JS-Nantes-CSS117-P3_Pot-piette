@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`user` (
   `genre` VARCHAR(20) NULL DEFAULT NULL,
   `picture` VARCHAR(100) NULL DEFAULT NULL,
   `inscription_date` DATE NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
   `is_admin` TINYINT NOT NULL,
   `is_modo` TINYINT NOT NULL,
@@ -60,16 +60,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
--- -----------------------------------------------------
--- Preload data comment
--- -----------------------------------------------------
-
-INSERT INTO user (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo)
-VALUES
-('Vito', 42, 'homme', 'vito.jpg', CURDATE(), 'viriato.ferreira44@gmail.com', 'password', 1, 1),
-('Jean', 27, 'homme', 'jean.jpg', CURDATE(), 'jean@gmail.com', 'jaimelesucre', 0, 0),
-('Mireille', 32, 'femme', 'mireille.jpg', CURDATE(), 'mireille@gmail.com', 'jaimepaslesucre', 0, 0),
-('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0);
 
 
 -- -----------------------------------------------------
