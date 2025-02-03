@@ -1,13 +1,32 @@
-import { useEffect, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
+import type { Recipe } from "../../types/detail-recipe";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+
+  function handleRecipe(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const formData = Object.fromEntries(data.entries());
+    const search = formData.search?.toString();
+    if (search) {
+      fetch(
+        `${import.meta.env.VITE_API_URL}/api/recipes/search?query=${search}`,
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setRecipes(data.recipes);
+        });
+    }
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/recipe/latest`)
+
       .then((response) => response.json())
       .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
   }, []);
@@ -24,13 +43,26 @@ function Homepage() {
             <figcaption>{lastRecipe?.title}</figcaption>
           </figure>
         </section>
-        <section className="home-search">
-          <input
-            type="search"
-            id="site-search"
-            name="search"
-            placeholder="Cherchez votre recette"
-          />
+
+        {/* Mise en place de la fonction Recherche*/}
+
+        <section>
+          <form onSubmit={handleRecipe}>
+            <div className="home-search">
+              <input
+                type="search"
+                id="site-search"
+                name="search"
+                placeholder="Cherchez votre recette"
+              />
+              <button type="submit" className="search-button">
+                <img
+                  src="https://i.ibb.co/ZJH0xp6/chercher.png"
+                  alt="Recherche"
+                />
+              </button>
+            </div>
+          </form>
         </section>
         <h2>Inspirations</h2>
         <section className="home-inspirations">
@@ -82,6 +114,16 @@ function Homepage() {
             />
             <figcaption>Cocktail</figcaption>
           </figure>
+        </section>
+        <section className="search-container">
+          {recipes.map((recipe) => {
+            return (
+              <div key={recipe.id} className="search-result">
+                <img src={recipe.picture} alt={recipe.title} />
+                <figcaption>{recipe.title}</figcaption>
+              </div>
+            );
+          })}
         </section>
       </main>
     </>

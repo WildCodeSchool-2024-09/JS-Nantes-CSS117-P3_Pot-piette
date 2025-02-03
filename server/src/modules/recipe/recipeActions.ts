@@ -38,6 +38,24 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
+// Action GET for the search Bar
+const search: RequestHandler = async (req, res, next) => {
+  const { query } = req.query;
+
+  if (!query || typeof query !== "string") {
+    res
+      .status(400)
+      .json({ error: 'Le paramètre de recherche "query" est requis.' });
+    return;
+  }
+  try {
+    const recipes = await recipeRepository.searchRecipes(query);
+    res.status(200).json({ recipes });
+  } catch (err) {
+    next(err);
+  }
+};
+
 // Action POST for add a new recipe
 const add: RequestHandler = async (req, res, next) => {
   try {
@@ -92,4 +110,4 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, latest };
+export default { browse, read, add, latest, search };
