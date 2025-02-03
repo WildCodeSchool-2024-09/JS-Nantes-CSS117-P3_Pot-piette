@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 import InspirationCard from "../../components/InspirationCard/InspirationCard";
+import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
 import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
 import { Link } from "react-router-dom";
-import type { RecipeByTag } from "../../types/detail-recipe";
+import type { RecipeByTag, RecipeI } from "../../types/detail-recipe";
 
 function Homepage() {
-  const [lastRecipe, setLastRecipe] = useState<null | RecipeByTag>(null);
+  const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
+  const [recipes, setRecipes] = useState<RecipeI[]>([]);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
   const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeByTag[]>(
     null,
@@ -23,13 +25,26 @@ function Homepage() {
     6: "cocktail",
   };
 
+  function handleRecipe(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const formData = Object.fromEntries(data.entries());
+    const search = formData.search?.toString();
+
+    if (search) {
+      fetch(
+        `${import.meta.env.VITE_API_URL}/api/recipes/search?query=${search}`,
+      )
+        .then((res) => res.json())
+        .then((data) => setRecipes(data.recipes));
+    }
+  }
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/recipe/latest`)
       .then((response) => response.json())
       .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
-  }, []);
 
-  useEffect(() => {
     if (selectedTag) {
       fetch(`${import.meta.env.VITE_API_URL}/api/tags/${selectedTag}`)
         .then((response) => {
@@ -51,11 +66,7 @@ function Homepage() {
   }, [selectedTag]);
 
   const handleInspirationClick = (tagId: number) => {
-    if (selectedTag === tagId) {
-      setSelectedTag(null);
-    } else {
-      setSelectedTag(tagId);
-    }
+    return selectedTag === tagId ? setSelectedTag(null) : setSelectedTag(tagId);
   };
 
   return (
@@ -69,14 +80,27 @@ function Homepage() {
           <figcaption>{lastRecipe?.title}</figcaption>
         </figure>
       </section>
-      <section className="home-search">
-        <input
-          type="search"
-          id="site-search"
-          name="search"
-          placeholder="Cherchez votre recette"
-        />
+
+      {/* Mise en place de la fonction Recherche*/}
+      <section>
+        <form onSubmit={handleRecipe}>
+          <div className="home-search">
+            <input
+              type="search"
+              id="site-search"
+              name="search"
+              placeholder="Cherchez votre recette"
+            />
+            <button type="submit" className="search-button">
+              <img
+                src="https://i.ibb.co/ZJH0xp6/chercher.png"
+                alt="Recherche"
+              />
+            </button>
+          </div>
+        </form>
       </section>
+
       <h2>Inspirations</h2>
       <section className="home-inspirations">
         <button
@@ -86,7 +110,6 @@ function Homepage() {
         >
           <figure>
             <PiHamburger />
-
             <figcaption>Rapide</figcaption>
           </figure>
         </button>
@@ -152,10 +175,22 @@ function Homepage() {
           </figure>
         </button>
       </section>
+
       <section className="inspirationcards">
         {filteredRecipes?.map((el) => (
           <InspirationCard key={el.id} picture={el.picture} title={el.title} />
         ))}
+      </section>
+
+      <section className="search-container">
+        {recipes.map((recipe) => {
+          return (
+            <div key={recipe.id} className="search-result">
+              <img src={recipe.picture} alt={recipe.title} />
+              <figcaption>{recipe.title}</figcaption>
+            </div>
+          );
+        })}
       </section>
     </main>
   );

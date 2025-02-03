@@ -20,16 +20,29 @@
 }
 
 .home-search {
+  display: flex;
+  border: 2px solid var(--main-color);
   width: 100%;
+  border-radius: 8px;
 }
 
 .home-search > input {
-  border-radius: 8px;
-  width: 100%;
-  height: 3.5vh;
-  text-align: start;
-  background-color: white;
-  border: 2px var(--main-color) solid;
+  border: none;
+  width: 90%;
+}
+
+.home-search > button {
+  border: none;
+}
+
+.search-button {
+  width: 15%;
+}
+
+.search-button > img {
+  width: 60%;
+  border: none;
+  background-color: #f8f8f8;
 }
 
 .home-inspirations {
@@ -42,6 +55,23 @@
   & svg {
     height: 5.5em;
   }
+}
+
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.search-result {
+  width: 47.5%;
+}
+
+.search-result > img {
+  width: 100%;
+  height: 70%;
 }
 
 .home-inspirations figure > figcaption {
@@ -62,16 +92,4 @@
 
 .selected {
   border: 2px var(--main-color) solid;
-}
-
-.recipe-grid {
-  display: grid;
-  justify-content: center;
-  gap: 1ch;
-  grid-template-columns: 1fr 1fr;
-}
-
-.recipe-grid > img {
-  border-radius: 8px;
-  width: 40vw;
 }
