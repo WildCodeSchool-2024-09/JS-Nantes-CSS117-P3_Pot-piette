@@ -9,18 +9,18 @@ import type { RecipeByTag } from "../../types/detail-recipe";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeByTag>(null);
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTag, setSelectedTag] = useState<number | null>(null);
   const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeByTag[]>(
     null,
   );
 
-  const tagIds: { [key: string]: number } = {
-    Rapide: 1,
-    Plat: 2,
-    Healthy: 3,
-    Végétarien: 4,
-    Dessert: 5,
-    Cocktail: 6,
+  const tagIds: { [key: number]: string } = {
+    1: "Rapide",
+    2: "Plat",
+    3: "healthy",
+    4: "vegetarien",
+    5: "dessert",
+    6: "cocktail",
   };
 
   useEffect(() => {
@@ -31,8 +31,7 @@ function Homepage() {
 
   useEffect(() => {
     if (selectedTag) {
-      const tagId = tagIds[selectedTag];
-      fetch(`${import.meta.env.VITE_API_URL}/api/tags/${tagId}`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/tags/${selectedTag}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(`Erreur API : ${response.status}`);
@@ -51,11 +50,11 @@ function Homepage() {
     }
   }, [selectedTag]);
 
-  const handleInspirationClick = (tag: string) => {
-    if (selectedTag === tag) {
+  const handleInspirationClick = (tagId: number) => {
+    if (selectedTag === tagId) {
       setSelectedTag(null);
     } else {
-      setSelectedTag(tag);
+      setSelectedTag(tagId);
     }
   };
 
@@ -82,8 +81,8 @@ function Homepage() {
       <section className="home-inspirations">
         <button
           type="button"
-          onClick={() => handleInspirationClick("Rapide")}
-          className={`inspirations ${selectedTag === "Rapide" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(1)}
+          className={`inspirations ${tagIds[selectedTag || 0] === "rapide" ? "selected" : ""}`}
         >
           <figure>
             <PiHamburger />
@@ -94,9 +93,9 @@ function Homepage() {
 
         <button
           type="button"
-          className={`inspirations ${selectedTag === "Plat" ? "selected" : ""}`}
+          className={`inspirations ${tagIds[selectedTag || 0] === "plat" ? "selected" : ""}`}
           onClick={() => {
-            handleInspirationClick("Plat");
+            handleInspirationClick(2);
           }}
         >
           <figure>
@@ -107,8 +106,8 @@ function Homepage() {
 
         <button
           type="button"
-          className={`inspirations ${selectedTag === "Healthy" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick("Healthy")}
+          className={`inspirations ${tagIds[selectedTag || 0] === "healthy" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(3)}
         >
           <figure>
             <LuSalad />
@@ -119,8 +118,8 @@ function Homepage() {
 
         <button
           type="button"
-          className={`inspirations ${selectedTag === "Végétarien" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick("Végétarien")}
+          className={`inspirations ${tagIds[selectedTag || 0] === "vegetarien" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(4)}
         >
           <figure>
             <PiCarrot />
@@ -131,8 +130,8 @@ function Homepage() {
 
         <button
           type="button"
-          className={`inspirations ${selectedTag === "Dessert" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick("Dessert")}
+          className={`inspirations ${tagIds[selectedTag || 0] === "dessert" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(5)}
         >
           <figure>
             <LuCakeSlice />
@@ -143,8 +142,8 @@ function Homepage() {
 
         <button
           type="button"
-          className={`inspirations ${selectedTag === "Cocktail" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick("Cocktail")}
+          className={`inspirations ${tagIds[selectedTag || 0] === "cocktail" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(6)}
         >
           <figure>
             <LiaGlassMartiniAltSolid />
@@ -155,12 +154,7 @@ function Homepage() {
       </section>
       <section className="inspirationcards">
         {filteredRecipes?.map((el) => (
-          <InspirationCard
-            key={el.id}
-            picture={el.picture}
-            title={el.title}
-            id={0}
-          />
+          <InspirationCard key={el.id} picture={el.picture} title={el.title} />
         ))}
       </section>
     </main>
