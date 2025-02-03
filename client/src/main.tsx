@@ -28,6 +28,7 @@ import UserConnexion from "./pages/UserConnexion/UserConnexion";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!
+
 const router = createBrowserRouter([
   {
     path: "/",

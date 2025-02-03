@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { useState } from "react";
 import { IoPerson, IoSearch } from "react-icons/io5";
+/*import useConnected from "../../utils/useConnected";*/
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-
+  /*const { connected, setConnected } = useConnected();*/
   return (
     <>
       <header className="header-nav">
