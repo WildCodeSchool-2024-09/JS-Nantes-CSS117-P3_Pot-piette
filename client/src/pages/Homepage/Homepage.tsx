@@ -2,19 +2,18 @@ import { type ChangeEvent, useEffect, useState } from "react";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
+import type { Recipe } from "../../types/detail-recipe";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
   const [search, setSearch] = useState("");
-  const [recipes, setRecipes] = useState<
-    { title: string; id: number; picture: string }[]
-  >([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   function handleRecipe(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const formData = Object.fromEntries(data.entries());
-    const search = formData.search;
+    const search = formData.search?.toString() || "";
     fetch(`${import.meta.env.VITE_API_URL}/api/recipes/search?query=${search}`)
       .then((res) => res.json())
       .then((data) => {
