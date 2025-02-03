@@ -6,19 +6,22 @@ import type { Recipe } from "../../types/detail-recipe";
 
 function Homepage() {
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
-  const [search, setSearch] = useState("");
   const [recipes, setRecipes] = useState<Recipe[]>([]);
 
   function handleRecipe(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const formData = Object.fromEntries(data.entries());
-    const search = formData.search?.toString() || "";
-    fetch(`${import.meta.env.VITE_API_URL}/api/recipes/search?query=${search}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRecipes(data.recipes);
-      });
+    const search = formData.search?.toString();
+    if (search) {
+      fetch(
+        `${import.meta.env.VITE_API_URL}/api/recipes/search?query=${search}`,
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setRecipes(data.recipes);
+        });
+    }
   }
 
   useEffect(() => {
@@ -51,24 +54,13 @@ function Homepage() {
                 id="site-search"
                 name="search"
                 placeholder="Cherchez votre recette"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
               />
-              {search === "" ? (
-                <button type="submit" className="search-button" disabled>
-                  <img
-                    src="https://i.ibb.co/ZJH0xp6/chercher.png"
-                    alt="Recherche"
-                  />
-                </button>
-              ) : (
-                <button type="submit" className="search-button">
-                  <img
-                    src="https://i.ibb.co/ZJH0xp6/chercher.png"
-                    alt="Recherche"
-                  />
-                </button>
-              )}
+              <button type="submit" className="search-button">
+                <img
+                  src="https://i.ibb.co/ZJH0xp6/chercher.png"
+                  alt="Recherche"
+                />
+              </button>
             </div>
           </form>
         </section>
