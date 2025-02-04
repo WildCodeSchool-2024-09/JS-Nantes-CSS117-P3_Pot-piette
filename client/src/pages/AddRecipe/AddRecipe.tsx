@@ -40,6 +40,14 @@ function AddRecipe() {
     dialogRef.current?.showModal();
   }
 
+  // async function handlePictures(e: FormEvent<HTMLFormElement>) {
+  // 	e.preventDefault();
+  // 	const form = e.currentTarget;
+  // 	const formData = new FormData(form);
+  // 	// const file = formData.get("file") as File | null;
+  // 	// console.log(file);
+  // }
+
   const selectIngredient = (id: number, name: string) => {
     setSelectedId(id);
     setText(name);
@@ -93,49 +101,19 @@ function AddRecipe() {
 
   const handleRecette = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    const title = data.title;
-    const category = tag;
-    const nbParts = parts;
-    const prepTimeHour = Number.parseInt(prepHours) || 0;
-    const prepTimeMinutes = Number.parseInt(prepMinutes) || 0;
-    const cookTimeHour = Number.parseInt(cookHours) || 0;
-    const cookTimeMinutes = Number.parseInt(cookMinutes) || 0;
-    const totalPrepMinutes: number = prepTimeHour * 60 + prepTimeMinutes;
-    const totalCookMinutes: number = cookTimeHour * 60 + cookTimeMinutes;
-    const prep = totalPrepMinutes;
-    const cook = totalCookMinutes;
-
-    const recette = {
-      title,
-      picture: "omelette.jpg",
-      nb_parts: nbParts,
-      is_published: 0,
-      time_to_cook: cook,
-      preparation_time: prep,
-      user_id: 3,
-      ingredients_list: ingredientList,
+    const recipeData = {
+      file: data.file,
+      title: data.title,
+      nb_parts: data.nb_parts,
+      preparation_time: Number(prepHours) * 60 + Number(prepMinutes),
+      time_to_cook: Number(cookHours) * 60 + Number(cookMinutes),
       recipe_steps: steps,
-      // [
-      // 	{
-      // 	  id: 1,
-      // 	  content:
-      // 	    "Prendre le pain de votre choix, cela peut être un pain à burger industriel même si l'on aurait envie de vous conseiller un buns maison ou de chez votre boulanger préféré. Coupez le en deux. ",
-      // 	  nb_step: 1,
-      // 	},
-      // 	{
-      // 	  id: 2,
-      // 	  content:
-      // 	    "Emincez un oignon (rouge ou blanc) et faites le revenir dans une poêle légèrement beurré jusquà ce qu'il ai une belle couleur légèrement brune. Réservez.",
-      // 	  nb_step: 2,
-      // 	},
-      // ],
-      recipe_tag_list: [
-        {
-          tag_id: category,
-        },
-      ],
+      ingredients_list: ingredientList,
+      user_id: 1,
+      recipe_tag_list: [{ tag_id: tag }],
     };
 
     fetch(`${import.meta.env.VITE_API_URL}/api/recipe/create`, {
@@ -143,9 +121,9 @@ function AddRecipe() {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(recette),
+      body: JSON.stringify(recipeData),
     })
-      .then((response) => console.warn(response))
+      .then((res) => console.warn(res.ok))
       .catch((err) => console.error(err));
   };
 
@@ -222,7 +200,7 @@ function AddRecipe() {
         <input
           id="part"
           type="number"
-          name="part"
+          name="nb_parts"
           step="1"
           min="0"
           max="10"
@@ -236,7 +214,6 @@ function AddRecipe() {
         <input
           id="prep-hour"
           type="number"
-          name="prep"
           step="1"
           min="0"
           max="10"
@@ -245,10 +222,10 @@ function AddRecipe() {
           onChange={(e) => setPrepHours(e.target.value)}
         />
         <label htmlFor="prep-hours">Heures</label>
+
         <input
           id="prep-minutes"
           type="number"
-          name="prep"
           step="1"
           min="0"
           max="59"
@@ -263,7 +240,6 @@ function AddRecipe() {
         <input
           id="cook-hour"
           type="number"
-          name="prep"
           step="1"
           min="0"
           max="10"
@@ -275,7 +251,6 @@ function AddRecipe() {
         <input
           id="cook-minutes"
           type="number"
-          name="prep"
           step="1"
           min="0"
           max="59"
@@ -287,15 +262,11 @@ function AddRecipe() {
 
         <h2>Photos</h2>
 
-        <form
-          action="/profile"
-          method="post"
-          encType="multipart/form-data"
-          className="photo-upload"
-        >
-          <FaPlus className="add-photo" />
-          <input type="file" name="avatar" />
-        </form>
+        <input type="file" name="file" />
+        <button type="submit">Valider</button>
+
+        {/* <FaPlus className="add-photo" />
+				<input type="file" name="file" /> */}
 
         <h2>Ingrédients</h2>
         <button type="button" className="add-ingredient" onClick={handleSubmit}>

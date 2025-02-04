@@ -20,6 +20,7 @@ function RecipePrep({
   function handleCloseStep() {
     dialogStep.current?.close();
   }
+
   const [stepContent, setStepContent] = useState("");
 
   const handleDialogClose = () => {
@@ -55,7 +56,6 @@ function RecipePrep({
             <section className="dialog-step">
               <textarea
                 id="etape"
-                name="content"
                 placeholder="Renseignez les étapes de votre recette"
                 value={stepContent}
                 onChange={(e) => setStepContent(e.target.value)}
