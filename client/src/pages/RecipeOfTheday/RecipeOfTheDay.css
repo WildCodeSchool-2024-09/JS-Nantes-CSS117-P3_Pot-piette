@@ -8,7 +8,7 @@
   color: #ff6347;
 }
 
-.photo-recip {
+.photo-recipe {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -16,7 +16,7 @@
   position: relative;
 }
 
-.photo-recip img {
+.photo-recipe img {
   width: 35%;
   height: auto;
   border-radius: 45%;

@@ -7,7 +7,7 @@ function RecipeOfTheDay() {
     <section className="recipe-container">
       <h1>Recette du jour</h1>
 
-      <div className="photo-recip">
+      <div className="photo-recipe">
         <img
           src="https://cache.marieclaire.fr/data/photo/w1000_ci/61/recette-tonkotsu-ramen.webp"
           alt="photo-recipe"
@@ -19,13 +19,13 @@ function RecipeOfTheDay() {
       <div className="clock-and-chef">
         <div className="clock-container">
           <MdOutlineAccessTime className="icon" />
-          <figcaption>Préparation</figcaption>
+          <span>Préparation</span>
           <p>45 mn</p>
         </div>
 
         <div className="chef-hat-container">
           <PiChefHatThin className="icon" />
-          <figcaption>Type</figcaption>
+          <span>Type</span>
           <p>Tradition</p>
         </div>
       </div>
