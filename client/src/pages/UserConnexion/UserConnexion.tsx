@@ -23,7 +23,7 @@ function UserConnexion() {
       const res = await response.json();
       if (res.token) {
         localStorage.setItem("authToken", res.token);
-        navigate("/user-info");
+        navigate("/");
       }
     } catch (err) {
       alert("Mot de passe ou email invalide");
