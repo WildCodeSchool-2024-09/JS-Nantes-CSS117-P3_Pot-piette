@@ -1,16 +1,47 @@
+import { useNavigate } from "react-router-dom";
 import "./UserConnexion.css";
 
 function UserConnexion() {
+  const navigate = useNavigate();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        },
+      );
+      const res = await response.json();
+      if (res.token) {
+        localStorage.setItem("authToken", res.token);
+        navigate("/user-info");
+      }
+    } catch (err) {
+      alert("Mot de passe ou email invalide");
+    }
+  };
+
   return (
     <section className="login-container">
       <h1 className="login-title">CONNEXION</h1>
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
+          name="email"
           type="email"
           placeholder="Entrez votre e-mail"
           className="login-input"
         />
         <input
+          name="password"
           type="password"
           placeholder="Entrez votre mot de passe"
           className="login-input"
