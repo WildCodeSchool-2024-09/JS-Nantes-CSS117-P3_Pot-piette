@@ -1,18 +1,15 @@
+import { Link } from "react-router-dom";
 import "./ConnexionPage.css";
 
 function ConnexionPage() {
-  function handleLogin() {}
-
-  function handleSignup() {}
-
   return (
     <section className="button-container">
-      <button type="button" className="btn" onClick={handleLogin}>
-        Se connecter
-      </button>
-      <button type="button" className="btn" onClick={handleSignup}>
-        Créer un compte
-      </button>
+      <Link to={"/login"}>
+        <button type="button">Se connecter</button>
+      </Link>
+      <Link to={"/account"}>
+        <button type="button">Créer un compte</button>
+      </Link>
     </section>
   );
 }
