@@ -29,6 +29,10 @@ router.get("/api/ingredients", ingredientsActions.browse);
 router.post("/api/ingredients", ingredientsActions.add);
 
 /* ************************************************************************* */
+import tagsActions from "./modules/tags/tagActions";
+
+router.get("/api/tags/:id", tagsActions.read);
+/* ************************************************************************* */
 import userActions from "./modules/user/userActions";
 import verify from "./services/verify";
 

@@ -1,10 +1,11 @@
+import type { RecipeI } from "../../types/detail-recipe";
 import "./InspirationCard.css";
 
-function InspirationCard() {
+function InspirationCard({ picture, title }: RecipeI) {
   return (
     <figure className="inspiration-card">
-      <img src="" alt="" />
-      <figcaption>Hachis Parmentier</figcaption>
+      <img src={picture} alt={`Representation of ${title} card`} />
+      <figcaption>{title}</figcaption>
     </figure>
   );
 }
