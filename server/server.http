@@ -1,4 +1,7 @@
-GET http://localhost:3310/api/recipes/4
+GET http://localhost:3310/api/recipes/
+
+###
+GET http://localhost:3310/api/recipes/search?query=new
 
 ###
 
@@ -62,18 +65,3 @@ content-type: application/json
 ###
 
 GET http://localhost:3310/api/recipe/latest
-
-###
-
-POST http://localhost:3310/api/recipe/crea HTTP/1.1
-content-type: application/json
-
-  {
-    "title": "Pâte à tarte",
-    "picture": "omelette.jpg",
-    "nb_parts": 4,
-    "is_published":0,
-    "time_to_cook": 10,
-    "preparation_time": 45,
-    "user_id": 3
-  }

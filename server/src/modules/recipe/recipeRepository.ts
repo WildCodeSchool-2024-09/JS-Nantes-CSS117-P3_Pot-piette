@@ -14,6 +14,14 @@ class RecipeRepository {
     return rows;
   }
 
+  async searchRecipes(query: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM recipe WHERE title LIKE ?",
+      [`%${query}%`],
+    );
+    return rows;
+  }
+
   async lastRecipe() {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT * FROM recipe ORDER BY id DESC LIMIT 1",

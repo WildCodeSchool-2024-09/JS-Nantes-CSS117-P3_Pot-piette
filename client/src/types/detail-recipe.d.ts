@@ -1,12 +1,13 @@
-export interface Recipe {
+export interface RecipeI {
+  id?: number;
   title: string;
   picture: string;
-  preparation_time: number;
 }
 
-export interface RecipeDetailI extends Recipe {
+export interface RecipeDetailI extends RecipeI {
   nb_parts: number;
   time_to_cook: number;
+  preparation_time: number;
   ingredients_list: IngredientI[];
   recipe_steps: StepI[];
   recipe_tag_list: TagI[];
@@ -43,4 +44,10 @@ interface IngredientListI {
   measure: string;
   name_ingredient: string;
   picture_ingredient: string;
+}
+
+export interface RecipeByTag {
+  title: string;
+  picture: string;
+  id: number;
 }

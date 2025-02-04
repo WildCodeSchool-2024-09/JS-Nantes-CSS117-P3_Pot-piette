@@ -3,6 +3,14 @@ import databaseClient from "../../../database/client";
 import type { User } from "./user";
 
 class UserRepository {
+  async getUsersByEmail(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM user WHERE email = ?",
+      [email],
+    );
+    return rows[0] as User;
+  }
+
   async readAll() {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT name, email FROM user",
@@ -48,6 +56,22 @@ class UserRepository {
     );
 
     return result.affectedRows;
+  }
+
+  async delete(id: string) {
+    const [result] = await databaseClient.query<Result>(
+      "DELETE FROM user WHERE id = ?",
+      [id],
+    );
+    return result.affectedRows;
+  }
+
+  async getUserById(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT id, name, email, is_admin, is_modo FROM user WHERE id = ?",
+      [id],
+    );
+    return rows[0];
   }
 }
 
