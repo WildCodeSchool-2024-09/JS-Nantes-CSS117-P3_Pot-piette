@@ -7,6 +7,7 @@ import "./global.css";
 
 // Import the main app component
 import App from "./App";
+import ConnectedProvider from "./contexts/ConnectedProvider";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
@@ -27,6 +28,7 @@ import UserConnexion from "./pages/UserConnexion/UserConnexion";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -85,7 +87,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ConnectedProvider>
+      <RouterProvider router={router} />
+    </ConnectedProvider>
   </StrictMode>,
 );
 
