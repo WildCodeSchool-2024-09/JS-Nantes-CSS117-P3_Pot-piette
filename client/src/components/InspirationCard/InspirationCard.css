@@ -1,5 +1,20 @@
-.inspiration-card {
+.inspirationcards {
   display: flex;
+}
+.home-inspirations {
+  flex-wrap: wrap;
+  gap: 5%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 100%;
+}
+
+.inspiration-result {
+  text-align: center;
+  width: 100%;
+}
+
+.inspiration-card {
   flex-direction: column;
 }
 
@@ -9,7 +24,10 @@
   border-radius: 8px;
   transition: transform .2s;
 }
-.inspiration-card figcaption {
+.inspiration-card > figcaption > figure {
+  text-align: center;
+}
+.inspiration-card > figcaption {
   color: var(--secondary-color);
   font-family: var(--secondary-font);
   font-weight: bold;

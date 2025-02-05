@@ -63,10 +63,15 @@
   gap: 5%;
   margin-top: 10%;
   margin-bottom: 10%;
+  width: 100%;
 }
 
 .search-result {
   width: 47.5%;
+}
+.search-result > figcaption {
+  text-align: center;
+  width: 100%;
 }
 
 .search-result > img {
