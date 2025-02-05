@@ -1,0 +1,16 @@
+.ingredient-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ingredient-card img {
+  height: 3em;
+  width: 3em;
+  border-radius: 8px;
+  transition: transform .2s;
+}
+.ingredient-card figcaption {
+  color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-weight: bold;
+}

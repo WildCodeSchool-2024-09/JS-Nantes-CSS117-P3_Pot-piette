@@ -87,3 +87,25 @@
   z-index: 1;
   cursor: pointer;
 }
+
+.dialog-ingredient {
+  height: 60vh;
+}
+
+.dialog-ingredient input:first-child::placeholder {
+  color: var(--main-color);
+  font-weight: bold;
+  font-family: var(--main-font);
+  font-size: 1.3em;
+}
+
+.modal {
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  width: 8em;
+  height: 8em;
+}
+
+.not-displayed {
+  display: none;
+}

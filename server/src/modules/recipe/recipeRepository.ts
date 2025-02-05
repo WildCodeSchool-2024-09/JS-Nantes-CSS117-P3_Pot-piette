@@ -78,13 +78,12 @@ class RecipeRepository {
 
   async createRecipe(recipe: RecipeI) {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time, user_id) VALUES (? , ? ,? , ?, ?, ?, ?)",
+      "INSERT INTO recipe (title, picture, time_to_cook, nb_parts, preparation_time, user_id) VALUES (?, ?, ?, ?, ?, ?)",
       [
         recipe.title,
         recipe.picture,
-        recipe.is_published,
         recipe.time_to_cook,
-        recipe.nb_parts,
+        Number(recipe.nb_parts),
         recipe.preparation_time,
         recipe.user_id,
       ],
@@ -95,7 +94,7 @@ class RecipeRepository {
 
   async addIngredients(recipeIngredients: IngredientsRecipeI) {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure) VALUES (?, ? ,?,? )",
+      "INSERT INTO ingredient_recipe (recipe_id, ingredient_id, quantity, measure) VALUES (?, ?, ?, ? )",
       [
         recipeIngredients.recipe_id,
         recipeIngredients.ingredient_id,
@@ -120,6 +119,23 @@ class RecipeRepository {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO recipe_tag (recipe_id, tag_id) VALUES (?, ?)",
       [recipe_tag.recipe_id, recipe_tag.tag_id],
+    );
+
+    return result.insertId;
+  }
+
+  async createTitle(recipe: RecipeI) {
+    const [result] = await databaseClient.query<Result>(
+      "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time, user_id) VALUES (? , ? ,? , ?, ?, ?, ?)",
+      [
+        recipe.title,
+        recipe.picture,
+        recipe.is_published,
+        recipe.time_to_cook,
+        recipe.nb_parts,
+        recipe.preparation_time,
+        recipe.user_id,
+      ],
     );
 
     return result.insertId;
