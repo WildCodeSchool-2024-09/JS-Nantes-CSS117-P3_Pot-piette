@@ -3,10 +3,12 @@ import "./InspirationCard.css";
 
 function InspirationCard({ picture, title }: RecipeI) {
   return (
-    <figure className="inspiration-card">
-      <img src={picture} alt={`Representation of ${title} card`} />
-      <figcaption>{title}</figcaption>
-    </figure>
+    <section className="inspiration-result">
+      <figure className="inspiration-card">
+        <img src={picture} alt={`Representation of ${title} card`} />
+        <figcaption>{title}</figcaption>
+      </figure>
+    </section>
   );
 }
 export default InspirationCard;
