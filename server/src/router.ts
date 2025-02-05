@@ -15,11 +15,13 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
+// import { recipeUpload, upload } from "./recipeUploads";
 
+router.post("/api/recipe/create", recipeActions.add);
+router.post("/api/recipe/title", recipeActions.addTitle);
 router.get("/api/recipes/search", recipeActions.search);
 router.get("/api/recipes", recipeActions.browse);
 router.get("/api/recipes/:id", recipeActions.read);
-router.post("/api/recipe/create", recipeActions.add);
 router.get("/api/recipe/latest", recipeActions.latest);
 
 /* ************************************************************************* */
