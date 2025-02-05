@@ -40,14 +40,6 @@ function AddRecipe() {
     dialogRef.current?.showModal();
   }
 
-  // async function handlePictures(e: FormEvent<HTMLFormElement>) {
-  // 	e.preventDefault();
-  // 	const form = e.currentTarget;
-  // 	const formData = new FormData(form);
-  // 	// const file = formData.get("file") as File | null;
-  // 	// console.log(file);
-  // }
-
   const selectIngredient = (id: number, name: string) => {
     setSelectedId(id);
     setText(name);
@@ -264,9 +256,6 @@ function AddRecipe() {
 
         <input type="file" name="file" />
         <button type="submit">Valider</button>
-
-        {/* <FaPlus className="add-photo" />
-				<input type="file" name="file" /> */}
 
         <h2>Ingrédients</h2>
         <button type="button" className="add-ingredient" onClick={handleSubmit}>

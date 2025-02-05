@@ -125,8 +125,6 @@ class RecipeRepository {
   }
 
   async createTitle(recipe: RecipeI) {
-    console.warn(recipe.title);
-
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO recipe (title, picture, is_published, time_to_cook, nb_parts, preparation_time, user_id) VALUES (? , ? ,? , ?, ?, ?, ?)",
       [

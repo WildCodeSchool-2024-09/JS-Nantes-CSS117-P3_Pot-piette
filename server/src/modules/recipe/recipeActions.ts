@@ -70,8 +70,6 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     req.body.picture = "/assets/images/omelette.jpg";
 
-    console.warn(req.body);
-
     const recipeId = await recipeRepository.createRecipe(req.body);
 
     // For add all the ingredients to this recipe
