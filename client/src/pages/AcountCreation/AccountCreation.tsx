@@ -33,7 +33,7 @@ function AccountCreation() {
       if (response.status === 201) {
         navigate("/login");
       } else {
-        console.info(response);
+        throw new Error("L'inscription n'a pas pu aboutir");
       }
     } catch (err) {
       console.error(err);
