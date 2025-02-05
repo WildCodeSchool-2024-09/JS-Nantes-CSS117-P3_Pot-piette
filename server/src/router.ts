@@ -46,7 +46,7 @@ router.post(
   userActions.add,
 );
 router.put("/api/users/:id", userActions.edit);
-router.delete("/users/:id", userActions.deleteUser);
+router.delete("/api/users/:id", userActions.deleteUser);
 
 /* ************************************************************************* */
 

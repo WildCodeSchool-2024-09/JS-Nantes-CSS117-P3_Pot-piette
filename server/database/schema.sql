@@ -28,10 +28,10 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe` (
   `is_published` TINYINT NOT NULL DEFAULT '0',
   `time_to_cook` INT NOT NULL,
   `preparation_time` INT NOT NULL,
-  `user_id` INT NOT NULL,
+  `user_id` INT,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`user_id`)
-  REFERENCES `potpiette`.`user` (`id`))
+  REFERENCES `potpiette`.`user` (`id`) ON DELETE SET NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;

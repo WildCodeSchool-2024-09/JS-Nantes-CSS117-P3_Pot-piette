@@ -73,12 +73,12 @@ const edit: RequestHandler = async (req, res, next) => {
 
 const deleteUser: RequestHandler = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = Number(req.params.id);
 
     const deleteResult = await userRepository.delete(id);
 
     if (deleteResult) {
-      res.status(204).send();
+      res.status(204).send({ message: "User deleted successfully" });
     } else {
       res.status(404).send("User not found or could not be deleted");
     }
