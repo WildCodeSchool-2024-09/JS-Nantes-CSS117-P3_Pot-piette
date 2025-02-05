@@ -84,6 +84,9 @@
 .home-inspirations figure > figcaption {
   text-align: center;
 }
+.inspiration-home-page {
+  flex-direction: row;
+}
 
 .inspirations {
   border: 2px var(--secondary-color) solid;

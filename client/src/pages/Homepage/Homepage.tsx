@@ -186,7 +186,7 @@ function Homepage() {
         </button>
       </section>
 
-      <section className="inspirationcards">
+      <section className="inspiration-home-page">
         {filteredRecipes?.map((el) => (
           <InspirationCard key={el.id} picture={el.picture} title={el.title} />
         ))}
