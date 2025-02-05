@@ -1,6 +1,6 @@
 import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
-import type { User } from "./user";
+import type { User, UserUpdateI } from "./user";
 
 class UserRepository {
   async getUsersByEmail(email: string) {
@@ -21,26 +21,16 @@ class UserRepository {
 
   async create(user: User) {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO user (name, age, genre, picture, inscription_date, email, password, is_admin, is_modo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-      [
-        user.name,
-        user.age,
-        user.genre,
-        user.picture,
-        user.inscription_date,
-        user.email,
-        user.password,
-        user.is_admin,
-        user.is_modo,
-      ],
+      "INSERT INTO user (name, email, password, inscription_date) VALUES (?, ?, ?, ?)",
+      [user.name, user.email, user.password, user.inscription_date],
     );
 
     return result.insertId;
   }
 
-  async update(user: User) {
+  async update(user: UserUpdateI) {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE user SET name = ?, age = ?, genre = ?, picture = ?, inscription_date = ?, email = ?, password = ?, is_admin = ?, is_modo = ? WHERE id = ?",
+      "UPDATE user SET name = ?, age = ?, genre = ?, picture = ?, inscription_date = ?, email = ?, password = ? WHERE id = ?",
       [
         user.name,
         user.age,
@@ -49,8 +39,6 @@ class UserRepository {
         user.inscription_date,
         user.email,
         user.password,
-        user.is_admin,
-        user.is_modo,
         user.id,
       ],
     );

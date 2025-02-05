@@ -16,30 +16,15 @@ const browse: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const {
-      name,
-      age,
-      genre,
-      picture,
-      inscription_date,
-      email,
-      password,
-      is_admin,
-      is_modo,
-    } = req.body;
+    const { name, email, password, inscription_date } = req.body;
 
     const hashedPassword = await argon2.hash(password);
 
     const insertId = await userRepository.create({
       name,
-      age,
-      genre,
-      picture,
-      inscription_date,
       email,
       password: hashedPassword,
-      is_admin,
-      is_modo,
+      inscription_date,
     });
 
     if (insertId) {
