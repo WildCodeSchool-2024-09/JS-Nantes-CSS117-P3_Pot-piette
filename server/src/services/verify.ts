@@ -1,29 +1,9 @@
 import type { RequestHandler } from "express";
 
 const checkFields: RequestHandler = (req, res, next) => {
-  const {
-    name,
-    // age,
-    // genre,
-    // picture,
-    // inscription_date,
-    email,
-    password,
-    // is_admin,
-    // is_modo,
-  } = req.body;
+  const { name, inscription_date, email, password } = req.body;
 
-  if (
-    !name ||
-    // age ||
-    // genre ||
-    // picture ||
-    // inscription_date ||
-    !email ||
-    !password
-    // is_admin ||
-    // is_modo
-  ) {
+  if (!name || !inscription_date || !email || !password) {
     res.sendStatus(403);
   } else {
     next();
