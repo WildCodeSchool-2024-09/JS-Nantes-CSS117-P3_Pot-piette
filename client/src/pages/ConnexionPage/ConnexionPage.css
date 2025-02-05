@@ -6,9 +6,11 @@
   align-items: center;
   height: 100vh;
   background-color: #ffff;
-  & button {
+  & a {
     background-color: #f06a0b;
     color: white;
+    text-align: center;
+    text-decoration: none;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;

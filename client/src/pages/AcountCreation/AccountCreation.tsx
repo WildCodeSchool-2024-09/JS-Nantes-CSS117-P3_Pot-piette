@@ -1,27 +1,29 @@
-import { useRef, useState } from "react";
-import type { ChangeEventHandler, FormEventHandler } from "react";
+import type { ChangeEvent } from "react";
 import "./AccountCreation.css";
 import { useNavigate } from "react-router-dom";
 
 function AccountCreation() {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const nameRef = useRef<HTMLInputElement>(null);
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
   const navigate = useNavigate();
   const dateOfTheDay = new Date().toLocaleDateString("en-CA");
 
-  const handleSubmit: FormEventHandler = async (event) => {
+  const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const formObj = Object.fromEntries(data.entries());
+    const { email, name, password, confirmPassword } = formObj;
+
     try {
+      if (password !== confirmPassword) {
+        throw new Error("Les mots de passe sont différents");
+      }
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users`,
         {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: emailRef.current?.value,
-            name: nameRef.current?.value,
+            email,
+            name,
             password,
             inscription_date: dateOfTheDay,
           }),
@@ -29,21 +31,13 @@ function AccountCreation() {
       );
 
       if (response.status === 201) {
-        navigate("/");
+        navigate("/login");
       } else {
         console.info(response);
       }
     } catch (err) {
       console.error(err);
     }
-  };
-
-  const handlePassword: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleConfirm: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setConfirm(event.target.value);
   };
 
   return (
@@ -53,21 +47,14 @@ function AccountCreation() {
       <form className="signup-form" onSubmit={handleSubmit}>
         <label htmlFor="email">E-mail</label>
         <input
-          ref={emailRef}
           type="email"
           id="email"
           name="email"
           placeholder="Votre e-mail"
         />
 
-        <label htmlFor="pseudo">Pseudo/Nom</label>
-        <input
-          ref={nameRef}
-          type="text"
-          id="pseudo"
-          name="pseudo"
-          placeholder="Votre pseudo/nom"
-        />
+        <label htmlFor="name">Pseudo/Nom</label>
+        <input type="text" id="name" name="name" placeholder="Votre name/nom" />
 
         <label htmlFor="password">Mot de passe</label>
         <input
@@ -75,8 +62,6 @@ function AccountCreation() {
           id="password"
           name="password"
           placeholder="Votre mot de passe"
-          value={password}
-          onChange={handlePassword}
         />
 
         <label htmlFor="confirmPassword">Confirmez le mot de passe</label>
@@ -85,9 +70,6 @@ function AccountCreation() {
           id="confirmPassword"
           name="confirmPassword"
           placeholder="Confirmez votre mot de passe"
-          value={confirm}
-          onChange={handleConfirm}
-          className={confirm === password ? "valid" : "not-valid"}
         />
 
         <button type="submit" className="signup-button">
