@@ -7,6 +7,7 @@ import "./global.css";
 
 // Import the main app component
 import App from "./App";
+import ConnectedProvider from "./contexts/ConnectedProvider";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
@@ -16,6 +17,7 @@ import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
 import UserConnexion from "./pages/UserConnexion/UserConnexion";
+import UserInfo from "./pages/UserDashboard/UserDashboard";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -27,6 +29,7 @@ import UserConnexion from "./pages/UserConnexion/UserConnexion";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -70,6 +73,10 @@ const router = createBrowserRouter([
         path: "/add-recipe-3",
         element: <AddRecipe_3 />,
       },
+      {
+        path: "/user-info",
+        element: <UserInfo />,
+      },
     ],
   },
 ]);
@@ -85,7 +92,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ConnectedProvider>
+      <RouterProvider router={router} />
+    </ConnectedProvider>
   </StrictMode>,
 );
 

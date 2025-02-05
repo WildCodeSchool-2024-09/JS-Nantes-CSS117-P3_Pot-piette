@@ -16,6 +16,7 @@ router.post("/api/items", itemActions.add);
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
 
+router.get("/api/recipes/search", recipeActions.search);
 router.get("/api/recipes", recipeActions.browse);
 router.get("/api/recipes/:id", recipeActions.read);
 router.post("/api/recipe/create", recipeActions.add);
@@ -27,6 +28,10 @@ import ingredientsActions from "./modules/ingredients/ingredientsActions";
 router.get("/api/ingredients", ingredientsActions.browse);
 router.post("/api/ingredients", ingredientsActions.add);
 
+/* ************************************************************************* */
+import tagsActions from "./modules/tags/tagActions";
+
+router.get("/api/tags/:id", tagsActions.read);
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
 import verify from "./services/verify";
@@ -44,7 +49,6 @@ router.delete("/api/users/:id", userActions.deleteUser);
 /* ************************************************************************* */
 
 import authActions from "./modules/authActions";
-
 router.post("/api/login", authActions.login);
 
 export default router;
