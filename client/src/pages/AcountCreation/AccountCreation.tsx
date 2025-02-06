@@ -34,7 +34,6 @@ function AccountCreation() {
       if (response.status === 204) {
         navigate("/login");
       } else if (response.status === 500) {
-        console.warn("Ca a échoué");
         toast.warning(
           "L'adresse email est déjà connue, veuillez vous connecter",
         );
