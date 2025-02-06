@@ -1,6 +1,7 @@
 import type { ChangeEvent } from "react";
 import "./AccountCreation.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function AccountCreation() {
   const navigate = useNavigate();
@@ -30,7 +31,12 @@ function AccountCreation() {
         },
       );
 
-      if (response.status === 201) {
+      if (response.status === 204) {
+        navigate("/login");
+      } else if (response.status === 500) {
+        toast.warning(
+          "L'adresse email est déjà connue, veuillez vous connecter",
+        );
         navigate("/login");
       } else {
         throw new Error("L'inscription n'a pas pu aboutir");

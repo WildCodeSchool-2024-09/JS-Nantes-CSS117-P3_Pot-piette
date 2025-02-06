@@ -8,7 +8,7 @@ class UserRepository {
       "SELECT * FROM user WHERE email = ?",
       [email],
     );
-    return rows[0] as User;
+    return rows[0] as UserUpdateI;
   }
 
   async readAll() {
