@@ -33,7 +33,7 @@ const add: RequestHandler = async (req, res, next) => {
       res.status(404).send("An error has occurred while creating the user.");
     }
   } catch (err) {
-    next(err);
+    res.sendStatus(500);
   }
 };
 
