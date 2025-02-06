@@ -10,4 +10,5 @@ export interface UserUpdateI extends User {
   age: number;
   genre: string;
   picture: string;
+  is_admin: boolean;
 }
