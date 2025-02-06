@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { useState } from "react";
-import { IoPerson, IoSearch } from "react-icons/io5";
+import { useContext, useState } from "react";
+import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
+import { UserContext } from "../../contexts/userContext";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+  const { isAuthenticated, logout } = useContext(UserContext) || {};
+
+  const handleLogout = () => {
+    if (logout) {
+      logout();
+    }
+  };
 
   return (
     <>
@@ -35,9 +43,17 @@ function Header() {
             <IoSearch />
           </li>
           <li>
-            <Link to="/connexion">
-              <IoPerson />
-            </Link>
+            <li>
+              {isAuthenticated ? (
+                <button type="button" onClick={handleLogout}>
+                  <IoLogOut />
+                </button>
+              ) : (
+                <Link to="/connexion">
+                  <IoPerson />
+                </Link>
+              )}
+            </li>
           </li>
         </ul>
       </header>
