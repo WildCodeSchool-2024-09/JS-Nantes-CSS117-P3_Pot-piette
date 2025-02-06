@@ -36,11 +36,14 @@ import tagsActions from "./modules/tags/tagActions";
 router.get("/api/tags/:id", tagsActions.read);
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
+import validation from "./services/validation";
 import verify from "./services/verify";
 
 router.get("/api/users", userActions.browse);
 router.post(
   "/api/users",
+  validation.registerValidator,
+  validation.validator,
   verify.checkFields,
   authActions.hashPassword,
   userActions.add,
