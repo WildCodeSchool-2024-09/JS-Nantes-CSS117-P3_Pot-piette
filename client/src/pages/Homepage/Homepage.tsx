@@ -100,6 +100,16 @@ function Homepage() {
           </div>
         </form>
       </section>
+      <section className="search-container">
+        {recipes.map((recipe) => {
+          return (
+            <div key={recipe.id} className="search-result">
+              <img src={recipe.picture} alt={recipe.title} />
+              <figcaption>{recipe.title}</figcaption>
+            </div>
+          );
+        })}
+      </section>
 
       <h2>Inspirations</h2>
       <section className="home-inspirations">
@@ -176,21 +186,10 @@ function Homepage() {
         </button>
       </section>
 
-      <section className="inspirationcards">
+      <section className="inspiration-home-page">
         {filteredRecipes?.map((el) => (
           <InspirationCard key={el.id} picture={el.picture} title={el.title} />
         ))}
-      </section>
-
-      <section className="search-container">
-        {recipes.map((recipe) => {
-          return (
-            <div key={recipe.id} className="search-result">
-              <img src={recipe.picture} alt={recipe.title} />
-              <figcaption>{recipe.title}</figcaption>
-            </div>
-          );
-        })}
       </section>
     </main>
   );

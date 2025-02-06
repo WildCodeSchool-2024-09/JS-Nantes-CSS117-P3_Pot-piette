@@ -32,6 +32,12 @@
 .signup-form input:focus {
   border-color: var(--main-color);
   outline: none;
+  &.valid {
+    border-color: green;
+  }
+  &.not-valid {
+    border-color: red;
+  }
 }
 
 .signup-button {
