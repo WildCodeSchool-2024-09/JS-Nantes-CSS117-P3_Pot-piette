@@ -17,7 +17,6 @@ function Header() {
 
   return (
     <>
-      .
       <header className="header-nav">
         <button
           type="button"
