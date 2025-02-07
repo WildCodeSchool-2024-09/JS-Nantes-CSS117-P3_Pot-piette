@@ -4,8 +4,7 @@
   gap: 1.7em;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #ffff;
+  height: 80vh;
   & a {
     background-color: #f06a0b;
     color: white;
