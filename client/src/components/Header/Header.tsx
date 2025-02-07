@@ -17,6 +17,7 @@ function Header() {
 
   return (
     <>
+      .
       <header className="header-nav">
         <button
           type="button"
@@ -43,17 +44,15 @@ function Header() {
             <IoSearch />
           </li>
           <li>
-            <li>
-              {isAuthenticated ? (
-                <button type="button" onClick={handleLogout}>
-                  <IoLogOut />
-                </button>
-              ) : (
-                <Link to="/connexion">
-                  <IoPerson />
-                </Link>
-              )}
-            </li>
+            {isAuthenticated ? (
+              <button type="button" onClick={handleLogout}>
+                <IoLogOut />
+              </button>
+            ) : (
+              <Link to="/connexion">
+                <IoPerson />
+              </Link>
+            )}
           </li>
         </ul>
       </header>
