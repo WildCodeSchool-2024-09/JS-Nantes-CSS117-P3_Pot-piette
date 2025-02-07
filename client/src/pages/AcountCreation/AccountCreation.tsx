@@ -60,7 +60,12 @@ function AccountCreation() {
         />
 
         <label htmlFor="name">Pseudo/Nom</label>
-        <input type="text" id="name" name="name" placeholder="Votre name/nom" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Votre pseudo/nom"
+        />
 
         <label htmlFor="password">Mot de passe</label>
         <input
