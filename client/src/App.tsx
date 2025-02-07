@@ -9,11 +9,9 @@ function App() {
   return (
     <UserProvider>
       <ConnectedProvider>
-        <div>
-          <Header />
-          <Outlet />
-          <Footer />
-        </div>
+        <Header />
+        <Outlet />
+        <Footer />
       </ConnectedProvider>
     </UserProvider>
   );

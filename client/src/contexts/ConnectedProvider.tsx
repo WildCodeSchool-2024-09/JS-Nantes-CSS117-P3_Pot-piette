@@ -5,7 +5,7 @@ export const ConnectedContext = createContext<ConnectedProps | null>(null);
 
 export default function ConnectedProvider({
   children,
-}: { children: JSX.Element | JSX.Element }) {
+}: { children: JSX.Element | JSX.Element[] }) {
   const [connected, setConnected] = useState(false);
 
   return (
