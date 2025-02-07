@@ -1,9 +1,11 @@
 import { createContext, useState } from "react";
-import type { Children, ConnectedProps } from "../types/context";
+import type { ConnectedProps } from "../types/context";
 
 export const ConnectedContext = createContext<ConnectedProps | null>(null);
 
-export default function ConnectedProvider({ children }: Children) {
+export default function ConnectedProvider({
+  children,
+}: { children: JSX.Element | JSX.Element[] }) {
   const [connected, setConnected] = useState(false);
 
   return (
