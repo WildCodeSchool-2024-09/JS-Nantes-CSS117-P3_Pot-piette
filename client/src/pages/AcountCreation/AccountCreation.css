@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px;
+  height: 80vh;
 }
 
 .signup-container > p {
@@ -15,6 +17,7 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
+  gap: 1em;
 }
 
 .signup-form label {
@@ -24,7 +27,6 @@
 .signup-form input {
   padding: 10px;
   color: var(--secondary-color);
-  margin-bottom: 15px;
   border: 1px solid #bdc3c7;
   border-radius: 8px;
 }

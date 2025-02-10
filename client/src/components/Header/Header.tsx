@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { useContext, useState } from "react";
 import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
+import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/userContext";
 
 function Header() {
@@ -12,6 +13,7 @@ function Header() {
   const handleLogout = () => {
     if (logout) {
       logout();
+      toast.info("Vous avez été déconnecté");
     }
   };
 

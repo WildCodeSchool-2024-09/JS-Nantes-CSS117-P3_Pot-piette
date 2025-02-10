@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./UserConnexion.css";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/userContext";
 
 function UserConnexion() {
@@ -26,10 +27,11 @@ function UserConnexion() {
       const res = await response.json();
       if (res.token && login) {
         login(res.token);
+        toast.success("Bienvenue");
         navigate("/");
       }
     } catch (err) {
-      alert("Mot de passe ou email invalide");
+      toast.error("Mot de passe ou email invalide");
     }
   };
 
@@ -53,6 +55,7 @@ function UserConnexion() {
         <button type="submit" className="login-button">
           Se connecter
         </button>
+        <Link to="/account">Vous n'avez pas encore de compte? Créez le!</Link>
         <section className="login-options">
           <p className="forgot-password">Mot de passe oublié?</p>
           <section className="remember-me">
