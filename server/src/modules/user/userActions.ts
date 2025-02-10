@@ -14,7 +14,7 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-const add: RequestHandler = async (req, res, next) => {
+const add: RequestHandler = async (req, res) => {
   try {
     const { name, email, password, inscription_date } = req.body;
 
