@@ -85,7 +85,11 @@
   text-align: center;
 }
 .inspiration-home-page {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .inspirations {

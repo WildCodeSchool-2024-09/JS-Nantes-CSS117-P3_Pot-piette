@@ -54,3 +54,11 @@ figcaption {
 a {
   font-family: var(--primary-font);
 }
+
+input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #f06a0b;
+  border-radius: 8px;
+}
