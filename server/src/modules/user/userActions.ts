@@ -14,7 +14,7 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-const add: RequestHandler = async (req, res, next) => {
+const add: RequestHandler = async (req, res) => {
   try {
     const { name, email, password, inscription_date } = req.body;
 
@@ -33,7 +33,7 @@ const add: RequestHandler = async (req, res, next) => {
       res.status(404).send("An error has occurred while creating the user.");
     }
   } catch (err) {
-    res.sendStatus(500);
+    res.status(500).send("This user already exists. Please edit the fields. ");
   }
 };
 
