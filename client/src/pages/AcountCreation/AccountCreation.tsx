@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 import "./AccountCreation.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function AccountCreation() {
@@ -60,7 +60,12 @@ function AccountCreation() {
         />
 
         <label htmlFor="name">Pseudo/Nom</label>
-        <input type="text" id="name" name="name" placeholder="Votre name/nom" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Votre pseudo / nom"
+        />
 
         <label htmlFor="password">Mot de passe</label>
         <input
@@ -81,6 +86,7 @@ function AccountCreation() {
         <button type="submit" className="signup-button">
           Je m'inscris
         </button>
+        <Link to="/login">Déjà un compte? Connectez-vous</Link>
       </form>
     </section>
   );

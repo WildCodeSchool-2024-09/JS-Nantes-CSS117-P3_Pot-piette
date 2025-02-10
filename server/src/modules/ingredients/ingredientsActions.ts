@@ -29,4 +29,23 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const ingredient = req.body;
+
+    ingredient.id = id;
+
+    const editIngredient = await ingredientsRepository.update(ingredient);
+
+    if (editIngredient) {
+      res.sendStatus(204);
+    } else {
+      res.status(403).send("An error has occurred");
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, edit };

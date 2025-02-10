@@ -1,6 +1,7 @@
 import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
 import type { IngredientUnique } from "../../types/recipe/recipe";
+import type { Ingredient } from "../ingredients/ingredients";
 
 class IngredientsRepository {
   async readAll() {
@@ -16,6 +17,19 @@ class IngredientsRepository {
     );
 
     return result.insertId;
+  }
+
+  async update(ingredient: Ingredient) {
+    const [result] = await databaseClient.query<Result>(
+      "UPDATE ingredient SET name_ingredient = ?, picture_ingredient = ? WHERE id = ?",
+      [
+        ingredient.name_ingredient,
+        ingredient.picture_ingredient,
+        ingredient.id,
+      ],
+    );
+
+    return result.affectedRows;
   }
 }
 
