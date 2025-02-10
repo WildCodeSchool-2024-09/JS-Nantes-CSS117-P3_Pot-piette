@@ -68,6 +68,25 @@ VALUES
 ('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0);
 
 -- -----------------------------------------------------
+-- Table `potpiette`.`favorites`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `potpiette`.`favorites` (
+  `recipe_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`recipe_id`, `user_id`),
+  INDEX `fk_user_user_id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_recipe_id`
+    FOREIGN KEY (`recipe_id`)
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_user_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `potpiette`.`user` (`id`) ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
 -- Table `potpiette`.`comment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `potpiette`.`comment` (
