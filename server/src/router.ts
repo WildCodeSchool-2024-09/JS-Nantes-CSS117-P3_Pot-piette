@@ -29,6 +29,7 @@ import ingredientsActions from "./modules/ingredients/ingredientsActions";
 
 router.get("/api/ingredients", ingredientsActions.browse);
 router.post("/api/ingredients", ingredientsActions.add);
+router.put("/api/ingredients/:id", ingredientsActions.edit);
 
 /* ************************************************************************* */
 import tagsActions from "./modules/tags/tagActions";
@@ -36,11 +37,14 @@ import tagsActions from "./modules/tags/tagActions";
 router.get("/api/tags/:id", tagsActions.read);
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
+import validation from "./services/validation";
 import verify from "./services/verify";
 
 router.get("/api/users", userActions.browse);
 router.post(
   "/api/users",
+  validation.registerValidator,
+  validation.validator,
   verify.checkFields,
   authActions.hashPassword,
   userActions.add,
