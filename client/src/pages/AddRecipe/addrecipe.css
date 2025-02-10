@@ -1,111 +1,195 @@
 .add-recipe {
-  width: 85vw;
+  width: 100%;
+  height: 100%;
   padding: 2em;
+  gap: 1.5em;
 }
 
-.categories-form {
-  display: grid;
-  gap: 20px;
-}
-
-.categories {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.category {
+.recipe-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.recipe-form h2,
+input {
+  width: 100%;
+  justify-self: flex-start;
+}
+
+.recipe-form input {
+  width: 100%;
+}
+
+.all-recipe-button {
+  background-color: var(--main-color);
+  border: none;
+  width: 8em;
+  color: white;
+  height: 2em;
   border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
+  margin: 1em 0;
+}
+.add-recipe input {
+  background-color: white;
+  height: 2.5em;
+}
+
+.tags-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1.5em 0;
+  gap: 0.5em;
   border: none;
 }
 
-.category img {
-  border: 2px solid var(--main-color);
+.category {
   border-radius: 8px;
+  background-color: white;
+  border: 1px solid var(--main-color);
+}
+
+.category p {
+  background-color: white;
+}
+
+.tag-icons {
   width: 5em;
   height: 5em;
-}
-
-.add-recipe select {
-  border-radius: 2px var(--main-color) solid;
-  height: 3.5em;
-  width: 3.5em;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.number-selector {
-  width: 50vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1em;
-  flex-direction: row;
-}
-
-.number-selector input {
-  width: 3em;
-  height: 3em;
-  border: 2px solid var(--main-color);
-  border-radius: 8px;
-  text-align: center;
-}
-
-.number-selector label {
-  width: 3.5em;
-  font-size: 1.3em;
-}
-
-.photo-upload {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.photo-upload input {
-  border: 2px solid var(--main-color);
-  border-radius: 8px;
-  width: 10em;
-  height: 10em;
-  content-visibility: hidden;
-}
-
-.add-photo {
-  position: absolute;
-  border-radius: 50%;
-  border: 3px solid var(--secondary-color);
-  height: 5em;
-  width: 5em;
-  z-index: 1;
+  background-color: white;
   cursor: pointer;
 }
 
-.dialog-ingredient {
-  height: 60vh;
-}
-
-.dialog-ingredient input:first-child::placeholder {
+.choosen-tag .tag-icons {
   color: var(--main-color);
-  font-weight: bold;
-  font-family: var(--main-font);
-  font-size: 1.3em;
 }
 
-.modal {
+.parts-times-container input {
+  width: 3em;
+  margin: 0 0.5em 0 0.5em;
+}
+
+.file-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
   border: 2px solid var(--main-color);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
   width: 8em;
   height: 8em;
+  cursor: pointer;
 }
 
+.file-upload svg {
+  color: black;
+}
+
+.add-button {
+  border-radius: 50%;
+  height: 5em;
+  width: 5em;
+  background-color: white;
+  pointer-events: none;
+}
+
+.ingredient-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.add-ingredient-step {
+  width: 10em;
+  height: 10em;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.file-upload button {
+  background-color: var(--main-color);
+  border: none;
+  width: 8em;
+  color: white;
+  height: 2em;
+  border-radius: 8px;
+}
+
+.ingredient-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0.5em 0;
+}
+
+.dial-box-test {
+  flex-direction: column;
+  gap: 1em;
+}
+
+.dialog-header button {
+  border: none;
+  color: var(--main-color);
+}
+.close-modal-button {
+  color: var(--main-color);
+  background-color: none;
+}
+
+.ingredient-button {
+  border: none;
+}
+
+.quantity-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.quantity-container input {
+  width: 4em;
+}
+.quantity-container input::selection {
+  border: 2px var(--secondary-font);
+}
+.quantity-container select {
+  height: 2.7em;
+  border-radius: 8px;
+  font-family: var(--secondary-font);
+  background-color: white;
+  text-align: center;
+}
+
+.dialog-ingredient {
+  background-color: white;
+}
+
+.displayed {
+  margin: 0.5em 0 0.5em 0;
+}
 .not-displayed {
-  display: none;
+  margin: 0.5em 0 0.5em 0;
 }

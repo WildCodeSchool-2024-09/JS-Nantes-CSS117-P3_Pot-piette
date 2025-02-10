@@ -1,6 +1,7 @@
 import { type Dispatch, type SetStateAction, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import "./RecipePrep.css";
+import { IoMdClose } from "react-icons/io";
 
 function RecipePrep({
   setSteps,
@@ -42,17 +43,39 @@ function RecipePrep({
   return (
     <>
       <h2>Préparation de la recette</h2>
-      <button type="button" className="add-step" onClick={handleStep}>
-        <FaPlus className="more-ingredient" />
-        <div className="modal" />
-      </button>
-      <dialog ref={dialogStep} id="dial-box-step">
-        <button id="close-modal-button" type="button" onClick={handleCloseStep}>
-          X
+      <div className="step-container">
+        <button
+          type="button"
+          className="add-ingredient-step"
+          onClick={handleStep}
+        >
+          <FaPlus className="add-button" />
         </button>
+
+        {/* Modal */}
+
+        {steps.map((el) => {
+          return (
+            <p key={el.id}>
+              {el.nb_step} : {el.content}
+            </p>
+          );
+        })}
+      </div>
+      <dialog ref={dialogStep} id="dial-box-step">
+        <div className="dialog-header">
+          <h2>Etape</h2>
+          <button
+            className="close-modal-button"
+            type="button"
+            onClick={handleCloseStep}
+          >
+            <IoMdClose />
+          </button>
+        </div>
+
         <section id="dialog-content">
           <section id="data">
-            <h2>Etape</h2>
             <section className="dialog-step">
               <textarea
                 id="etape"
@@ -63,17 +86,14 @@ function RecipePrep({
             </section>
           </section>
         </section>
-        <button onClick={handleDialogClose} type="button">
+        <button
+          onClick={handleDialogClose}
+          type="button"
+          className="all-recipe-button"
+        >
           Valider
         </button>
       </dialog>
-      {steps.map((el) => {
-        return (
-          <p key={el.id}>
-            {el.nb_step} : {el.content}
-          </p>
-        );
-      })}
     </>
   );
 }

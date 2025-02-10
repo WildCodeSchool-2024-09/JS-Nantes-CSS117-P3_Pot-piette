@@ -7,3 +7,28 @@
   height: 10em;
   width: 100%;
 }
+
+#dial-box-step h2 {
+  display: inline;
+}
+
+.step-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.add-ingredient-step {
+  width: 10em;
+  height: 10em;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  background-color: white;
+}
+/* .modal {
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  width: 8em;
+  height: 8em;
+} */
