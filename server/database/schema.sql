@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`comment` (
   INDEX `recipe_id_idx` (`recipe_id` ASC) VISIBLE,
   CONSTRAINT `fk_com_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`),
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id`)
     REFERENCES `potpiette`.`user` (`id`))
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`ingredient_recipe` (
     REFERENCES `potpiette`.`ingredient` (`id`),
   CONSTRAINT `fk_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`))
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe_tag` (
   INDEX `fk_tag_tag_id_idx` (`tag_id` ASC) VISIBLE,
   CONSTRAINT `fk_tag_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`),
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_tag_tag_id`
     FOREIGN KEY (`tag_id`)
     REFERENCES `potpiette`.`tag` (`id`))
@@ -286,7 +286,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`step` (
   INDEX `fk_step_recipe_id_idx` (`recipe_id` ASC) VISIBLE,
   CONSTRAINT `fk_step_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`))
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
