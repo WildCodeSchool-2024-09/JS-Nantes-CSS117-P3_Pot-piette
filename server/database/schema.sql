@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`comment` (
   `date` DATE NOT NULL,
   `content` TINYTEXT,
   `status` TINYINT NOT NULL DEFAULT '0',
-  `ratings` INT NOT NULL,
+  `ratings` INT,
   `user_id` INT NOT NULL,
   `recipe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`comment` (
     REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `potpiette`.`user` (`id`))
+    REFERENCES `potpiette`.`user` (`id`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
