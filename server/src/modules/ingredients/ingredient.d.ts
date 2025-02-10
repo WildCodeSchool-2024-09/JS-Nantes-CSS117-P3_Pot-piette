@@ -3,5 +3,3 @@ export interface Ingredient {
   name_ingredient: string;
   picture_ingredient: string;
 }
-
-// Commentaire fictif à enlever pour prochaine PR
