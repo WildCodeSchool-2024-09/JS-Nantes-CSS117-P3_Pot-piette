@@ -140,6 +140,14 @@ class RecipeRepository {
 
     return result.insertId;
   }
+
+  async destroy(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "DELETE FROM recipe WHERE id = ?",
+      [id],
+    );
+    return rows;
+  }
 }
 
 export default new RecipeRepository();
