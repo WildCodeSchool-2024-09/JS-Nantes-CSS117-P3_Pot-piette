@@ -11,8 +11,7 @@
   align-items: center;
   justify-content: center;
 }
-.recipe-form h2,
-input {
+.recipe-form h2 {
   width: 100%;
   justify-self: flex-start;
 }
