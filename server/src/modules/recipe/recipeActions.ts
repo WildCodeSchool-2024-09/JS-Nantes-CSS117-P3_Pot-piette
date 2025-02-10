@@ -121,4 +121,18 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, latest, addTitle, search };
+const deleteRecipe: RequestHandler = async (req, res, next) => {
+  const id = Number(req.params.id);
+  try {
+    const deleteRecipe = await recipeRepository.destroy(id);
+    if (deleteRecipe) {
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(400);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, add, latest, addTitle, search, deleteRecipe };

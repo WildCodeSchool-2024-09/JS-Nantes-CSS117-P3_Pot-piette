@@ -68,5 +68,6 @@ GET http://localhost:3310/api/recipe/latest
 
 ###
 
-# POST http://localhost:3310/api/login HTTP/1.1
-# content
+DELETE http://localhost:3310/api/recipe/delete/3 HTTP/1.1
+ content-type: application/json
+ 
