@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`ingredient_recipe` (
   INDEX `ingredient_id_idx` (`ingredient_id` ASC) VISIBLE,
   CONSTRAINT `fk_ingredient_id`
     FOREIGN KEY (`ingredient_id`)
-    REFERENCES `potpiette`.`ingredient` (`id`),
+    REFERENCES `potpiette`.`ingredient` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_recipe_id`
     FOREIGN KEY (`recipe_id`)
     REFERENCES `potpiette`.`recipe` (`id`))
