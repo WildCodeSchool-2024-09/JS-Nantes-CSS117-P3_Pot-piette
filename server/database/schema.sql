@@ -68,13 +68,33 @@ VALUES
 ('Camille', 35, 'femme', 'camille.jpg', CURDATE(), 'camille@gmail.com', 'VeGanForEver', 0, 0);
 
 -- -----------------------------------------------------
+-- Table `potpiette`.`favorites`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `potpiette`.`favorites` (
+  `recipe_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`recipe_id`, `user_id`),
+  INDEX `fk_user_user_id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_recipe_id`
+    FOREIGN KEY (`recipe_id`)
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_user_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `potpiette`.`user` (`id`) ON DELETE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+-- -----------------------------------------------------
 -- Table `potpiette`.`comment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `potpiette`.`comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
-  `content` TINYTEXT NOT NULL,
+  `content` TINYTEXT,
   `status` TINYINT NOT NULL DEFAULT '0',
+  `ratings` INT,
   `user_id` INT NOT NULL,
   `recipe_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -82,10 +102,10 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`comment` (
   INDEX `recipe_id_idx` (`recipe_id` ASC) VISIBLE,
   CONSTRAINT `fk_com_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`),
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `potpiette`.`user` (`id`))
+    REFERENCES `potpiette`.`user` (`id`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -118,7 +138,7 @@ VALUES
 ("Salade", "https://media.istockphoto.com/id/1387420863/fr/photo/vue-de-dessus-de-la-laitue-fra%C3%AEche-butterhead-isol%C3%A9e.jpg?s=612x612&w=0&k=20&c=-KGNRSuCDPiiCm12oI9BcGBqfcw9PebOvLDNSaGV0K8="),
 ("Ketchup", "https://media.istockphoto.com/id/1187153791/fr/photo/ketchup-savoureux-rouge-ou-sauce-tomate-dans-le-bol-disolement-sur-le-fond-blanc.jpg?s=612x612&w=0&k=20&c=dbkTEAyeoOfNf-ezOB5GhiFX5Ii47VBk5_xweMsvEQo="),
 ("Pain hot dog", "https://media.istockphoto.com/id/1030095390/fr/photo/hot-dog-bun-sur-fond-blanc.jpg?s=612x612&w=0&k=20&c=lA2exk7rSv-Li8yo8Tx3SMQl1-W1PtXY9G7ZZ3J3SEo="),
-("Œuf", "https://media.istockphoto.com/id/173234780/fr/photo/groupe-de-%C5%93ufs-crus-brun-lune-est-cass%C3%A9-isol%C3%A9-blanc.jpg?s=612x612&w=0&k=20&c=GPyAqB2Y6Z8-VfaFzCSXZNKLUDqLD8y63HM--0Jrx6k="),
+("Oeuf", "https://media.istockphoto.com/id/173234780/fr/photo/groupe-de-%C5%93ufs-crus-brun-lune-est-cass%C3%A9-isol%C3%A9-blanc.jpg?s=612x612&w=0&k=20&c=GPyAqB2Y6Z8-VfaFzCSXZNKLUDqLD8y63HM--0Jrx6k="),
 ("Jambon", "https://media.istockphoto.com/id/488330599/fr/photo/jambon-frais.jpg?s=612x612&w=0&k=20&c=R2PrbgKPYe2tj5Z1SaW1vpKY0sP02OWAvBUk24Bb4fw="),
 ("Saucisse", "https://media.istockphoto.com/id/170222471/fr/photo/pr%C3%A9par%C3%A9-des-saucisses.jpg?s=612x612&w=0&k=20&c=vTeyeoYYGesCKOi2c2aZUf4l5w7AdAKm990bCOnbs5Q="),
 ("Cornichon", "https://media.istockphoto.com/id/183891361/fr/photo/le-gherkin-trac%C3%A9-de-d%C3%A9tourage.jpg?s=612x612&w=0&k=20&c=FyDp3d2RXYsz-PlGNgFlOmKj8IjzvNoeGuwAc7HJtqo="),
@@ -197,7 +217,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`ingredient_recipe` (
     REFERENCES `potpiette`.`ingredient` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`))
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -255,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`recipe_tag` (
   INDEX `fk_tag_tag_id_idx` (`tag_id` ASC) VISIBLE,
   CONSTRAINT `fk_tag_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`),
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_tag_tag_id`
     FOREIGN KEY (`tag_id`)
     REFERENCES `potpiette`.`tag` (`id`))
@@ -286,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `potpiette`.`step` (
   INDEX `fk_step_recipe_id_idx` (`recipe_id` ASC) VISIBLE,
   CONSTRAINT `fk_step_recipe_id`
     FOREIGN KEY (`recipe_id`)
-    REFERENCES `potpiette`.`recipe` (`id`))
+    REFERENCES `potpiette`.`recipe` (`id`) ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
