@@ -3,13 +3,6 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { PiChefHatThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
-interface RecipeProps {
-  title: string;
-  picture: string;
-  time_to_cook: string | number;
-  type: string;
-}
-
 function RecipeOfTheDay({ title, picture, time_to_cook, type }: RecipeProps) {
   return (
     <section className="recipe-container">
