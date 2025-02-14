@@ -24,12 +24,121 @@
   }
 }
 
+@keyframes slidy {
+  0% {
+    width: 9em;
+    top: 4em;
+  }
+  10% {
+    width: 8.5em;
+    top: 3.75em;
+  }
+  20% {
+    width: 8em;
+    top: 3.5em;
+  }
+  30% {
+    width: 7.5em;
+    top: 3.2em;
+  }
+  40% {
+    width: 7em;
+    top: 3em;
+  }
+  50% {
+    width: 6.5em;
+    top: 2.4em;
+  }
+
+  60% {
+    width: 6em;
+    top: 2em;
+  }
+  70% {
+    width: 5.5em;
+    top: 1.4em;
+  }
+
+  80% {
+    width: 5em;
+    top: 1em;
+  }
+  90% {
+    width: 4.5em;
+    top: 0.4em;
+  }
+
+  100% {
+    width: 4em;
+    top: 0em;
+  }
+}
+
+@keyframes slidyReverse {
+  0% {
+    width: 4em;
+    top: 0em;
+  }
+  10% {
+    width: 4.5em;
+    top: 0.4em;
+  }
+  20% {
+    width: 5em;
+    top: 1em;
+  }
+  30% {
+    width: 5.5em;
+    top: 1.4em;
+  }
+  40% {
+    width: 6em;
+    top: 2em;
+  }
+  50% {
+    width: 6.5em;
+    top: 2.4em;
+  }
+
+  60% {
+    width: 7em;
+    top: 3em;
+  }
+  70% {
+    width: 7.5em;
+    top: 3.2em;
+  }
+
+  80% {
+    width: 8em;
+    top: 3.5em;
+  }
+  90% {
+    width: 8.5em;
+    top: 3.75em;
+  }
+
+  100% {
+    width: 9em;
+    top: 4em;
+  }
+}
+
 .logo {
   width: 9em;
   background-color: transparent;
   top: 4em;
   left: 1.5em;
   position: relative;
+  animation: 0.5s ease-in-out slidyReverse;
+}
+
+.logo-active {
+  width: 4em;
+  background-color: transparent;
+  left: 1.5em;
+  position: relative;
+  animation: 0.3s ease-in-out slidy;
 }
 
 .header-nav ul {
@@ -70,7 +179,7 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  transform: translateX(-50rem);
+  transform: translateX(-121rem);
   top: 0;
   z-index: 2;
   transition: 0.5s;
