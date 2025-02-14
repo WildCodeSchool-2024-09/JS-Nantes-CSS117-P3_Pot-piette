@@ -70,7 +70,7 @@
   width: 100vw;
   height: 100vh;
   position: fixed;
-  transform: translateX(-50rem);
+  transform: translateX(-121rem);
   top: 0;
   z-index: 2;
   transition: 0.5s;
