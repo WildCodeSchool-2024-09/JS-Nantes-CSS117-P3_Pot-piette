@@ -31,6 +31,7 @@ import ingredientsActions from "./modules/ingredients/ingredientsActions";
 router.get("/api/ingredients", ingredientsActions.browse);
 router.post("/api/ingredients", ingredientsActions.add);
 router.put("/api/ingredients/:id", ingredientsActions.edit);
+router.delete("/api/ingredients/:id", ingredientsActions.deleteIngredient);
 
 /* ************************************************************************* */
 import tagsActions from "./modules/tags/tagActions";
