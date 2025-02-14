@@ -2,6 +2,7 @@ import { type ChangeEvent, useEffect, useState } from "react";
 import InspirationCard from "../../components/InspirationCard/InspirationCard";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
+import { IoSearchOutline } from "react-icons/io5";
 import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
@@ -16,9 +17,11 @@ function Homepage() {
     null,
   );
 
+  console.warn("coucou", filteredRecipes);
+
   const tagIds: { [key: number]: string } = {
-    1: "Rapide",
-    2: "Plat",
+    1: "rapide",
+    2: "plat",
     3: "healthy",
     4: "vegetarien",
     5: "dessert",
@@ -54,6 +57,7 @@ function Homepage() {
           return response.json();
         })
         .then((recipes) => {
+          console.warn("Recipes ? ", recipes);
           setFilteredRecipes(recipes);
         })
         .catch((error) => {
@@ -72,7 +76,7 @@ function Homepage() {
   return (
     <main className="home-page">
       <section className="home-carousel">
-        <h2>Nouvelles recettes</h2>
+        <h2 id="accueil">Nouvelles recettes</h2>
         <figure>
           <Link to={`/recipe/${lastRecipe?.id}`}>
             <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
@@ -92,10 +96,7 @@ function Homepage() {
               placeholder="Cherchez votre recette"
             />
             <button type="submit" className="search-button">
-              <img
-                src="https://i.ibb.co/ZJH0xp6/chercher.png"
-                alt="Recherche"
-              />
+              <IoSearchOutline />
             </button>
           </div>
         </form>
@@ -103,10 +104,12 @@ function Homepage() {
       <section className="search-container">
         {recipes.map((recipe) => {
           return (
-            <div key={recipe.id} className="search-result">
-              <img src={recipe.picture} alt={recipe.title} />
-              <figcaption>{recipe.title}</figcaption>
-            </div>
+            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+              <div key={recipe.id} className="search-result">
+                <img src={recipe.picture} alt={recipe.title} />
+                <figcaption>{recipe.title}</figcaption>
+              </div>
+            </Link>
           );
         })}
       </section>
@@ -115,8 +118,8 @@ function Homepage() {
       <section className="home-inspirations">
         <button
           type="button"
-          onClick={() => handleInspirationClick(1)}
           className={`inspirations ${tagIds[selectedTag || 0] === "rapide" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(1)}
         >
           <figure>
             <PiHamburger />
@@ -127,9 +130,7 @@ function Homepage() {
         <button
           type="button"
           className={`inspirations ${tagIds[selectedTag || 0] === "plat" ? "selected" : ""}`}
-          onClick={() => {
-            handleInspirationClick(2);
-          }}
+          onClick={() => handleInspirationClick(2)}
         >
           <figure>
             <PiForkKnife />
@@ -188,7 +189,14 @@ function Homepage() {
 
       <section className="inspiration-home-page">
         {filteredRecipes?.map((el) => (
-          <InspirationCard key={el.id} picture={el.picture} title={el.title} />
+          <Link key={el.id} to={`/recipe/${el.id}`}>
+            <InspirationCard
+              key={el.id}
+              picture={el.picture}
+              title={el.title}
+              id={el.id}
+            />
+          </Link>
         ))}
       </section>
     </main>

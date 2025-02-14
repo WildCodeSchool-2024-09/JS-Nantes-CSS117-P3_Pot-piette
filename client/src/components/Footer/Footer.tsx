@@ -1,8 +1,21 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
   return (
     <footer>
+      <Link to={"/"}>
+        <h2>Accueil</h2>
+      </Link>
+
+      <Link to={"/connexion"}>
+        <li>Se connecter</li>
+      </Link>
+      <Link to={"/account"}>
+        <li>Créer un compte</li>
+      </Link>
+
+      {/* 
       <ul className="icons-social-network">
         <li>
           <a
@@ -60,7 +73,7 @@ function Footer() {
             />
           </a>
         </li>
-      </ul>
+      </ul> */}
       <p className="copyright-footer">© 2025 Propulsé par la team Pot'Piette</p>
     </footer>
   );

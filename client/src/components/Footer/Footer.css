@@ -1,21 +1,56 @@
 /* Global styles for the footer */
 footer {
+  display: flex;
+  height: 15vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px 0;
-  background-color: #f8f8f8;
+  background-color: white;
 }
 
-.icons-social-network {
+footer h2,
+a,
+nav,
+ul,
+li,
+p {
+  background-color: white;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+}
+
+footer a {
+  color: var(--secondary-color);
+}
+
+/* .footer-nav {
+  list-style: none;
+  background-color: white;
+}
+
+.footer-nav li {
+  background-color: white;
+} */
+
+/* .icons-social-network {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
   gap: 50px;
+  background-color: white;
+}
+
+.icons-social-network ul {
+  background-color: white;
 }
 
 .icons-social-network li {
   display: inline-block;
+  background-color: white;
 }
 
 .social-network-icon {
@@ -25,6 +60,10 @@ footer {
   cursor: pointer;
 }
 
+.social-network-icon img {
+  background-color: white;
+}
+
 .social-network-icon:hover {
   transform: scale(1.2);
   opacity: 0.7;
@@ -32,9 +71,9 @@ footer {
 
 .copyright-footer {
   font-size: 14px;
-  color: #555;
+  background-color: white;
   margin-top: 15px;
-}
+} */
 
 @media (max-width: 600px) {
   .icons-social-network {

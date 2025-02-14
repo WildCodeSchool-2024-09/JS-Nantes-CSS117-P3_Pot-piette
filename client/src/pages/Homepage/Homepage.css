@@ -26,9 +26,17 @@
   border-radius: 8px;
 }
 
+.home-search svg {
+  color: var(--main-color);
+}
+
 .home-search > input {
   border: none;
   width: 90%;
+}
+.home-search > input:focus {
+  outline: none;
+  background-color: transparent;
 }
 
 .home-search > button {
@@ -37,6 +45,7 @@
 
 .search-button {
   width: 15%;
+  border-radius: 8px;
 }
 
 .search-button > img {
@@ -61,6 +70,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5%;
+  padding: 1em;
   margin-top: 10%;
   margin-bottom: 10%;
   width: 100%;
@@ -68,6 +78,11 @@
 
 .search-result {
   width: 47.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 .search-result > figcaption {
   text-align: center;
@@ -86,16 +101,20 @@
 }
 .inspiration-home-page {
   display: flex;
-  justify-content: center;
+  background-color: red;
+  justify-content: space-around;
+  align-items: center;
   width: 100vw;
   flex-direction: row;
   flex-wrap: wrap;
+  background-color: transparent;
 }
 
 .inspirations {
   border: 2px var(--secondary-color) solid;
   border-radius: 8px;
   transition: border 0.3s ease-in-out;
+  cursor: pointer;
   & figure {
     margin: 0;
   }
@@ -106,4 +125,38 @@
 
 .selected {
   border: 2px var(--main-color) solid;
+}
+
+@media (min-width: 932px) {
+  .home-carousel > figure img {
+    width: 50vw;
+  }
+  .home-carousel figcaption {
+    font-size: 2em;
+  }
+  .search-result {
+    width: 33vw;
+  }
+
+  .search-result img {
+    width: 33vw;
+    height: 33vh;
+  }
+  .inspirations {
+    width: 33%;
+  }
+  .inspiration-result {
+    width: 25%;
+  }
+  .inspiration-result img {
+    object-fit: cover;
+  }
+  .search-button svg {
+    width: 3em;
+    height: 3em;
+  }
+  .home-search {
+    width: 33vw;
+    height: 3em;
+  }
 }
