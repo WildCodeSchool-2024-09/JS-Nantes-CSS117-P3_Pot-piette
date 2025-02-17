@@ -54,3 +54,25 @@ figcaption {
 a {
   font-family: var(--primary-font);
 }
+
+input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #f06a0b;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 700px) {
+  #root {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)
+      ), url("../src/assets/images/wallpotpiettefond.png");
+    background-position: center;
+  }
+
+  main {
+    width: 70%;
+  }
+}
