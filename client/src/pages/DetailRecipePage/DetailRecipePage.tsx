@@ -1,5 +1,5 @@
 import "./detail-recipe-page.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GoClock } from "react-icons/go";
 import {
   IoIosAdd,
@@ -11,14 +11,21 @@ import {
   IoMdShare,
 } from "react-icons/io";
 import { useLoaderData } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 import useStorage from "../../hooks/useStorage";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 
 function DetailRecipePage() {
   const data = useLoaderData() as RecipeDetailI[];
   const recipeDetail = data[0];
+  const userContext = useContext(UserContext);
   const [isClicked, setIsClicked] = useState(false);
   const { getStorage, handleStorage } = useStorage();
+
+  let isAuthenticated = false;
+  if (userContext) {
+    isAuthenticated = userContext.isAuthenticated;
+  }
 
   useEffect(() => {
     const storage: RecipeDetailI[] | null = getStorage();
@@ -58,13 +65,15 @@ function DetailRecipePage() {
           className="img-detail-recipe"
         />
         <section className="share-and-like-detail-recipe">
-          <button type="button" onClick={handleClick}>
-            {" "}
-            {isClicked ? <IoMdHeart /> : <IoMdHeartEmpty />}
-          </button>
-          {recipeDetail.recipe_tag_list.map((tag) => {
-            return <p key={tag.id}>{tag.tag_name}</p>;
-          })}
+          {isAuthenticated && (
+            <button type="button" onClick={handleClick}>
+              {isClicked ? <IoMdHeart /> : <IoMdHeartEmpty />}
+            </button>
+          )}
+
+          {recipeDetail.recipe_tag_list.map((tag) => (
+            <p key={tag.id}>{tag.tag_name}</p>
+          ))}
 
           <IoMdShare />
         </section>

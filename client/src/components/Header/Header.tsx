@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { useContext, useState } from "react";
-import { IoHeart, IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
+import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/userContext";
 
@@ -50,11 +50,11 @@ function Header() {
               Mes activités
             </Link>
             <Link to="/favorites" onClick={toggleMenu}>
-              <IoHeart /> Mes Favoris
+              Mes favoris
             </Link>
 
             <button type="button" onClick={handleLogout} className="logout-btn">
-              <IoLogOut /> Déconnexion
+              Se déconnecter
             </button>
           </>
         )}

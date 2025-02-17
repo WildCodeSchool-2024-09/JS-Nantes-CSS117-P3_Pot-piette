@@ -17,7 +17,7 @@ function Favorites() {
   return (
     <main className="favorites-page">
       <h1>Gestion de vos favoris </h1>
-      <ul>
+      <ul className="favorites-recipe">
         {data.map((recipe) => (
           <li key={recipe.id}>
             <h3>{recipe.title}</h3>
