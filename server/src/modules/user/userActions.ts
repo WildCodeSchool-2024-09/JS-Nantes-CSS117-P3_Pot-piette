@@ -19,7 +19,7 @@ const readByStatus: RequestHandler = async (req, res, next) => {
     const id = Number(req.params.id);
     const recipesPublished = await userRepository.searchPublished(id);
     if (recipesPublished) {
-      res.sendStatus(204);
+      res.json(recipesPublished);
     } else {
       res.sendStatus(500);
     }
