@@ -9,28 +9,27 @@ footer {
   background-color: white;
 }
 
+footer h2 {
+  margin: 1em 0 0 0;
+}
+
 footer :is(h2, a, nav, ul, li, p) {
-  background-color: white;
+  background-color: transparent;
   text-decoration: none;
   list-style: none;
   cursor: pointer;
+  font-family: var(--secondary-font);
 }
 
 footer a {
   color: var(--secondary-color);
 }
 
-@media (max-width: 600px) {
-  .icons-social-network {
-    gap: 10px;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  .social-network-icon {
-    width: 20%;
-    height: auto;
-    max-width: 500px;
-    margin: 0 5px;
+@media (min-width: 900px) {
+  footer ul {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
   }
 }

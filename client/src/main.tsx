@@ -14,6 +14,7 @@ import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
+import NotFound from "./pages/NotFound/NotFound";
 import UserConnexion from "./pages/UserConnexion/UserConnexion";
 import UserInfo from "./pages/UserDashboard/UserDashboard";
 
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/user-info",
         element: <UserInfo />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
