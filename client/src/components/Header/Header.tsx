@@ -29,7 +29,7 @@ function Header() {
           <div> </div>
           <div> </div>
         </button>
-        <nav className={`aside-menu ${isOpen ? "visible" : "invicible"}`}>
+        <nav className={`aside-menu ${isOpen ? "visible" : "invisible"}`}>
           <Link to="/account" onClick={toggleMenu}>
             S'inscrire
           </Link>

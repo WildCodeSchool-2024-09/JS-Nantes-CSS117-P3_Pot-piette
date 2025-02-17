@@ -17,8 +17,6 @@ function Homepage() {
     null,
   );
 
-  console.warn("coucou", filteredRecipes);
-
   const tagIds: { [key: number]: string } = {
     1: "rapide",
     2: "plat",
@@ -57,7 +55,6 @@ function Homepage() {
           return response.json();
         })
         .then((recipes) => {
-          console.warn("Recipes ? ", recipes);
           setFilteredRecipes(recipes);
         })
         .catch((error) => {

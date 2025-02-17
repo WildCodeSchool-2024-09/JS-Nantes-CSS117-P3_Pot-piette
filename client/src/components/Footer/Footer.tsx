@@ -4,76 +4,24 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer>
-      <Link to={"/"}>
-        <h2>Accueil</h2>
-      </Link>
+      <ul>
+        <li>
+          <Link to={"/"}>
+            <h2>Accueil</h2>
+          </Link>
+        </li>
+        <li>
+          <Link to={"/connexion"}>
+            <p>Se connecter</p>
+          </Link>
+        </li>
+        <li>
+          <Link to={"/account"}>
+            <p>Créer un compte</p>
+          </Link>
+        </li>
+      </ul>
 
-      <Link to={"/connexion"}>
-        <li>Se connecter</li>
-      </Link>
-      <Link to={"/account"}>
-        <li>Créer un compte</li>
-      </Link>
-
-      {/* 
-      <ul className="icons-social-network">
-        <li>
-          <a
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Page Facebook"
-          >
-            <img
-              src="https://i.ibb.co/LtmJkt3/facebook.png"
-              alt="Logo Facebook"
-              className="social-network-icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Page Instagram"
-          >
-            <img
-              src="https://i.ibb.co/1QrM2Bx/instagram.png"
-              alt="Logo Instagram"
-              className="social-network-icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Compte Twitter"
-          >
-            <img
-              src="https://i.ibb.co/SK4H7d6/twitter.png"
-              alt="Logo Twitter"
-              className="social-network-icon"
-            />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.pinterest.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Page Pinterest"
-          >
-            <img
-              src="https://i.ibb.co/x1JckcH/pinterest.png"
-              alt="Logo Pinterest"
-              className="social-network-icon"
-            />
-          </a>
-        </li>
-      </ul> */}
       <p className="copyright-footer">© 2025 Propulsé par la team Pot'Piette</p>
     </footer>
   );

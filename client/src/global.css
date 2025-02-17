@@ -70,7 +70,6 @@ input {
         rgba(255, 255, 255, 0.7)
       ), url("../src/assets/images/wallpotpiettefond.png");
     background-position: center;
-    /* background-blend-mode: overlay; */
   }
 
   main {

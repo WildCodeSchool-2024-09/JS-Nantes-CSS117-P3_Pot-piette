@@ -254,9 +254,6 @@
   #dial-box {
     height: 33vh;
     width: 33vw;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
   }
   #dial-box input[type="number"] {
     width: 8px;
