@@ -33,6 +33,7 @@ function Header() {
       <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
         {!isAuthenticated ? (
           <>
+            {" "}
             <Link to="/account" onClick={toggleMenu}>
               S'inscrire
             </Link>
@@ -42,11 +43,16 @@ function Header() {
           </>
         ) : (
           <>
-            {isAuthenticated && (
-              <Link to="/favorites" onClick={toggleMenu}>
-                <IoHeart /> Mes Favoris
-              </Link>
-            )}
+            <Link to="/user-info" onClick={toggleMenu}>
+              Mon profil
+            </Link>
+            <Link to="/my-activity" onClick={toggleMenu}>
+              Mes activités
+            </Link>
+            <Link to="/favorites" onClick={toggleMenu}>
+              <IoHeart /> Mes Favoris
+            </Link>
+
             <button type="button" onClick={handleLogout} className="logout-btn">
               <IoLogOut /> Déconnexion
             </button>
