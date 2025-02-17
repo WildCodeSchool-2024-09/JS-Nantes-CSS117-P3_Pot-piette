@@ -13,6 +13,7 @@ import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
+import Favorites from "./pages/Favorites/Favorites";
 import Homepage from "./pages/Homepage/Homepage";
 import UserConnexion from "./pages/UserConnexion/UserConnexion";
 import UserInfo from "./pages/UserDashboard/UserDashboard";
@@ -68,6 +69,7 @@ const router = createBrowserRouter([
         path: "/user-info",
         element: <UserInfo />,
       },
+      { path: "/favorites", element: <Favorites /> },
     ],
   },
 ]);
