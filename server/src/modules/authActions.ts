@@ -35,7 +35,9 @@ const login: RequestHandler = async (req, res) => {
     const token = jwt.sign(payload, secretKey, { expiresIn: "1d" });
 
     res.json({ token, user: user.email });
-  } catch (err) {}
+  } catch (err) {
+    res.status(401).send(err);
+  }
 };
 
 const hashPassword: RequestHandler = async (req, res, next) => {
@@ -58,7 +60,7 @@ const hashPassword: RequestHandler = async (req, res, next) => {
       res.sendStatus(403);
     }
   } catch (err) {
-    console.error(err);
+    res.status(401).send(err);
   }
 };
 

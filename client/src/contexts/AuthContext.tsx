@@ -10,8 +10,6 @@ export const AuthContext = createContext<AuthProviderI>({ isLogged: false });
 // Placer les types ReactNode et AuthProviderI dans un fichier à part
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  toast.error("Vous n'avez pas accès");
-
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
@@ -22,7 +20,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      toast.error("Tu n'es pas enregistré ! Connecte-toi !");
+      toast.error("As-tu pensé à t'enrengistrer ?");
       return;
     }
 
@@ -40,11 +38,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (response.ok) {
         setIsLogged(true);
       } else {
-        toast.error("Tu n'es pas enregistré ! Connecte-toi !");
+        toast.error("N'oublie pas de t'enrengistrer");
       }
-    } catch (err) {
-      console.warn("Voici l'erreur :", err);
-    }
+    } catch (err) {}
   }
   return (
     <AuthContext.Provider value={{ isLogged }}>{children}</AuthContext.Provider>
