@@ -6,9 +6,22 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/userContext";
 
 function Header() {
+  const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const { isAuthenticated, logout } = useContext(UserContext) || {};
+
+  window.onscroll = () => {
+    handleScroll();
+  };
+
+  function handleScroll() {
+    if (document.documentElement.scrollTop >= 35) {
+      isLogo(true);
+    } else if (document.body.scrollTop <= 35) {
+      isLogo(false);
+    }
+  }
 
   const handleLogout = () => {
     if (logout) {
@@ -52,7 +65,11 @@ function Header() {
           )}
         </nav>
         <Link to="/">
-          <img src="./logoWhite.png" alt="Logo" className="logo" />
+          <img
+            src="./logoWhite.png"
+            alt="Logo"
+            className={logo === true ? "logo-active" : "logo"}
+          />
         </Link>
         <ul>
           <li>
