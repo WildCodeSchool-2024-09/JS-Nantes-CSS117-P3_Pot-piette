@@ -6,7 +6,7 @@ import { UserContext } from "../../contexts/userContext";
 
 function UserConnexion() {
   const navigate = useNavigate();
-  const { login } = useContext(UserContext) || {};
+  const { login, setIsAdmin } = useContext(UserContext) || {};
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -27,6 +27,7 @@ function UserConnexion() {
       const res = await response.json();
       if (res.token && login) {
         login(res.token);
+        if (setIsAdmin) setIsAdmin(!!res.isAdmin);
         toast.success("Bienvenue");
         navigate("/");
       }

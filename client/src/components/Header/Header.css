@@ -238,7 +238,7 @@
 .open > div:nth-child(3) {
   transform: translateY(-4px) rotate(-45deg);
 }
-.visible :last-child {
+.visible:last-child {
   background-color: transparent;
   cursor: pointer;
   color: var(--background-color);
