@@ -7,9 +7,11 @@ import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import RecipeOfTheDay from "../../components/RecipeOfTheDAy/RecipeOfTheDay";
 import type { RecipeByTag, RecipeI } from "../../types/detail-recipe";
 
 function Homepage() {
+  const [randomRecipe, setRandomRecipe] = useState<RecipeI | null>(null);
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
   const [recipes, setRecipes] = useState<RecipeI[]>([]);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
@@ -46,6 +48,18 @@ function Homepage() {
       .then((response) => response.json())
       .then((lastRecipe) => setLastRecipe(lastRecipe[0]));
 
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipes`)
+      .then((response) => response.json())
+      .then((data: RecipeI[]) => {
+        if (data.length > 0) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          setRandomRecipe(data[randomIndex]);
+        }
+      })
+      .catch((error) =>
+        console.error("erreur lors de la récuperation des recettes :", error),
+      );
+
     if (selectedTag) {
       fetch(`${import.meta.env.VITE_API_URL}/api/tags/${selectedTag}`)
         .then((response) => {
@@ -72,6 +86,15 @@ function Homepage() {
 
   return (
     <main className="home-page">
+      {randomRecipe && (
+        <RecipeOfTheDay
+          title={randomRecipe.title}
+          picture={randomRecipe.picture}
+          time_to_cook={randomRecipe.time_to_cook ?? "N/A"}
+          type={randomRecipe.type ?? ""}
+        />
+      )}
+
       <section className="home-carousel">
         <h2 id="accueil">Nouvelles recettes</h2>
         <figure>

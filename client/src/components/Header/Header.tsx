@@ -6,9 +6,22 @@ import { toast } from "react-toastify";
 import { UserContext } from "../../contexts/userContext";
 
 function Header() {
+  const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const { isAuthenticated, logout } = useContext(UserContext) || {};
+
+  window.onscroll = () => {
+    handleScroll();
+  };
+
+  function handleScroll() {
+    if (document.documentElement.scrollTop >= 35) {
+      isLogo(true);
+    } else if (document.body.scrollTop <= 35) {
+      isLogo(false);
+    }
+  }
 
   const handleLogout = () => {
     if (logout) {
@@ -29,16 +42,34 @@ function Header() {
           <div> </div>
           <div> </div>
         </button>
-        <nav className={`aside-menu ${isOpen ? "visible" : "invisible"}`}>
-          <Link to="/account" onClick={toggleMenu}>
-            S'inscrire
-          </Link>
-          <Link to="/login" onClick={toggleMenu}>
-            Se connecter
-          </Link>
+        <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
+          {isAuthenticated ? (
+            <>
+              <Link to="/user-info" onClick={toggleMenu}>
+                Mon profil
+              </Link>
+              <Link to="/my-activity" onClick={toggleMenu}>
+                Mes activités
+              </Link>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link to="/account" onClick={toggleMenu}>
+                S'inscrire
+              </Link>{" "}
+              <Link to="/login" onClick={toggleMenu}>
+                Se connecter
+              </Link>{" "}
+            </>
+          )}
         </nav>
         <Link to="/">
-          <img src="./logoWhite.png" alt="Logo" className="logo" />
+          <img
+            src="./logoWhite.png"
+            alt="Logo"
+            className={logo === true ? "logo-active" : "logo"}
+          />
         </Link>
         <ul>
           <li>

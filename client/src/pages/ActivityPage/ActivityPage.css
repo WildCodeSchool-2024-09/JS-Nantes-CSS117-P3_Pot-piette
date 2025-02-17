@@ -1,37 +1,35 @@
-.activities > h1 {
+.activity h1 {
   text-align: center;
 }
 
+.activity-published-recipe,
+.activity-pending-recipe,
 .activity-add-recipe {
-  text-align: center;
-
-  & button {
-    width: 50px;
-    height: 50px;
-    background-color: var(--main-color);
-    text-align: center;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2em 0;
 }
 
-.activity-published-recipe {
-  text-align: center;
-}
-
-.activity-add-button {
-  color: var(--background-color);
-  border-radius: 8px;
-}
-
-.activities > article:nth-of-type(2) {
+.activity-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  align-items: center;
+  gap: 1em;
+}
 
-  & h2,
-  p {
-    flex-basis: 100vw;
-    text-align: center;
+.activity-add-recipe button {
+  align-self: center;
+  width: 5em;
+  height: 5em;
+  background-color: var(--main-color);
+  border: none;
+  & a {
+    background-color: transparent;
+  }
+  & svg {
+    height: 4em;
+    width: 4em;
+    color: var(--background-color);
+    background-color: transparent;
   }
 }
