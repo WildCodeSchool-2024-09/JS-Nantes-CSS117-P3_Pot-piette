@@ -14,6 +14,37 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const readByStatus: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    const recipesPublished = await userRepository.searchPublished(id);
+    if (recipesPublished) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(500);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const readByStatusPending: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    const recipesUnpublished = await userRepository.searchUnpublished(id);
+
+    if (recipesUnpublished) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(500);
+    }
+
+    res.json(recipesUnpublished);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const add: RequestHandler = async (req, res) => {
   try {
     const { name, email, password, inscription_date } = req.body;
@@ -93,4 +124,12 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   } catch (err) {}
 };
 
-export default { browse, add, edit, deleteUser, hashPassword };
+export default {
+  browse,
+  readByStatus,
+  readByStatusPending,
+  add,
+  edit,
+  deleteUser,
+  hashPassword,
+};
