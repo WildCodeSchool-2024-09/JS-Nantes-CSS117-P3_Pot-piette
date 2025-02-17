@@ -1,5 +1,5 @@
 export interface RecipeI {
-  id?: number;
+  id: number;
   title: string;
   picture: string;
 }
@@ -49,5 +49,5 @@ interface IngredientListI {
 export interface RecipeByTag {
   title: string;
   picture: string;
-  id: number;
+  id?: number;
 }

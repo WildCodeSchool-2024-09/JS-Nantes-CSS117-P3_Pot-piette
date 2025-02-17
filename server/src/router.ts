@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type RequestHandler } from "express";
 
 const router = express.Router();
 
@@ -15,9 +15,21 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
-// import { recipeUpload, upload } from "./recipeUploads";
+const storage = multer.diskStorage({
+  destination: "./public/assets/uploads/recipes",
+  filename: (req, file, callback) => {
+    callback(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+const upload = multer({ storage });
 
+router.post(
+  "/api/recipe/image",
+  upload.single("file"),
+  recipeActions.imageUpload,
+);
 router.post("/api/recipe/create", recipeActions.add);
+
 router.post("/api/recipe/title", recipeActions.addTitle);
 router.get("/api/recipes/search", recipeActions.search);
 router.get("/api/recipes", recipeActions.browse);
@@ -56,6 +68,7 @@ router.delete("/api/users/:id", userActions.deleteUser);
 
 /* ************************************************************************* */
 
+import multer from "multer";
 import authActions from "./modules/authActions";
 router.post("/api/login", authActions.login);
 

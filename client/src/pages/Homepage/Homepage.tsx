@@ -75,7 +75,10 @@ function Homepage() {
         <h2>Nouvelles recettes</h2>
         <figure>
           <Link to={`/recipe/${lastRecipe?.id}`}>
-            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+            <img
+              src={`${import.meta.env.VITE_API_URL}${lastRecipe?.picture}`}
+              alt={lastRecipe?.title}
+            />
           </Link>
           <figcaption>{lastRecipe?.title}</figcaption>
         </figure>
@@ -104,8 +107,13 @@ function Homepage() {
         {recipes.map((recipe) => {
           return (
             <div key={recipe.id} className="search-result">
-              <img src={recipe.picture} alt={recipe.title} />
-              <figcaption>{recipe.title}</figcaption>
+              <Link to={`/recipe/${recipe.id}`}>
+                <img
+                  src={`${import.meta.env.VITE_API_URL}${recipe?.picture}`}
+                  alt={recipe.title}
+                />
+                <figcaption>{recipe.title}</figcaption>
+              </Link>
             </div>
           );
         })}
@@ -188,7 +196,14 @@ function Homepage() {
 
       <section className="inspiration-home-page">
         {filteredRecipes?.map((el) => (
-          <InspirationCard key={el.id} picture={el.picture} title={el.title} />
+          <Link key={el.id} to={`/recipe/${el.id}`}>
+            <InspirationCard
+              key={el.id}
+              picture={el.picture}
+              title={el.title}
+              id={el.id}
+            />
+          </Link>
         ))}
       </section>
     </main>
