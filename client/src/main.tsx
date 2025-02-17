@@ -8,6 +8,7 @@ import "./global.css";
 // Import the main app component
 import App from "./App";
 import ConnectedProvider from "./contexts/ConnectedProvider";
+import ProtectedRoute from "./contexts/ProtectedRoute";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
@@ -57,16 +58,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/My_Activity",
-        element: <ActivityPage />,
+        element: (
+          <ProtectedRoute>
+            <ActivityPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/add-recipe",
-        element: <AddRecipe />,
+        element: (
+          <ProtectedRoute>
+            <AddRecipe />
+          </ProtectedRoute>
+        ),
       },
 
       {
         path: "/user-info",
-        element: <UserInfo />,
+        element: (
+          <ProtectedRoute>
+            <UserInfo />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

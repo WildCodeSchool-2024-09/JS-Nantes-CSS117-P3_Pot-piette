@@ -18,12 +18,10 @@ const add: RequestHandler = async (req, res) => {
   try {
     const { name, email, password, inscription_date } = req.body;
 
-    const hashedPassword = await argon2.hash(password);
-
     const insertId = await userRepository.create({
       name,
       email,
-      password: hashedPassword,
+      password,
       inscription_date,
     });
 
@@ -72,25 +70,4 @@ const deleteUser: RequestHandler = async (req, res, next) => {
   }
 };
 
-const hashPassword: RequestHandler = async (req, res, next) => {
-  const hashOptions = {
-    type: argon2.argon2id,
-    memoryCost: 2 ** 17,
-    hashLength: 50,
-    parallelism: 1,
-    iteration: 2,
-  };
-  try {
-    const { password } = req.body;
-
-    const hash = await argon2.hash(password, hashOptions);
-    if (hash) {
-      req.body.password = hash;
-      next();
-    } else {
-      res.sendStatus(403);
-    }
-  } catch (err) {}
-};
-
-export default { browse, add, edit, deleteUser, hashPassword };
+export default { browse, add, edit, deleteUser };

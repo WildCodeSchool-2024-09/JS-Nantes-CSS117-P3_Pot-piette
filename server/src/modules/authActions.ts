@@ -1,4 +1,5 @@
-import { hash, verify } from "argon2";
+// import { hash, verify } from "argon2";
+import argon2 from "argon2";
 import type { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import userRepository from "./user/userRepository";
@@ -8,13 +9,12 @@ const login: RequestHandler = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await userRepository.getUsersByEmail(email);
-
     if (user === null || user === undefined) {
       res.sendStatus(404);
       return;
     }
 
-    const verifyPassword = await verify(user.password, password);
+    const verifyPassword = await argon2.verify(user.password, password);
 
     if (!verifyPassword) {
       res.status(404).send("Password don't match");
@@ -39,13 +39,26 @@ const login: RequestHandler = async (req, res) => {
 };
 
 const hashPassword: RequestHandler = async (req, res, next) => {
+  const hashOptions = {
+    type: argon2.argon2id,
+    memoryCost: 2 ** 17,
+    hashLength: 50,
+    parallelism: 1,
+    iteration: 2,
+  };
+
   try {
     const { password } = req.body;
-    const hashedPassword = await hash(password);
-    req.body.password = hashedPassword;
-    next();
+
+    const hash = await argon2.hash(password, hashOptions);
+    if (hash) {
+      req.body.password = hash;
+      next();
+    } else {
+      res.sendStatus(403);
+    }
   } catch (err) {
-    res.sendStatus(500);
+    console.error(err);
   }
 };
 
