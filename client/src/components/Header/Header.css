@@ -8,7 +8,6 @@
   padding: 1em;
   height: 4em;
   width: 100%;
-  margin: 0 0 2em 0;
   & a {
     background-color: transparent;
   }
@@ -246,4 +245,18 @@
   font-size: 1.5em;
   width: 9em;
   margin-top: 40%;
+}
+
+@media (min-width: 932px) {
+  .aside-menu {
+    transition: 1s;
+    width: 1em;
+  }
+
+  .aside-menu.visible {
+    width: 100%;
+  }
+  .invisible {
+    transition: 1s;
+  }
 }
