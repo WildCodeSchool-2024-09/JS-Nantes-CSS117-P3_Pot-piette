@@ -30,12 +30,26 @@ function Header() {
           <div> </div>
         </button>
         <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
-          <Link to="/account" onClick={toggleMenu}>
-            S'inscrire
-          </Link>
-          <Link to="/login" onClick={toggleMenu}>
-            Se connecter
-          </Link>
+          {isAuthenticated ? (
+            <>
+              <Link to="/user-info" onClick={toggleMenu}>
+                Mon profil
+              </Link>
+              <Link to="/my-activity" onClick={toggleMenu}>
+                Mes activités
+              </Link>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link to="/account" onClick={toggleMenu}>
+                S'inscrire
+              </Link>{" "}
+              <Link to="/login" onClick={toggleMenu}>
+                Se connecter
+              </Link>{" "}
+            </>
+          )}
         </nav>
         <Link to="/">
           <img src="./logoWhite.png" alt="Logo" className="logo" />
