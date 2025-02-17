@@ -7,14 +7,14 @@ import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import RecipeOfTheDay from "../../components/RecipeOfTheDAy/RecipeOfTheDay";
-import type { RecipeByTag, RecipeI } from "../../types/detail-recipe";
+import type { RecipeI } from "../../types/detail-recipe";
 
 function Homepage() {
   const [randomRecipe, setRandomRecipe] = useState<RecipeI | null>(null);
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
   const [recipes, setRecipes] = useState<RecipeI[]>([]);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
-  const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeByTag[]>(
+  const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeI[]>(
     null,
   );
 

@@ -1,8 +1,8 @@
 // import { Link } from "react-router-dom";
-import type { RecipeByTag } from "../../types/detail-recipe";
+import type { RecipeI } from "../../types/detail-recipe";
 import "./InspirationCard.css";
 
-function InspirationCard({ picture, title }: RecipeByTag) {
+function InspirationCard({ picture, title }: RecipeI) {
   return (
     <section className="inspiration-result">
       <figure className="inspiration-card">

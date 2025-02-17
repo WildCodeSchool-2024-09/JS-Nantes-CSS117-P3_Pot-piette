@@ -47,9 +47,3 @@ interface IngredientListI {
   name_ingredient: string;
   picture_ingredient: string;
 }
-
-export interface RecipeByTag {
-  title: string;
-  picture: string;
-  id?: number;
-}
