@@ -27,8 +27,7 @@
   justify-content: space-around;
 }
 
-.userdash-container,
-input {
+.userdash-container input {
   flex-grow: 1;
   padding: 8px;
   font-size: 14px;

@@ -2,7 +2,7 @@ import "./UserDashboard.css";
 import { GoPencil } from "react-icons/go";
 function UserInfo() {
   return (
-    <section className="userdash-container">
+    <main className="userdash-container">
       <h1>Informations personnelles</h1>
 
       <section className="userdashform-group">
@@ -61,7 +61,7 @@ function UserInfo() {
       <button type="button" className="save-btn">
         Enregistrer
       </button>
-    </section>
+    </main>
   );
 }
 
