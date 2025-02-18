@@ -32,6 +32,7 @@ function ActivityPage() {
                   key={recipe.id}
                   picture={recipe.picture}
                   title={recipe.title}
+                  id={recipe.id}
                 />
               );
             })
@@ -53,6 +54,7 @@ function ActivityPage() {
                   key={recipe.id}
                   picture={recipe.picture}
                   title={recipe.title}
+                  id={recipe.id}
                 />
               );
             })

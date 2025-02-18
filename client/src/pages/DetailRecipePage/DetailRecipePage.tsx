@@ -60,7 +60,7 @@ function DetailRecipePage() {
           </p>
         </section>
         <img
-          src={recipeDetail.picture}
+          src={`${import.meta.env.VITE_API_URL}${recipeDetail.picture}`}
           alt={`Representation of ${recipeDetail.title} recipe`}
           className="img-detail-recipe"
         />

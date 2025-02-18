@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element: <UserConnexion />,
       },
       {
-        path: "/my-activity",
+        path: "/activity",
         element: (
           <ProtectedRoute>
             <ActivityPage />

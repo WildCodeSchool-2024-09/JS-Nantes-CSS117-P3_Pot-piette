@@ -1,15 +1,8 @@
 import { type ReactNode, createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import type { AuthProviderI } from "../../src/types/context";
 
 // AuthContext
-interface AuthProviderI {
-  isLogged: boolean;
-  isAdmin: boolean;
-  login: (token: string) => void;
-  logout: () => void;
-  setIsAdmin: (value: boolean) => void;
-  setIsLogged: (value: boolean) => void;
-}
 
 export const AuthContext = createContext<AuthProviderI>({
   isLogged: false,
