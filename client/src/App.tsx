@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import { AuthContext } from "./contexts/AuthContext";
-import ConnectedProvider from "./contexts/ConnectedProvider";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const { setIsAdmin } = useContext(AuthContext);
@@ -36,12 +36,12 @@ function App() {
   }, [setIsAdmin]);
 
   return (
-    <ConnectedProvider>
+    <AuthProvider>
       <Header />
       <Outlet />
       <Footer />
       <ToastContainer />
-    </ConnectedProvider>
+    </AuthProvider>
   );
 }
 
