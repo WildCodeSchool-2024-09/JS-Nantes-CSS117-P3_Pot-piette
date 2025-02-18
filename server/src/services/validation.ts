@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
 import { body, validationResult } from "express-validator";
 
-export const registerValidator = [
+const registerValidator = [
   body("email", "The email field cannot be Empty").not().isEmpty(),
   body("email", "Invalid email").isEmail(),
   body(
@@ -20,4 +20,4 @@ const validator: RequestHandler = (req, res, next) => {
   }
 };
 
-export default { registerValidator, validator };
+export { registerValidator, validator };
