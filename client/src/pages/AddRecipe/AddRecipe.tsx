@@ -104,31 +104,42 @@ function AddRecipe() {
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    const recipeData = {
-      file: data.file,
-      title: data.title,
-      nb_parts: data.nb_parts,
-      preparation_time: Number(prepHours) * 60 + Number(prepMinutes),
-      time_to_cook: Number(cookHours) * 60 + Number(cookMinutes),
-      recipe_steps: steps,
-      ingredients_list: ingredientList,
-      user_id: 1,
-      recipe_tag_list: [{ tag_id: tag }],
-    };
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/create`, {
+    const imageFormData = new FormData();
+    imageFormData.append("file", data.file);
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/image`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(recipeData),
+      body: imageFormData,
     })
-      .then((res) => console.warn(res.ok))
-      .catch((err) => console.error(err));
-    toast.success("bien joué chacal");
-    setTimeout(() => {
-      navigate("/");
-    }, 3000);
+      .then((res) => res.json())
+      .then((response) => {
+        const recipeData = {
+          picture: `/assets/uploads/recipes/${response.filename}`,
+          title: data.title,
+          nb_parts: data.nb_parts,
+          preparation_time: Number(prepHours) * 60 + Number(prepMinutes),
+          time_to_cook: Number(cookHours) * 60 + Number(cookMinutes),
+          recipe_steps: steps,
+          ingredients_list: ingredientList,
+          user_id: 1,
+          recipe_tag_list: [{ tag_id: tag }],
+        };
+
+        fetch(`${import.meta.env.VITE_API_URL}/api/recipe/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(recipeData),
+        })
+          .then((res) => console.warn(res.ok))
+          .catch((err) => console.error(err));
+        toast.success("Votre recette à été ajoutée avec succès");
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      });
   };
 
   return (

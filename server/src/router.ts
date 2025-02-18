@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type RequestHandler } from "express";
 
 const router = express.Router();
 
@@ -15,8 +15,15 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
+import { upload } from "./services/recipeUploads";
 
+router.post(
+  "/api/recipe/image",
+  upload.single("file"),
+  recipeActions.imageUpload,
+);
 router.post("/api/recipe/create", recipeActions.add);
+
 router.post("/api/recipe/title", recipeActions.addTitle);
 router.get("/api/recipes/search", recipeActions.search);
 router.get("/api/recipes", recipeActions.browse);
