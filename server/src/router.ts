@@ -56,6 +56,7 @@ router.delete("/api/users/:id", userActions.deleteUser);
 
 /* ************************************************************************* */
 
+import adminActions from "./modules/admin/adminActions";
 import authActions from "./modules/authActions";
 router.post("/api/login", authActions.login);
 router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
@@ -66,8 +67,14 @@ router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
  ║                                                    ║
  ║       Authentication is needed below here          ║
  ╚════════════════════════════════════════════════════╝
-*/
+ */
+router.get("/api/admin/recipes-count", adminActions.countRecipes);
 
 router.use("/api", authActions.verifyToken);
+
+router.use("/api/admin", authActions.verifyToken, authActions.isAdmin);
+
+router.get("/api/admin/recipes-pending", adminActions.browseRecipes);
+router.get("/api/admin/recipes-pending-count", adminActions.countPending);
 
 export default router;

@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 import type { RequestHandler } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import userRepository from "./user/userRepository";
 
 const login: RequestHandler = async (req, res) => {
@@ -23,7 +23,7 @@ const login: RequestHandler = async (req, res) => {
     const payload = {
       id: user.id,
       email: user.email,
-      user: user.is_admin,
+      sub: user.is_admin,
     };
 
     const secretKey = process.env.APP_SECRET;
@@ -89,9 +89,18 @@ const verifyToken: RequestHandler = async (req, res, next) => {
       throw new Error("APP_SECRET is not defined");
     }
 
-    jwt.verify(token, secretKey);
+    const isTokenValid = jwt.verify(token, secretKey);
 
-    next();
+    if (isTokenValid) {
+      const decodedToken = jwt.decode(token);
+
+      if (decodedToken) {
+        const { sub } = decodedToken;
+        res.locals = { isAdmin: sub };
+
+        next();
+      }
+    }
   } catch (err) {
     res.status(401).send(err);
   }
@@ -101,4 +110,16 @@ const isLogged: RequestHandler = (req, res) => {
   res.status(200).send(true);
 };
 
-export default { login, hashPassword, verifyToken, isLogged };
+const isAdmin: RequestHandler = (req, res, next) => {
+  try {
+    if (res.locals.isAdmin) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { login, hashPassword, verifyToken, isLogged, isAdmin };
