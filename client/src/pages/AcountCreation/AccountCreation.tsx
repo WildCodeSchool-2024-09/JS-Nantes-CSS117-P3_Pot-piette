@@ -32,6 +32,9 @@ function AccountCreation() {
       );
 
       if (response.status === 204) {
+        toast.success(
+          "Bravo vous avez bien créer un compte. Vous pouvez maintenant vous connecter.",
+        );
         navigate("/login");
       } else if (response.status === 500) {
         toast.warning(
