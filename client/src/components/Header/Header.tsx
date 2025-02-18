@@ -3,13 +3,13 @@ import "./Header.css";
 import { useContext, useState } from "react";
 import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
 import { toast } from "react-toastify";
-import { UserContext } from "../../contexts/userContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
   const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { isLogged, logout } = useContext(AuthContext) || {};
   const toggleMenu = () => setIsOpen(!isOpen);
-  const { isAuthenticated, logout } = useContext(UserContext) || {};
 
   window.onscroll = () => {
     handleScroll();
@@ -24,7 +24,7 @@ function Header() {
   }
 
   const handleLogout = () => {
-    if (logout) {
+    if (isLogged) {
       logout();
       toast.info("Vous avez été déconnecté");
       setIsOpen(false);
@@ -32,79 +32,64 @@ function Header() {
   };
 
   return (
-    <header className="header-nav">
-      <button
-        type="button"
-        className={`burger ${isOpen ? "open" : ""}`}
-        onClick={toggleMenu}
-      >
-        <div> </div>
-        <div> </div>
-        <div> </div>
-      </button>
-
-      <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
-        {!isAuthenticated ? (
-          <>
-            {" "}
-            <Link to="/account" onClick={toggleMenu}>
-              S'inscrire
-            </Link>
-            <Link to="/login" onClick={toggleMenu}>
-              Se connecter
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to="/user-info" onClick={toggleMenu}>
-              Mon profil
-            </Link>
-            <Link to="/my-activity" onClick={toggleMenu}>
-              Mes activités
-            </Link>
-            <Link to="/favorites" onClick={toggleMenu}>
-              Mes favoris
-            </Link>
-
-            <button type="button" onClick={handleLogout} className="logout-btn">
-              Se déconnecter
-            </button>
-          </>
-        )}
-      </nav>
-
-      <Link to="/">
-        <img
-          src="./logoWhite.png"
-          alt="Logo potpiette of the web site"
-          className={logo === true ? "logo-active" : "logo"}
-        />
-      </Link>
-
-      <ul>
-        <li>
-          <Link to="/search">
-            <IoSearch />
-          </Link>
-        </li>
-        <li>
-          {isAuthenticated ? (
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="icon-btn"
-              aria-label="Se déconnecter"
-            >
-              <IoLogOut />
-            </button>
+    <>
+      <header className="header-nav">
+        <button
+          type="button"
+          className={`burger ${isOpen ? "open " : ""}`}
+          onClick={toggleMenu}
+        >
+          <div> </div>
+          <div> </div>
+          <div> </div>
+        </button>
+        <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
+          {isLogged ? (
+            <>
+              <Link to="/user-info" onClick={toggleMenu}>
+                Mon profil
+              </Link>
+              <Link to="/activity" onClick={toggleMenu}>
+                Mes activités
+              </Link>
+            </>
           ) : (
-            <Link to="/connexion">
-              <IoPerson />
-            </Link>
+            <>
+              {" "}
+              <Link to="/account" onClick={toggleMenu}>
+                S'inscrire
+              </Link>{" "}
+              <Link to="/login" onClick={toggleMenu}>
+                Se connecter
+              </Link>{" "}
+            </>
           )}
-        </li>
-      </ul>
-    </header>
+        </nav>
+        <Link to="/">
+          <img
+            src="./logoWhite.png"
+            alt="Logo"
+            className={logo === true ? "logo-active" : "logo"}
+          />
+        </Link>
+        <ul>
+          <li>
+            <IoSearch />
+          </li>
+          <li>
+            {isLogged ? (
+              <button type="button" onClick={handleLogout}>
+                <IoLogOut />
+              </button>
+            ) : (
+              <Link to="/connexion">
+                <IoPerson />
+              </Link>
+            )}
+          </li>
+        </ul>
+      </header>
+    </>
   );
 }
 

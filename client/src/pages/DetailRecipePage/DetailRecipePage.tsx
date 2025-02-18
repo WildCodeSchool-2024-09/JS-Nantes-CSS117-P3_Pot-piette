@@ -11,20 +11,20 @@ import {
   IoMdShare,
 } from "react-icons/io";
 import { useLoaderData } from "react-router-dom";
-import { UserContext } from "../../contexts/userContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import useStorage from "../../hooks/useStorage";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 
 function DetailRecipePage() {
   const data = useLoaderData() as RecipeDetailI[];
   const recipeDetail = data[0];
-  const userContext = useContext(UserContext);
+  const userContext = useContext(AuthContext);
   const [isClicked, setIsClicked] = useState(false);
   const { getStorage, handleStorage } = useStorage();
 
   let isAuthenticated = false;
   if (userContext) {
-    isAuthenticated = userContext.isAuthenticated;
+    isAuthenticated = userContext.isLogged;
   }
 
   useEffect(() => {
