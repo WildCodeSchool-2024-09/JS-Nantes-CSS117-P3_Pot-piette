@@ -4,18 +4,25 @@ import { toast } from "react-toastify";
 // AuthContext
 interface AuthProviderI {
   isLogged: boolean;
+  isAdmin: boolean;
   login: (token: string) => void;
   logout: () => void;
+  setIsAdmin: (value: boolean) => void;
+  setIsLogged: (value: boolean) => void;
 }
 
 export const AuthContext = createContext<AuthProviderI>({
   isLogged: false,
+  isAdmin: false,
   login: () => {},
   logout: () => {},
+  setIsAdmin: () => {},
+  setIsLogged: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLogged, setIsLogged] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     checkLogin();
@@ -62,7 +69,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLogged, login, logout }}>
+    <AuthContext.Provider
+      value={{ isLogged, login, logout, setIsAdmin, isAdmin, setIsLogged }}
+    >
       {children}
     </AuthContext.Provider>
   );

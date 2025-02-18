@@ -8,8 +8,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 function Header() {
   const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
   const { isLogged, logout } = useContext(AuthContext) || {};
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   window.onscroll = () => {
     handleScroll();
@@ -24,7 +24,7 @@ function Header() {
   }
 
   const handleLogout = () => {
-    if (logout) {
+    if (isLogged) {
       logout();
       toast.info("Vous avez été déconnecté");
     }
