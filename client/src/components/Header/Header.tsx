@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
 import { toast } from "react-toastify";
-import { UserContext } from "../../contexts/userContext";
 
 function Header() {
   const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-  const { isAuthenticated, logout } = useContext(UserContext) || {};
 
   window.onscroll = () => {
     handleScroll();
@@ -24,8 +22,8 @@ function Header() {
   }
 
   const handleLogout = () => {
-    if (logout) {
-      logout();
+    if (isOpen) {
+      // logout();
       toast.info("Vous avez été déconnecté");
     }
   };
@@ -43,26 +41,26 @@ function Header() {
           <div> </div>
         </button>
         <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
-          {isAuthenticated ? (
-            <>
-              <Link to="/user-info" onClick={toggleMenu}>
-                Mon profil
-              </Link>
-              <Link to="/my-activity" onClick={toggleMenu}>
-                Mes activités
-              </Link>
-            </>
-          ) : (
-            <>
-              {" "}
-              <Link to="/account" onClick={toggleMenu}>
-                S'inscrire
-              </Link>{" "}
-              <Link to="/login" onClick={toggleMenu}>
-                Se connecter
-              </Link>{" "}
-            </>
-          )}
+          {/* {isAuthenticated ? ( */}
+          <>
+            <Link to="/user-info" onClick={toggleMenu}>
+              Mon profil
+            </Link>
+            <Link to="/my-activity" onClick={toggleMenu}>
+              Mes activités
+            </Link>
+          </>
+          {/* ) : ( */}
+          <>
+            {" "}
+            <Link to="/account" onClick={toggleMenu}>
+              S'inscrire
+            </Link>{" "}
+            <Link to="/login" onClick={toggleMenu}>
+              Se connecter
+            </Link>{" "}
+          </>
+          {/* )} */}
         </nav>
         <Link to="/">
           <img
@@ -76,15 +74,15 @@ function Header() {
             <IoSearch />
           </li>
           <li>
-            {isAuthenticated ? (
-              <button type="button" onClick={handleLogout}>
-                <IoLogOut />
-              </button>
-            ) : (
-              <Link to="/connexion">
-                <IoPerson />
-              </Link>
-            )}
+            {/* {isAuthenticated ? ( */}
+            <button type="button" onClick={handleLogout}>
+              <IoLogOut />
+            </button>
+            {/* ) : ( */}
+            <Link to="/connexion">
+              <IoPerson />
+            </Link>
+            {/* )} */}
           </li>
         </ul>
       </header>

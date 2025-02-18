@@ -1,12 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./UserConnexion.css";
-import { useContext } from "react";
+
 import { toast } from "react-toastify";
-import { UserContext } from "../../contexts/userContext";
 
 function UserConnexion() {
   const navigate = useNavigate();
-  const { login } = useContext(UserContext) || {};
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -25,8 +24,8 @@ function UserConnexion() {
         },
       );
       const res = await response.json();
-      if (res.token && login) {
-        login(res.token);
+      if (res.token) {
+        res.token;
         toast.success("Bienvenue");
         navigate("/");
       }
