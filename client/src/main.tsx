@@ -12,6 +12,7 @@ import ProtectedRoute from "./contexts/ProtectedRoute";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Homepage from "./pages/Homepage/Homepage";
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             <AddRecipe />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/admin",
+        element: <AdminDashboard />,
       },
 
       {
