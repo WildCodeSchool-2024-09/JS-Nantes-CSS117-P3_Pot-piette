@@ -135,4 +135,29 @@ const deleteRecipe: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, latest, addTitle, search, deleteRecipe };
+const update: RequestHandler = async (req, res, next) => {
+  const id = Number(req.params.id);
+  const recipe = req.body;
+  recipe.id = id;
+  try {
+    const updateRecipe = await recipeRepository.update(recipe);
+    if (updateRecipe) {
+      res.sendStatus(201);
+    } else {
+      res.sendStatus(400);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  read,
+  add,
+  latest,
+  addTitle,
+  search,
+  deleteRecipe,
+  update,
+};

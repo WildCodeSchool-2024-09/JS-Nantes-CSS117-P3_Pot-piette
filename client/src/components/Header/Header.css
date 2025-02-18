@@ -8,7 +8,6 @@
   padding: 1em;
   height: 4em;
   width: 100%;
-  margin: 0 0 2em 0;
   & a {
     background-color: transparent;
   }
@@ -237,4 +236,18 @@
 
 .open > div:nth-child(3) {
   transform: translateY(-4px) rotate(-45deg);
+}
+
+@media (min-width: 932px) {
+  .aside-menu {
+    transition: 1s;
+    width: 1em;
+  }
+
+  .aside-menu.visible {
+    width: 100%;
+  }
+  .invisible {
+    transition: 1s;
+  }
 }

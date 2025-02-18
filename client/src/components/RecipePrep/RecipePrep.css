@@ -1,11 +1,14 @@
 .dialog-step {
-  width: 20em;
+  width: 30em;
   height: 11em;
+  display: flex;
+  justify-content: center;
 }
 
 #etape {
   height: 10em;
   width: 100%;
+  resize: none;
 }
 
 #dial-box-step h2 {
