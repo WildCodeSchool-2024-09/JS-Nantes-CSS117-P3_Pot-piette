@@ -15,7 +15,6 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
-// import { recipeUpload, upload } from "./recipeUploads";
 
 router.post("/api/recipe/create", recipeActions.add);
 router.post("/api/recipe/title", recipeActions.addTitle);
@@ -43,6 +42,8 @@ import userActions from "./modules/user/userActions";
 import validation from "./services/validation";
 
 router.get("/api/users", userActions.browse);
+router.get("/api/user/published/:id", userActions.readByStatus);
+router.get("/api/user/pending/:id", userActions.readByStatusPending);
 router.post(
   "/api/users",
   validation.registerValidator,
