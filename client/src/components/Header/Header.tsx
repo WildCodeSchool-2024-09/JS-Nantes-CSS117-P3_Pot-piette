@@ -48,7 +48,7 @@ function Header() {
               <Link to="/user-info" onClick={toggleMenu}>
                 Mon profil
               </Link>
-              <Link to="/my-activity" onClick={toggleMenu}>
+              <Link to="/activity" onClick={toggleMenu}>
                 Mes activités
               </Link>
             </>
