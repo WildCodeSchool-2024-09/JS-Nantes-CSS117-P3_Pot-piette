@@ -3,13 +3,13 @@ import "./Header.css";
 import { useContext, useState } from "react";
 import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
 import { toast } from "react-toastify";
-import { UserContext } from "../../contexts/userContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
   const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { isLogged, logout } = useContext(AuthContext) || {};
   const toggleMenu = () => setIsOpen(!isOpen);
-  const { isAuthenticated, logout } = useContext(UserContext) || {};
 
   window.onscroll = () => {
     handleScroll();
@@ -24,9 +24,10 @@ function Header() {
   }
 
   const handleLogout = () => {
-    if (logout) {
+    if (isLogged) {
       logout();
       toast.info("Vous avez été déconnecté");
+      setIsOpen(false);
     }
   };
 
@@ -43,12 +44,12 @@ function Header() {
           <div> </div>
         </button>
         <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
-          {isAuthenticated ? (
+          {isLogged ? (
             <>
               <Link to="/user-info" onClick={toggleMenu}>
                 Mon profil
               </Link>
-              <Link to="/my-activity" onClick={toggleMenu}>
+              <Link to="/activity" onClick={toggleMenu}>
                 Mes activités
               </Link>
             </>
@@ -67,7 +68,7 @@ function Header() {
         <Link to="/">
           <img
             src="./logoWhite.png"
-            alt="Logo"
+            alt="Logo du site potpiette affichant une toque"
             className={logo === true ? "logo-active" : "logo"}
           />
         </Link>
@@ -76,7 +77,7 @@ function Header() {
             <IoSearch />
           </li>
           <li>
-            {isAuthenticated ? (
+            {isLogged ? (
               <button type="button" onClick={handleLogout}>
                 <IoLogOut />
               </button>

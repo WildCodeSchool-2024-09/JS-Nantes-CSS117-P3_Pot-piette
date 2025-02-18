@@ -8,14 +8,14 @@ import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import RecipeOfTheDay from "../../components/RecipeOfTheDAy/RecipeOfTheDay";
-import type { RecipeByTag, RecipeI } from "../../types/detail-recipe";
+import type { RecipeI } from "../../types/detail-recipe";
 
 function Homepage() {
   const [randomRecipe, setRandomRecipe] = useState<RecipeProps | null>(null);
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
   const [recipes, setRecipes] = useState<RecipeI[]>([]);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
-  const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeByTag[]>(
+  const [filteredRecipes, setFilteredRecipes] = useState<null | RecipeI[]>(
     null,
   );
 
@@ -98,7 +98,10 @@ function Homepage() {
         <h2 id="accueil">Nouvelles recettes</h2>
         <figure>
           <Link to={`/recipe/${lastRecipe?.id}`}>
-            <img src={lastRecipe?.picture} alt={lastRecipe?.title} />
+            <img
+              src={`${import.meta.env.VITE_API_URL}${lastRecipe?.picture}`}
+              alt={lastRecipe?.title}
+            />
           </Link>
           <figcaption>{lastRecipe?.title}</figcaption>
         </figure>
@@ -123,12 +126,15 @@ function Homepage() {
       <section className="search-container">
         {recipes.map((recipe) => {
           return (
-            <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
-              <div key={recipe.id} className="search-result">
-                <img src={recipe.picture} alt={recipe.title} />
+            <div key={recipe.id} className="search-result">
+              <Link to={`/recipe/${recipe.id}`}>
+                <img
+                  src={`${import.meta.env.VITE_API_URL}${recipe?.picture}`}
+                  alt={recipe.title}
+                />
                 <figcaption>{recipe.title}</figcaption>
-              </div>
-            </Link>
+              </Link>
+            </div>
           );
         })}
       </section>

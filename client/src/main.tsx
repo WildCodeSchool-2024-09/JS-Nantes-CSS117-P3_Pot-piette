@@ -7,13 +7,16 @@ import "./global.css";
 
 // Import the main app component
 import App from "./App";
-import ConnectedProvider from "./contexts/ConnectedProvider";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./contexts/ProtectedRoute";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
+import Favorites from "./pages/Favorites/Favorites";
 import Homepage from "./pages/Homepage/Homepage";
+import NotFound from "./pages/NotFound/NotFound";
 import UserConnexion from "./pages/UserConnexion/UserConnexion";
 import UserInfo from "./pages/UserDashboard/UserDashboard";
 
@@ -57,18 +60,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/activity",
-        element: <ActivityPage />,
+        element: (
+          <ProtectedRoute>
+            <ActivityPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/add-recipe",
-        element: <AddRecipe />,
+        element: (
+          <ProtectedRoute>
+            <AddRecipe />
+          </ProtectedRoute>
+        ),
       },
 
       {
         path: "/user-info",
-        element: <UserInfo />,
+        element: (
+          <ProtectedRoute>
+            <UserInfo />
+          </ProtectedRoute>
+        ),
       },
+      { path: "/favorites", element: <Favorites /> },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
@@ -83,9 +103,11 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <ConnectedProvider>
+    {/* <ConnectedProvider> */}
+    <AuthProvider>
       <RouterProvider router={router} />
-    </ConnectedProvider>
+    </AuthProvider>
+    {/* </ConnectedProvider> */}
   </StrictMode>,
 );
 

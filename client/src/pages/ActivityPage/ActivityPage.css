@@ -1,35 +1,75 @@
-.activity h1 {
+.activities > h1 {
+  text-align: center;
+  color: var(--main-color);
+  font-size: 2em;
+}
+
+.activity h2 {
+  color: var(--secondary-color);
+}
+
+.activity-add-recipe {
+  text-align: center;
+
+  & button {
+    width: 50px;
+    height: 50px;
+    background-color: var(--main-color);
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.activity-published-recipe {
   text-align: center;
 }
 
-.activity-published-recipe,
-.activity-pending-recipe,
-.activity-add-recipe {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 2em 0;
+.activity-add-button {
+  color: var(--background-color);
+  border-radius: 8px;
 }
 
-.activity-container {
+.activities > article:nth-of-type(2) {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 1em;
+  justify-content: center;
+  gap: 8px;
+
+  & h2,
+  p {
+    flex-basis: 100vw;
+    text-align: center;
+  }
 }
 
-.activity-add-recipe button {
-  align-self: center;
-  width: 5em;
-  height: 5em;
-  background-color: var(--main-color);
-  border: none;
-  & a {
-    background-color: transparent;
+@media (min-width: 932px) {
+  .activity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
   }
-  & svg {
-    height: 4em;
-    width: 4em;
-    color: var(--background-color);
-    background-color: transparent;
+  .activity p {
+    text-align: end;
+  }
+  .activity-container {
+    display: flex;
+    justify-content: space-around;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  .activity-container img {
+    height: 15em;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+  }
+  .activity-published-recipe {
+    padding: 2em;
+  }
+  .activity-pending-recipe {
+    padding: 2em;
+  }
+  .activity-add-recipe button {
+    border-radius: 8px;
   }
 }

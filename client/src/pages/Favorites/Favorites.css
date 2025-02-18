@@ -1,0 +1,12 @@
+.favorites-recipe {
+  display: flex;
+  width: 50%;
+}
+.favorites-page ul li {
+  list-style-type: none;
+}
+
+.favorites-page ul li img {
+  width: 75%;
+  gap: 5%;
+}

@@ -20,9 +20,8 @@ function Footer() {
             <p>Créer un compte</p>
           </Link>
         </li>
+        <li>Concocté par la team Pot'Piette</li>
       </ul>
-
-      <p className="copyright-footer">© 2025 Propulsé par la team Pot'Piette</p>
     </footer>
   );
 }

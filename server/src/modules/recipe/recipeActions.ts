@@ -68,13 +68,8 @@ const search: RequestHandler = async (req, res, next) => {
 // Action POST for add a new recipe
 const add: RequestHandler = async (req, res, next) => {
   try {
-    req.body.picture = "/assets/images/omelette.jpg";
-
     const recipeId = await recipeRepository.createRecipe(req.body);
-
-    // For add all the ingredients to this recipe
     const ingredients = req.body.ingredients_list;
-
     for (const element of ingredients) {
       const ingredientsData = {
         recipe_id: recipeId,
@@ -135,6 +130,31 @@ const deleteRecipe: RequestHandler = async (req, res, next) => {
   }
 };
 
+const update: RequestHandler = async (req, res, next) => {
+  const id = Number(req.params.id);
+  const recipe = req.body;
+  recipe.id = id;
+  try {
+    const updateRecipe = await recipeRepository.update(recipe);
+    if (updateRecipe) {
+      res.sendStatus(201);
+    } else {
+      res.sendStatus(400);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const imageUpload: RequestHandler = (req, res) => {
+  if (req?.file) {
+    res.status(200).json({ filename: req.file.filename });
+    return;
+  }
+
+  res.status(400).send("Problème lors de l'insertion de l'image");
+};
+
 export default {
   browse,
   read,
@@ -143,4 +163,6 @@ export default {
   addTitle,
   search,
   deleteRecipe,
+  imageUpload,
+  update,
 };

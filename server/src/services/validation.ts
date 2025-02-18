@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
 import { body, validationResult } from "express-validator";
 
-export const registerValidator = [
+const registerValidator = [
   body("email", "The email field cannot be Empty").not().isEmpty(),
   body("email", "Invalid email").isEmail(),
   body(
@@ -13,8 +13,6 @@ export const registerValidator = [
 const validator: RequestHandler = (req, res, next) => {
   const errors = validationResult(req);
 
-  console.warn(errors);
-
   if (errors.isEmpty()) {
     next();
   } else {
@@ -22,4 +20,4 @@ const validator: RequestHandler = (req, res, next) => {
   }
 };
 
-export default { registerValidator, validator };
+export { registerValidator, validator };
