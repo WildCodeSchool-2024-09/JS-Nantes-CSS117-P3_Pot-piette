@@ -37,17 +37,19 @@ router.delete("/api/ingredients/:id", ingredientsActions.deleteIngredient);
 import tagsActions from "./modules/tags/tagActions";
 
 router.get("/api/tags/:id", tagsActions.read);
+import authActions from "./modules/authActions";
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
-import validation from "./services/validation";
+
+import { registerValidator, validator } from "./services/validation";
 
 router.get("/api/users", userActions.browse);
 router.get("/api/user/published/:id", userActions.readByStatus);
 router.get("/api/user/pending/:id", userActions.readByStatusPending);
 router.post(
   "/api/users",
-  validation.registerValidator,
-  validation.validator,
+  registerValidator,
+  validator,
   authActions.hashPassword,
   userActions.add,
 );
@@ -56,7 +58,6 @@ router.delete("/api/users/:id", userActions.deleteUser);
 
 /* ************************************************************************* */
 
-import authActions from "./modules/authActions";
 router.post("/api/login", authActions.login);
 router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
 
