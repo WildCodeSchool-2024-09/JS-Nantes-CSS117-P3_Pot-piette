@@ -14,7 +14,6 @@
   justify-content: center;
   gap: 2rem;
   width: 100%;
-  position: relative;
 }
 .recipe-link {
   display: inline-block;
@@ -25,9 +24,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  position: relative;
-  transform: translateX(-0px);
-  clip-path: ellipse(50% 50%);
+  border-radius: 50%;
 }
 
 .recipe-title {
@@ -38,11 +35,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
   margin-top: -3rem;
-  margin-left: 8rem;
-  position: relative;
-  background: transparent;
+  margin-left: 12rem;
 }
 
 .clock-container,
@@ -60,17 +55,10 @@
   border-radius: 50%;
 }
 
-.clock-and-chef::after {
-  content: "";
+.divider {
   width: 2px;
   height: 40px;
   background-color: black;
-  display: block;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .clock-container p,
@@ -83,5 +71,17 @@
   .clock-and-chef {
     margin-top: -6rem;
     margin-left: 20rem;
+  }
+
+  .photo-recipe img {
+    width: 140%;
+  }
+
+  .recipe-title {
+    text-align: center;
+    width: 100%;
+    background-color: transparent;
+
+    margin-top: -80px;
   }
 }

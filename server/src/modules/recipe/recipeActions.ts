@@ -135,4 +135,12 @@ const deleteRecipe: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, latest, addTitle, search, deleteRecipe };
+export default {
+  browse,
+  read,
+  add,
+  latest,
+  addTitle,
+  search,
+  deleteRecipe,
+};

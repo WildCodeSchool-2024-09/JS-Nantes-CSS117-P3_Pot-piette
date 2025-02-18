@@ -1,9 +1,8 @@
-import "./RecipeOfTheDay.css";
 import { MdOutlineAccessTime } from "react-icons/md";
-import { PiChefHatThin } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import "./RecipeOfTheDay.css";
 
-function RecipeOfTheDay({ title, picture, time_to_cook, type }: RecipeProps) {
+function RecipeOfTheDay({ title, picture, time_to_cook }: RecipeProps) {
   return (
     <section className="recipe-container">
       <h1>Recette du jour</h1>
@@ -19,13 +18,6 @@ function RecipeOfTheDay({ title, picture, time_to_cook, type }: RecipeProps) {
         <div className="clock-container">
           <MdOutlineAccessTime className="icon" />
           <span>{time_to_cook} min</span>
-          <p>{type}</p>
-        </div>
-
-        <div className="chef-hat-container">
-          <PiChefHatThin className="icon" />
-          <span>Type</span>
-          <p>{type}</p>
         </div>
       </div>
     </section>
