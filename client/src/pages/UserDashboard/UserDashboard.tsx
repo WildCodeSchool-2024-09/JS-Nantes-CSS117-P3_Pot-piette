@@ -3,7 +3,7 @@ import { GoPencil } from "react-icons/go";
 
 function UserInfo() {
   return (
-    <main className="userdash-container">
+    <section className="userdash-container">
       <h1>Informations personnelles</h1>
       <section>
         <p>Pseudonyme</p>
@@ -38,7 +38,7 @@ function UserInfo() {
       <button type="button" className="save-btn">
         Enregistrer
       </button>
-    </main>
+    </section>
   );
 }
 

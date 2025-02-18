@@ -27,6 +27,7 @@ function Header() {
     if (isLogged) {
       logout();
       toast.info("Vous avez été déconnecté");
+      setIsOpen(false);
     }
   };
 
@@ -67,7 +68,7 @@ function Header() {
         <Link to="/">
           <img
             src="./logoWhite.png"
-            alt="Logo"
+            alt="Logo du site potpiette affichant une toque"
             className={logo === true ? "logo-active" : "logo"}
           />
         </Link>
