@@ -1,0 +1,40 @@
+.home-inspirations {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.inspiration-result {
+  text-align: center;
+  width: 50%;
+}
+
+.inspiration-card {
+  flex-direction: column;
+}
+
+.inspiration-card img {
+  height: 9em;
+  width: 9em;
+  border-radius: 8px;
+  transition: transform .2s;
+}
+.inspiration-card > figcaption > figure {
+  text-align: center;
+}
+.inspiration-card > figcaption {
+  color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-weight: bold;
+}
+
+@media (min-width: 932px) {
+  .inspiration-result {
+    background-color: transparent;
+  }
+  .inspiration-card img {
+    width: 20vw;
+    height: 20vh;
+    border-radius: 8px;
+    padding: 1em;
+  }
+}

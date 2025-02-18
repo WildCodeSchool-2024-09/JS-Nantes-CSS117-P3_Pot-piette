@@ -14,5 +14,60 @@ router.get("/api/items/:id", itemActions.read);
 router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
+import recipeActions from "./modules/recipe/recipeActions";
+
+router.post("/api/recipe/create", recipeActions.add);
+router.post("/api/recipe/title", recipeActions.addTitle);
+router.get("/api/recipes/search", recipeActions.search);
+router.get("/api/recipes", recipeActions.browse);
+router.get("/api/recipes/:id", recipeActions.read);
+router.get("/api/recipe/latest", recipeActions.latest);
+router.put("/api/recipe/update/:id", recipeActions.update);
+router.delete("/api/recipe/delete/:id", recipeActions.deleteRecipe);
+
+/* ************************************************************************* */
+import ingredientsActions from "./modules/ingredients/ingredientsActions";
+
+router.get("/api/ingredients", ingredientsActions.browse);
+router.post("/api/ingredients", ingredientsActions.add);
+router.put("/api/ingredients/:id", ingredientsActions.edit);
+router.delete("/api/ingredients/:id", ingredientsActions.deleteIngredient);
+
+/* ************************************************************************* */
+import tagsActions from "./modules/tags/tagActions";
+
+router.get("/api/tags/:id", tagsActions.read);
+/* ************************************************************************* */
+import userActions from "./modules/user/userActions";
+import validation from "./services/validation";
+
+router.get("/api/users", userActions.browse);
+router.get("/api/user/published/:id", userActions.readByStatus);
+router.get("/api/user/pending/:id", userActions.readByStatusPending);
+router.post(
+  "/api/users",
+  validation.registerValidator,
+  validation.validator,
+  authActions.hashPassword,
+  userActions.add,
+);
+router.put("/api/users/:id", userActions.edit);
+router.delete("/api/users/:id", userActions.deleteUser);
+
+/* ************************************************************************* */
+
+import authActions from "./modules/authActions";
+router.post("/api/login", authActions.login);
+router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
+
+/*
+ ╔════════════════════════════════════════════════════╗
+ ║  🔒🔑✨   🚧 AUTHENTICATION WALL 🚧   ✨🔑🔒   ║
+ ║                                                    ║
+ ║       Authentication is needed below here          ║
+ ╚════════════════════════════════════════════════════╝
+*/
+
+router.use("/api", authActions.verifyToken);
 
 export default router;

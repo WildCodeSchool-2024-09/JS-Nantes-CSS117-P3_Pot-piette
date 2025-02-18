@@ -1,0 +1,87 @@
+.recipe-container {
+  text-align: center;
+  margin: 5%;
+}
+
+.recipe-container h1 {
+  margin-bottom: 3rem;
+  color: #ff6347;
+}
+
+.photo-recipe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  position: relative;
+}
+.recipe-link {
+  display: inline-block;
+  width: 70%;
+  max-width: 450px;
+}
+.photo-recipe img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  position: relative;
+  transform: translateX(-0px);
+  clip-path: ellipse(50% 50%);
+}
+
+.recipe-title {
+  margin-top: -40px;
+}
+
+.clock-and-chef {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-top: -3rem;
+  margin-left: 8rem;
+  position: relative;
+  background: transparent;
+}
+
+.clock-container,
+.chef-hat-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.icon {
+  font-size: 2rem;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.clock-and-chef::after {
+  content: "";
+  width: 2px;
+  height: 40px;
+  background-color: black;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.clock-container p,
+.chef-hat-container p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+@media (min-width: 650px) {
+  .clock-and-chef {
+    margin-top: -6rem;
+    margin-left: 20rem;
+  }
+}

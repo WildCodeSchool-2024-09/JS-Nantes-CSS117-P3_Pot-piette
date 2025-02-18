@@ -1,0 +1,278 @@
+.add-recipe {
+  padding: 2em;
+  gap: 1.5em;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.recipe-form h2 {
+  width: 100%;
+  justify-self: flex-start;
+}
+
+.recipe-form input {
+  width: 100%;
+  text-align: center;
+}
+
+.all-recipe-button {
+  background-color: var(--main-color);
+  border: none;
+  width: 8em;
+  color: white;
+  height: 2em;
+  border-radius: 8px;
+  margin: 1em 0;
+}
+.add-recipe input {
+  background-color: white;
+  height: 2.5em;
+}
+
+.tags-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 1.5em 0;
+  gap: 0.5em;
+  border: none;
+}
+
+.category {
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid var(--main-color);
+}
+
+.category p {
+  background-color: white;
+}
+
+.tag-icons {
+  width: 5em;
+  height: 5em;
+  background-color: white;
+  cursor: pointer;
+}
+
+.choosen-tag .tag-icons {
+  color: var(--main-color);
+}
+
+.parts-times-container input {
+  width: 3em;
+  margin: 0 0.5em 0 0.5em;
+}
+
+.file-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 2px solid var(--main-color);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  width: 8em;
+  height: 8em;
+  cursor: pointer;
+}
+
+.file-upload svg {
+  color: black;
+}
+
+.add-button {
+  border-radius: 50%;
+  height: 5em;
+  width: 5em;
+  background-color: white;
+  pointer-events: none;
+}
+
+.ingredient-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.add-ingredient-step {
+  width: 10em;
+  height: 10em;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.file-upload button {
+  background-color: var(--main-color);
+  border: none;
+  width: 8em;
+  color: white;
+  height: 2em;
+  border-radius: 8px;
+}
+
+.ingredient-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0.5em 0;
+}
+
+.dial-box-test {
+  flex-direction: column;
+  gap: 1em;
+}
+
+.dialog-header button {
+  border: none;
+  color: var(--main-color);
+}
+.close-modal-button {
+  color: var(--main-color);
+  background-color: none;
+}
+
+.ingredient-button {
+  border: none;
+}
+
+.quantity-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.quantity-container input {
+  width: 4em;
+}
+.quantity-container input::selection {
+  border: 2px var(--secondary-font);
+}
+.quantity-container select {
+  height: 2.7em;
+  border-radius: 8px;
+  font-family: var(--secondary-font);
+  background-color: white;
+  text-align: center;
+}
+
+.dialog-ingredient {
+  background-color: white;
+}
+
+.displayed {
+  margin: 0.5em 0 0.5em 0;
+}
+.not-displayed {
+  margin: 0.5em 0 0.5em 0;
+}
+
+#dial-box p {
+  background-color: var(--background-color);
+}
+
+@media screen and (min-width: 700px) {
+  .recipe-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-recipe .recipe-title {
+    width: 50%;
+  }
+
+  .recipe-form h2 {
+    font-size: 2em;
+  }
+
+  .recipe-form label {
+    font-size: 1.2em;
+  }
+
+  .recipe-form input:first-child {
+    width: 5em;
+  }
+
+  .tags-container button {
+    height: 16vh;
+    aspect-ratio: 1 / 1;
+    margin: 1em;
+  }
+  .tags-container p {
+    font-size: 1.5em;
+  }
+
+  .tags-container svg {
+    height: 7em;
+    width: 7em;
+  }
+  .parts-times-container {
+    display: inli;
+  }
+  .part {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+  }
+  .custom-file-upload {
+    height: 12em;
+    width: 12em;
+  }
+  .ingredient-container button {
+    height: 16.5em;
+    width: 16.5em;
+  }
+  .ingredient-container svg {
+    height: 9em;
+  }
+  #dial-box {
+    height: 33vh;
+    width: 33vw;
+  }
+  #dial-box input[type="number"] {
+    width: 8px;
+  }
+  .step-container button {
+    height: 16.5em;
+    width: 16.5em;
+  }
+  #dial-box p {
+    background-color: var(--background-color);
+  }
+  .ingredient-form input[type="number"] {
+    width: 0.5em;
+  }
+  .quantity-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+  }
+}

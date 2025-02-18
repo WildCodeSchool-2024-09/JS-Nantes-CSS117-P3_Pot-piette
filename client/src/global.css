@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Quicksand:wght@300..700&display=swap");
+
+* {
+  box-sizing: border-box;
+  background-color: var(--background-color);
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+}
+
+:root {
+  --background-color: #f8f8f8;
+  --main-color: #f06a0b;
+  --secondary-color: #6b7884;
+  --primary-font: "Lato";
+  --secondary-font: "Quicksand";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  font-family: var(--secondary-font);
+}
+
+h1,
+h3,
+label {
+  color: var(--secondary-color);
+}
+
+h2 {
+  color: var(--main-color);
+}
+
+main {
+  width: 85%;
+  margin: auto;
+  padding: 10em 0 0 0;
+}
+
+p,
+figcaption {
+  font-family: var(--primary-font);
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+a {
+  font-family: var(--primary-font);
+}
+
+input {
+  flex-grow: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #f06a0b;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 700px) {
+  #root {
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)
+      ), url("../src/assets/images/wallpotpiettefond.png");
+    background-position: center;
+  }
+
+  main {
+    width: 70%;
+  }
+}

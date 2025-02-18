@@ -1,0 +1,21 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7em;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  & a {
+    background-color: #f06a0b;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 75vw;
+    font-weight: bold;
+  }
+}
