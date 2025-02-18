@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import type { RecipeI } from "../../types/detail-recipe";
 import "./InspirationCard.css";
 

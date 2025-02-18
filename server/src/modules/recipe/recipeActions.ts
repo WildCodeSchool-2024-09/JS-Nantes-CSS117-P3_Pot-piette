@@ -130,6 +130,22 @@ const deleteRecipe: RequestHandler = async (req, res, next) => {
   }
 };
 
+const update: RequestHandler = async (req, res, next) => {
+  const id = Number(req.params.id);
+  const recipe = req.body;
+  recipe.id = id;
+  try {
+    const updateRecipe = await recipeRepository.update(recipe);
+    if (updateRecipe) {
+      res.sendStatus(201);
+    } else {
+      res.sendStatus(400);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const imageUpload: RequestHandler = (req, res) => {
   if (req?.file) {
     res.status(200).json({ filename: req.file.filename });
@@ -148,4 +164,5 @@ export default {
   search,
   deleteRecipe,
   imageUpload,
+  update,
 };

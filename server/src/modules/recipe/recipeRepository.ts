@@ -148,6 +148,23 @@ class RecipeRepository {
     );
     return rows;
   }
+
+  async update(recipe: RecipeI) {
+    const [result] = await databaseClient.query<Result>(
+      "UPDATE recipe SET title = ?, picture = ?, is_published = ?, time_to_cook = ?, nb_parts = ?, preparation_time = ?, user_id =? WHERE id= ?",
+      [
+        recipe.title,
+        recipe.picture,
+        recipe.is_published,
+        recipe.time_to_cook,
+        recipe.nb_parts,
+        recipe.preparation_time,
+        recipe.user_id,
+        recipe.id,
+      ],
+    );
+    return result.affectedRows;
+  }
 }
 
 export default new RecipeRepository();

@@ -2,6 +2,7 @@ import { type ChangeEvent, useEffect, useState } from "react";
 import InspirationCard from "../../components/InspirationCard/InspirationCard";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 import "./Homepage.css";
+import { IoSearchOutline } from "react-icons/io5";
 import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { LuCakeSlice, LuSalad } from "react-icons/lu";
 import { PiCarrot, PiForkKnife, PiHamburger } from "react-icons/pi";
@@ -19,8 +20,8 @@ function Homepage() {
   );
 
   const tagIds: { [key: number]: string } = {
-    1: "Rapide",
-    2: "Plat",
+    1: "rapide",
+    2: "plat",
     3: "healthy",
     4: "vegetarien",
     5: "dessert",
@@ -95,7 +96,7 @@ function Homepage() {
       )}
 
       <section className="home-carousel">
-        <h2>Nouvelles recettes</h2>
+        <h2 id="accueil">Nouvelles recettes</h2>
         <figure>
           <Link to={`/recipe/${lastRecipe?.id}`}>
             <img
@@ -118,10 +119,7 @@ function Homepage() {
               placeholder="Cherchez votre recette"
             />
             <button type="submit" className="search-button">
-              <img
-                src="https://i.ibb.co/ZJH0xp6/chercher.png"
-                alt="Recherche"
-              />
+              <IoSearchOutline />
             </button>
           </div>
         </form>
@@ -146,8 +144,8 @@ function Homepage() {
       <section className="home-inspirations">
         <button
           type="button"
-          onClick={() => handleInspirationClick(1)}
           className={`inspirations ${tagIds[selectedTag || 0] === "rapide" ? "selected" : ""}`}
+          onClick={() => handleInspirationClick(1)}
         >
           <figure>
             <PiHamburger />
@@ -158,9 +156,7 @@ function Homepage() {
         <button
           type="button"
           className={`inspirations ${tagIds[selectedTag || 0] === "plat" ? "selected" : ""}`}
-          onClick={() => {
-            handleInspirationClick(2);
-          }}
+          onClick={() => handleInspirationClick(2)}
         >
           <figure>
             <PiForkKnife />

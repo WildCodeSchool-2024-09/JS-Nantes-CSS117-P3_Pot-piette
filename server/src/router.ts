@@ -35,6 +35,7 @@ router.get("/api/recipes/search", recipeActions.search);
 router.get("/api/recipes", recipeActions.browse);
 router.get("/api/recipes/:id", recipeActions.read);
 router.get("/api/recipe/latest", recipeActions.latest);
+router.put("/api/recipe/update/:id", recipeActions.update);
 router.delete("/api/recipe/delete/:id", recipeActions.deleteRecipe);
 
 /* ************************************************************************* */
