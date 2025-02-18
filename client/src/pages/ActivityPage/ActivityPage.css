@@ -1,5 +1,11 @@
 .activity h1 {
   text-align: center;
+  color: var(--main-color);
+  font-size: 2em;
+}
+
+.activity h2 {
+  color: var(--secondary-color);
 }
 
 .activity-published-recipe,
@@ -31,5 +37,37 @@
     width: 4em;
     color: var(--background-color);
     background-color: transparent;
+  }
+}
+
+@media (min-width: 932px) {
+  .activity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2em;
+  }
+  .activity p {
+    text-align: end;
+  }
+  .activity-container {
+    display: flex;
+    justify-content: space-around;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  .activity-container img {
+    height: 15em;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+  }
+  .activity-published-recipe {
+    padding: 2em;
+  }
+  .activity-pending-recipe {
+    padding: 2em;
+  }
+  .activity-add-recipe button {
+    border-radius: 8px;
   }
 }
