@@ -20,7 +20,7 @@ function Footer() {
             <p>Créer un compte</p>
           </Link>
         </li>
-        <li>Concocté par la teal Pot'Piette</li>
+        <li>Concocté par la teamm Pot'Piette</li>
       </ul>
     </footer>
   );
