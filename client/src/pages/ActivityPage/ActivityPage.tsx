@@ -11,11 +11,11 @@ function ActivityPage() {
   const id = 1;
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/recipes-published/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/published/${id}`)
       .then((response) => response.json())
       .then((publishedRecipes) => setPublishedRecipes(publishedRecipes));
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/user/recipes-pending/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/pending/${id}`)
       .then((response) => response.json())
       .then((pendingRecipes) => setPendingRecipes(pendingRecipes));
   }, []);

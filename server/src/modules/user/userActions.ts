@@ -34,12 +34,10 @@ const readByStatusPending: RequestHandler = async (req, res, next) => {
     const recipesUnpublished = await userRepository.searchUnpublished(id);
 
     if (recipesUnpublished) {
-      res.sendStatus(204);
+      res.json(recipesUnpublished);
     } else {
       res.sendStatus(500);
     }
-
-    res.json(recipesUnpublished);
   } catch (err) {
     next(err);
   }

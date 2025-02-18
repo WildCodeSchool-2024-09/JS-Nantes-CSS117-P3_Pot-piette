@@ -42,8 +42,8 @@ import validation from "./services/validation";
 import verify from "./services/verify";
 
 router.get("/api/users", userActions.browse);
-router.get("/api/user/recipes-published/:id", userActions.readByStatus);
-router.get("/api/user/recipes-pending/:id", userActions.readByStatusPending);
+router.get("/api/user/published/:id", userActions.readByStatus);
+router.get("/api/user/pending/:id", userActions.readByStatusPending);
 router.post(
   "/api/users",
   validation.registerValidator,

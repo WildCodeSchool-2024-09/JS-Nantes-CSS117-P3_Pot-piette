@@ -26,7 +26,7 @@ class UserRepository {
       [id],
     );
 
-    return rows[0] as RecipeI[];
+    return rows as RecipeI[];
   }
 
   async searchUnpublished(id: number) {
@@ -35,7 +35,7 @@ class UserRepository {
       [id],
     );
 
-    return rows[0] as RecipeI[];
+    return rows as RecipeI[];
   }
 
   async create(user: User) {
