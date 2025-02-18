@@ -39,7 +39,39 @@ COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO recipe (title, picture, nb_parts, is_published, time_to_cook, preparation_time, user_id)
 VALUES
 ('Le hamburger Maison', 'https://media.istockphoto.com/id/1498243668/fr/photo/cheeseburger-savoureux-avec-laitue-fromage-cheddar-tomate-et-cornichons-petit-pain-burger-aux.jpg?s=612x612&w=0&k=20&c=CbU_yIAqD1cIG5P0x6TFjpoHMDEPcllouQQAMf3xdgY=', 1, 0, 10, 45, 1),
-('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10, 2);
+('Le hot dog New Yorkais', 'https://media.istockphoto.com/id/899411524/fr/photo/cc-kraft2-gameday.jpg?s=612x612&w=0&k=20&c=4f7nGlMGTusykjHUn1Fc04ZCin6iv6Oyik8X7Qm34f4=', 1, 0, 5, 10, 2),
+('Fondant au chocolat', '/assets/uploads/recipes/', 6, 1, 15, 10, 1),
+('Bowl au saumon et riz', '/assets/uploads/recipes/', 2, 1, 25, 10, 1),
+('Omelette aux fines herbes', '/assets/uploads/recipes/', 2, 1, 10, 5, 1),
+('Paella', '/assets/uploads/recipes/', 6, 1, 90, 30, 1);
+-- ('Wraps au poulet', '/assets/uploads/recipes/', 4, 1, 15, 10, 1),
+-- ('Pâtes à l’ail et au parmesan', '/assets/uploads/recipes/', 2, 1, 12, 5, 1),
+-- ('Coq au vin', '/assets/uploads/recipes/', 6, 1, 120, 30, 1),
+-- ('Bœuf Stroganoff', '/assets/uploads/recipes/', 4, 1, 40, 20, 1),
+-- ('Cassoulet', '/assets/uploads/recipes/', 8, 1, 180, 40, 1),
+-- ('Tajine de poulet aux olives', '/assets/uploads/recipes/', 6, 1, 75, 20, 1),
+-- ('Salade grecque', '/assets/uploads/recipes/', 4, 1, 10, 10, 1),
+-- ('Salade de quinoa aux légumes', '/assets/uploads/recipes/', 4, 1, 15, 10, 1),
+-- ('Salade de lentilles et feta', '/assets/uploads/recipes/', 4, 1, 20, 10, 1),
+-- ('Salade de pâtes au pesto', '/assets/uploads/recipes/', 4, 1, 15, 10, 1),
+-- ('Salade de betterave et chèvre', '/assets/uploads/recipes/', 4, 1, 10, 10, 1),
+-- ('Poêlée de légumes et tofu', '/assets/uploads/recipes/', 2, 1, 15, 10, 1),
+-- ('Filet de poisson vapeur', '/assets/uploads/recipes/', 2, 1, 20, 5, 1),
+-- ('Soupe detox au chou kale', '/assets/uploads/recipes/', 4, 1, 40, 15, 1),
+-- ('Smoothie banane et avoine', '/assets/uploads/recipes/', 1, 1, 5, 5, 1),
+-- ('Curry de pois chiches', '/assets/uploads/recipes/', 4, 1, 30, 10, 1),
+-- ('Lasagnes aux légumes', '/assets/uploads/recipes/', 6, 1, 60, 30, 1),
+-- ('Risotto aux champignons', '/assets/uploads/recipes/', 4, 1, 40, 20, 1),
+-- ('Burger végétarien', '/assets/uploads/recipes/', 2, 1, 25, 10, 1),
+-- ('Falafels maison', '/assets/uploads/recipes/', 4, 1, 40, 20, 1)
+-- ('Tarte aux fraises', '/assets/uploads/recipes/', 8, 1, 40, 20, 1),
+-- ('Mojito', '/assets/uploads/recipes/', 1, 1, 5, 5, 1),
+-- ('Pina Colada', '/assets/uploads/recipes/', 1, 1, 5, 5, 1),
+-- ('Margarita', '/assets/uploads/recipes/', 1, 1, 5, 5, 1),
+-- ('Spritz', '/assets/uploads/recipes/', 1, 1, 5, 5, 1),
+-- ('Virgin Mojito', '/assets/uploads/recipes/', 1, 1, 5, 5, 1)
+
+
 
 -- -----------------------------------------------------
 -- Table `potpiette`.`user`
@@ -237,7 +269,28 @@ VALUES
 (2, 7, 3, 'tranches'),
 (2, 8, 1, 'cuillère'),
 (2, 5, 1, 'émincé'),
-(2, 6, 1, 'feuille');
+(2, 6, 1, 'feuille'),
+(3, 26, 200, 'grammes'),  
+(3, 17, 100, 'grammes'),  
+(3, 14, 100, 'grammes'),
+(3, 10, 4, 'pièces'),     
+(3, 16, 50, 'grammes'),
+(4, 28, 150, 'grammes'), 
+(4, 40, 200, 'grammes'),  
+(4, 31, 1, 'pièce'),      
+(4, 32, 1, 'pièce'),      
+(4, 30, 100, 'grammes'),  
+(4, 19, 1, 'pincée'),     
+(4, 18, 1, 'pincée'),      
+(4, 20, 2, 'cuillères à soupe'),
+(5, 10, 4, 'pièces'),     
+(5, 44, 1, 'pièce'),      
+(5, 45, 1, 'cuillère à soupe')
+(5, 46, 1, 'cuillère à soupe')
+(5, 34, 1, 'cuillère à soupe')
+(5, 35, 1, 'cuillère à soupe')
+(5, 18, 1, 'pincée'),
+(5, 19, 1, 'pincée'); 
 
 
 -- -----------------------------------------------------
@@ -290,7 +343,10 @@ COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO recipe_tag (recipe_id, tag_id)
 VALUES
 (1, 2),
-(2, 2);
+(2, 2),
+(3, 5),
+(4, 3),
+(5, 1);
 
 
 
@@ -328,7 +384,30 @@ VALUES
 (3, "Lavez soigneusement et coupez la tomate en tranche et réservez.", 2),
 (4, "Détachez et lavez votre ou vos feuilles de salades et réservez.", 2),
 (5, "Faites cuire à votre convenance votre steak haché. Vous pouvez mettre un peu de beurre si vous le souhaitez sinon le gras de votre steak fera l'affaire.", 2),
-(6, "Assemblez votre hotdog! Dégustez!", 2);
+(6, "Assemblez votre hotdog! Dégustez!", 2),
+(1, "Préchauffez votre four à 200°C (390°F).", 3),
+(2, "Faites fondre le chocolat et le beurre ensemble au bain-marie ou au micro-ondes.", 3),
+(3, "Dans un bol, mélangez les œufs et le sucre jusqu'à ce que le mélange blanchisse.", 3),
+(4, "Ajoutez le mélange chocolat-beurre fondu au mélange œufs-sucre et mélangez bien.", 3),
+(5, "Incorporez la farine en mélangeant délicatement jusqu'à obtenir une pâte homogène.", 3),
+(6, "Versez la pâte dans des moules individuels préalablement beurrés et farinés.", 3),
+(7, "Enfournez pendant environ 8 à 10 minutes. Le centre doit rester légèrement coulant.", 3),
+(8, "Laissez refroidir quelques minutes avant de démouler et servez chaud.", 3),
+(1, "Faites cuire le riz selon les instructions sur l'emballage.", 4),
+(2, "Coupez le saumon en morceaux et assaisonnez avec du sel et du poivre.", 4),
+(3, "Faites chauffer l'huile d'olive dans une poêle et faites cuire le saumon jusqu'à ce qu'il soit bien doré et cuit à cœur.", 4),
+(4, "Coupez la courgette, le poivron et les champignons en dés.", 4),
+(5, "Faites sauter les légumes dans une poêle séparée avec un peu d'huile d'olive jusqu'à ce qu'ils soient tendres.", 4),
+(6, "Dans un bol, disposez le riz cuit, ajoutez les morceaux de saumon cuit et les légumes sautés.", 4),
+(7, "Dégustez votre bowl riz et saumon chaud.", 4),
+(1, "Cassez les œufs dans un bol et battez-les avec une fourchette.", 5),
+(2, "Ajoutez le sel, le poivre, et les herbes (basilic, menthe, persil, thym) finement ciselées.", 5),
+(3, "Ajoutez un peu de zeste de citron pour une touche de fraîcheur.", 5),
+(4, "Faites chauffer une poêle antiadhésive à feu moyen avec un peu de beurre ou d'huile.", 5),
+(5, "Versez le mélange d'œufs dans la poêle et laissez cuire sans remuer jusqu'à ce que les bords commencent à prendre.", 5),
+(6, "À l'aide d'une spatule, ramenez les bords vers le centre et laissez le reste de l'omelette cuire.", 5),
+(7, "Une fois cuite à votre goût, pliez l'omelette en deux et faites glisser sur une assiette.", 5),
+(8, "Servez chaud avec une salade ou des toasts.", 5);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
