@@ -1,8 +1,25 @@
 import { IoIosAdd } from "react-icons/io";
 import "./ActivityPage.css";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import InspirationCard from "../../components/InspirationCard/InspirationCard";
+import type { RecipeI } from "../../types/detail-recipe";
 
 function ActivityPage() {
+  const [publishedRecipes, setPublishedRecipes] = useState<RecipeI[]>([]);
+  const [pendingRecipes, setPendingRecipes] = useState<RecipeI[]>([]);
+  const id = 1;
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/published/${id}`)
+      .then((response) => response.json())
+      .then((publishedRecipes) => setPublishedRecipes(publishedRecipes));
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/user/pending/${id}`)
+      .then((response) => response.json())
+      .then((pendingRecipes) => setPendingRecipes(pendingRecipes));
+  }, []);
+
   return (
     <main>
       <section className="activity">
@@ -11,10 +28,20 @@ function ActivityPage() {
         <article className="activity-published-recipe">
           <h2>Mes recettes publiées</h2>
           <section className="activity-container">
-            <img
-              src="src/assets/tests/Hachis Parmentier.jpg"
-              alt="Hachis Parmentier"
-            />
+            {publishedRecipes.length > 0 ? (
+              publishedRecipes?.map((recipe) => {
+                return (
+                  <InspirationCard
+                    key={recipe.id}
+                    picture={recipe.picture}
+                    title={recipe.title}
+                    id={recipe.id}
+                  />
+                );
+              })
+            ) : (
+              <p>Vous n'avez publié aucun recette pour le moment</p>
+            )}
           </section>
 
           <p>Voir plus</p>
@@ -23,9 +50,23 @@ function ActivityPage() {
         <article className="activity-pending-recipe">
           <h2>Mes recettes en attente</h2>
           <section className="activity-container">
-            <img src="src\assets\tests\Anchois.png" alt="Anchois" />
-
-            <img src="src\assets\tests\Jambon.png" alt="Jambon" />
+            {pendingRecipes.length > 0 ? (
+              pendingRecipes?.map((recipe) => {
+                return (
+                  <InspirationCard
+                    key={recipe.id}
+                    picture={recipe.picture}
+                    title={recipe.title}
+                    id={recipe.id}
+                  />
+                );
+              })
+            ) : (
+              <p>
+                Vous n'avez aucune recette en attente de publication pour le
+                moment
+              </p>
+            )}
           </section>
 
           <p>Voir plus</p>

@@ -1,5 +1,6 @@
 import type { Result, Rows } from "../../../database/client";
 import databaseClient from "../../../database/client";
+import type { RecipeI } from "../../types/recipe/recipe";
 import type { User, UserUpdateI } from "./user";
 
 class UserRepository {
@@ -17,6 +18,24 @@ class UserRepository {
     );
 
     return rows as User[];
+  }
+
+  async searchPublished(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT title, picture FROM recipe WHERE user_id = ? AND is_published = 1",
+      [id],
+    );
+
+    return rows as RecipeI[];
+  }
+
+  async searchUnpublished(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT title, picture FROM recipe WHERE user_id = ? AND is_published = 0",
+      [id],
+    );
+
+    return rows as RecipeI[];
   }
 
   async create(user: User) {

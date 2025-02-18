@@ -1,12 +1,15 @@
-export interface RecipeI {
+export interface RecipeI extends RecipeDetailsI {
   id?: number;
   title: string;
   picture: string;
-  is_published?: number;
+  is_published: number;
+  user_id: number;
+}
+
+export interface RecipeDetailsI {
   time_to_cook: number;
   nb_parts: number;
   preparation_time: number;
-  user_id: number;
 }
 
 export interface IngredientsRecipeI {

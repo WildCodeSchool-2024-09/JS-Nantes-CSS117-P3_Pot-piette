@@ -13,8 +13,6 @@ export const registerValidator = [
 const validator: RequestHandler = (req, res, next) => {
   const errors = validationResult(req);
 
-  console.warn(errors);
-
   if (errors.isEmpty()) {
     next();
   } else {
