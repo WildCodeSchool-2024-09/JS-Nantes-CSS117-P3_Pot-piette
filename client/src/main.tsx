@@ -7,7 +7,7 @@ import "./global.css";
 
 // Import the main app component
 import App from "./App";
-import ConnectedProvider from "./contexts/ConnectedProvider";
+import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./contexts/ProtectedRoute";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <UserConnexion />,
       },
       {
-        path: "/My_Activity",
+        path: "/my-activity",
         element: (
           <ProtectedRoute>
             <ActivityPage />
@@ -96,9 +96,11 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <ConnectedProvider>
+    {/* <ConnectedProvider> */}
+    <AuthProvider>
       <RouterProvider router={router} />
-    </ConnectedProvider>
+    </AuthProvider>
+    {/* </ConnectedProvider> */}
   </StrictMode>,
 );
 

@@ -4,6 +4,7 @@ import { AuthContext } from "./AuthContext";
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const { isLogged } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {

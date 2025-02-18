@@ -1,13 +1,18 @@
 import { type ReactNode, createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+// AuthContext
 interface AuthProviderI {
   isLogged: boolean;
+  login: (token: string) => void;
+  logout: () => void;
 }
 
-export const AuthContext = createContext<AuthProviderI>({ isLogged: false });
-
-// Placer les types ReactNode et AuthProviderI dans un fichier à part
+export const AuthContext = createContext<AuthProviderI>({
+  isLogged: false,
+  login: () => {},
+  logout: () => {},
+});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLogged, setIsLogged] = useState(false);
@@ -17,10 +22,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   async function checkLogin() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("authToken");
 
     if (!token) {
-      toast.error("As-tu pensé à t'enrengistrer ?");
+      toast.error("As-tu pensé à t'enregistrer ?");
       return;
     }
 
@@ -38,11 +43,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (response.ok) {
         setIsLogged(true);
       } else {
-        toast.error("N'oublie pas de t'enrengistrer");
+        toast.error("N'oublie pas de t'enregistrer");
       }
-    } catch (err) {}
+    } catch (err) {
+      console.error(err);
+      toast.error("Une erreur est survenue lors de la vérification.");
+    }
   }
+
+  const login = (token: string) => {
+    localStorage.setItem("authToken", token);
+    setIsLogged(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    setIsLogged(false);
+  };
+
   return (
-    <AuthContext.Provider value={{ isLogged }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ isLogged, login, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

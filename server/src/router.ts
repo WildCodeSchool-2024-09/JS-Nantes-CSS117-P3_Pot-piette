@@ -56,6 +56,7 @@ router.delete("/api/users/:id", userActions.deleteUser);
 
 import authActions from "./modules/authActions";
 router.post("/api/login", authActions.login);
+router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
 
 /*
  ╔════════════════════════════════════════════════════╗
