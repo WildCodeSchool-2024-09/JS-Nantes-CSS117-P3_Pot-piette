@@ -147,6 +147,7 @@
   padding: 0;
   margin: 0;
   background-color: transparent;
+  cursor: pointer;
   & li {
     background-color: transparent;
     margin: 0;
@@ -159,6 +160,7 @@
 
 .header-nav ul li button {
   background-color: transparent;
+
   & svg {
     height: 2em;
     width: 2em;
