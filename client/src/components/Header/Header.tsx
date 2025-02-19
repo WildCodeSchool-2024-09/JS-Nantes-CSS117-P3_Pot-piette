@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
-  const [logo, isLogo] = useState<boolean>(false);
+  const [logo, setLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isLogged, logout } = useContext(AuthContext) || {};
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
   window.onscroll = () => {
@@ -17,9 +18,9 @@ function Header() {
 
   function handleScroll() {
     if (document.documentElement.scrollTop >= 35) {
-      isLogo(true);
+      setLogo(true);
     } else if (document.body.scrollTop <= 35) {
-      isLogo(false);
+      setLogo(false);
     }
   }
 
@@ -32,64 +33,64 @@ function Header() {
   };
 
   return (
-    <>
-      <header className="header-nav">
-        <button
-          type="button"
-          className={`burger ${isOpen ? "open " : ""}`}
-          onClick={toggleMenu}
-        >
-          <div> </div>
-          <div> </div>
-          <div> </div>
-        </button>
-        <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
+    <header className="header-nav">
+      <button
+        type="button"
+        className={`burger ${isOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+      >
+        <div> </div>
+        <div> </div>
+        <div> </div>
+      </button>
+      <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
+        {isLogged ? (
+          <>
+            <Link to="/user-info" onClick={toggleMenu}>
+              Mon profil
+            </Link>
+            <Link to="/activity" onClick={toggleMenu}>
+              Mes activités
+            </Link>
+            <Link to="/favorites" onClick={toggleMenu}>
+              Mes favoris
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/account" onClick={toggleMenu}>
+              S'inscrire
+            </Link>
+            <Link to="/login" onClick={toggleMenu}>
+              Se connecter
+            </Link>
+          </>
+        )}
+      </nav>
+      <Link to="/">
+        <img
+          src="./logoWhite.png"
+          alt="Logo du site potpiette affichant une toque"
+          className={logo ? "logo-active" : "logo"}
+        />
+      </Link>
+      <ul>
+        <li>
+          <IoSearch />
+        </li>
+        <li>
           {isLogged ? (
-            <>
-              <Link to="/user-info" onClick={toggleMenu}>
-                Mon profil
-              </Link>
-              <Link to="/activity" onClick={toggleMenu}>
-                Mes activités
-              </Link>
-            </>
+            <button type="button" onClick={handleLogout}>
+              <IoLogOut />
+            </button>
           ) : (
-            <>
-              {" "}
-              <Link to="/account" onClick={toggleMenu}>
-                S'inscrire
-              </Link>{" "}
-              <Link to="/login" onClick={toggleMenu}>
-                Se connecter
-              </Link>{" "}
-            </>
+            <Link to="/connexion">
+              <IoPerson />
+            </Link>
           )}
-        </nav>
-        <Link to="/">
-          <img
-            src="./logoWhite.png"
-            alt="Logo du site potpiette affichant une toque"
-            className={logo === true ? "logo-active" : "logo"}
-          />
-        </Link>
-        <ul>
-          <li>
-            <IoSearch />
-          </li>
-          <li>
-            {isLogged ? (
-              <button type="button" onClick={handleLogout}>
-                <IoLogOut />
-              </button>
-            ) : (
-              <Link to="/connexion">
-                <IoPerson />
-              </Link>
-            )}
-          </li>
-        </ul>
-      </header>
-    </>
+        </li>
+      </ul>
+    </header>
   );
 }
 
