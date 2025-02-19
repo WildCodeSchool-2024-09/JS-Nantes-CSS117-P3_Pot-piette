@@ -1,5 +1,7 @@
 import "./ActivityPage.css";
 import { useEffect, useState } from "react";
+import { IoIosAdd } from "react-icons/io";
+import { Link } from "react-router-dom";
 import InspirationCard from "../../components/InspirationCard/InspirationCard";
 import type { RecipeI } from "../../types/detail-recipe";
 
@@ -72,7 +74,9 @@ function ActivityPage() {
       <section className="activity-add-recipe">
         <h2>Ajouter une recette</h2>
         <button type="button" className="activity-add-button">
-          +
+          <Link to="/add-recipe">
+            <IoIosAdd />
+          </Link>
         </button>
       </section>
     </section>
