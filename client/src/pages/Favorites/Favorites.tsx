@@ -5,14 +5,14 @@ import type { RecipeDetailI } from "../../types/detail-recipe";
 
 function Favorites() {
   const [data, setData] = useState<RecipeDetailI[]>([]);
-  const { getStorage } = useStorage();
 
   useEffect(() => {
+    const { getStorage } = useStorage();
     const result = getStorage();
     if (result) {
       setData(result);
     }
-  }, [getStorage]);
+  }, []);
 
   return (
     <main className="favorites-page">
