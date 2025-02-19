@@ -239,6 +239,15 @@
 .open > div:nth-child(3) {
   transform: translateY(-4px) rotate(-45deg);
 }
+.visible:last-child {
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--background-color);
+  border: none;
+  font-size: 1.5em;
+  width: 9em;
+  margin-top: 40%;
+}
 
 @media (min-width: 932px) {
   .aside-menu {

@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const token = localStorage.getItem("authToken");
 
     if (!token) {
-      toast.error("As-tu pensé à t'enregistrer ?");
       return;
     }
 
@@ -46,7 +45,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         toast.error("N'oublie pas de t'enregistrer");
       }
     } catch (err) {
-      console.error(err);
       toast.error("Une erreur est survenue lors de la vérification.");
     }
   }

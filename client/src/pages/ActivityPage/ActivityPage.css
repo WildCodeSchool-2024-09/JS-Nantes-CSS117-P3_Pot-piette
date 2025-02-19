@@ -1,4 +1,4 @@
-.activity h1 {
+.activities > h1 {
   text-align: center;
   color: var(--main-color);
   font-size: 2em;
@@ -8,35 +8,37 @@
   color: var(--secondary-color);
 }
 
-.activity-published-recipe,
-.activity-pending-recipe,
 .activity-add-recipe {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 2em 0;
+  text-align: center;
+
+  & button {
+    width: 50px;
+    height: 50px;
+    background-color: var(--main-color);
+    text-align: center;
+    cursor: pointer;
+  }
 }
 
-.activity-container {
+.activity-published-recipe {
+  text-align: center;
+}
+
+.activity-add-button {
+  color: var(--background-color);
+  border-radius: 8px;
+}
+
+.activities > article:nth-of-type(2) {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 1em;
-}
+  justify-content: center;
+  gap: 8px;
 
-.activity-add-recipe button {
-  align-self: center;
-  width: 5em;
-  height: 5em;
-  background-color: var(--main-color);
-  border: none;
-  & a {
-    background-color: transparent;
-  }
-  & svg {
-    height: 4em;
-    width: 4em;
-    color: var(--background-color);
-    background-color: transparent;
+  & h2,
+  p {
+    flex-basis: 100vw;
+    text-align: center;
   }
 }
 
