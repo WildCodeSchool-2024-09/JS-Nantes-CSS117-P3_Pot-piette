@@ -79,7 +79,9 @@ function Header() {
         </Link>
         <ul>
           <li>
-            <IoSearch />
+            <a href="#site-search">
+              <IoSearch />
+            </a>
           </li>
           <li>
             {isLogged ? (

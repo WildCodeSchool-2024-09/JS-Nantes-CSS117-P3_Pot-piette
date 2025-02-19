@@ -1,11 +1,12 @@
 .home-inspirations {
   flex-wrap: wrap;
   width: 100%;
+  text-align: center;
 }
 
 .inspiration-result {
   text-align: center;
-  width: 50%;
+  width: 100%;
 }
 
 .inspiration-card {
@@ -31,10 +32,15 @@
   .inspiration-result {
     background-color: transparent;
   }
+  .inspiration-card {
+    width: 25vw;
+  }
   .inspiration-card img {
     width: 20vw;
     height: 20vh;
     border-radius: 8px;
-    padding: 1em;
+  }
+  .inspiration-result {
+    text-align: center;
   }
 }

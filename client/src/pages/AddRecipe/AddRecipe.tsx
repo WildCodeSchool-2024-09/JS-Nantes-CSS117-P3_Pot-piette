@@ -147,13 +147,15 @@ function AddRecipe() {
       <section className="add-recipe">
         <h1>Créer une recette </h1>
         <form onSubmit={handleRecette} className="recipe-form">
-          <h2>Nom de la recette</h2>
-          <input
-            type="text"
-            name="title"
-            placeholder="Votre recette"
-            className="recipe-title"
-          />
+          <div className="title-container">
+            <h2>Nom de la recette</h2>
+            <input
+              type="text"
+              name="title"
+              placeholder="Votre recette"
+              className="recipe-title"
+            />
+          </div>
 
           <h2>Choisissez une catégorie</h2>
           <div className="tags-container">
@@ -296,8 +298,6 @@ function AddRecipe() {
               <input type="file" name="file" />
               <FaPlus className="add-button" />
             </label>
-
-            <button type="submit">Valider</button>
           </div>
 
           <h2>Ingrédients</h2>
