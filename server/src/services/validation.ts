@@ -7,7 +7,9 @@ const registerValidator = [
   body(
     "password",
     "Must have a length of 8 characters, at least one uppercase letter, one number, one special character",
-  ).matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/),
+  ).matches(
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+  ),
 ];
 
 const validator: RequestHandler = (req, res, next) => {
