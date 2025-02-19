@@ -11,7 +11,7 @@ import RecipeOfTheDay from "../../components/RecipeOfTheDAy/RecipeOfTheDay";
 import type { RecipeI } from "../../types/detail-recipe";
 
 function Homepage() {
-  const [randomRecipe, setRandomRecipe] = useState<RecipeI | null>(null);
+  const [randomRecipe, setRandomRecipe] = useState<RecipeProps | null>(null);
   const [lastRecipe, setLastRecipe] = useState<null | RecipeDetailI>(null);
   const [recipes, setRecipes] = useState<RecipeI[]>([]);
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
@@ -50,7 +50,7 @@ function Homepage() {
 
     fetch(`${import.meta.env.VITE_API_URL}/api/recipes`)
       .then((response) => response.json())
-      .then((data: RecipeI[]) => {
+      .then((data: RecipeProps[]) => {
         if (data.length > 0) {
           const randomIndex = Math.floor(Math.random() * data.length);
           setRandomRecipe(data[randomIndex]);
@@ -83,15 +83,14 @@ function Homepage() {
   const handleInspirationClick = (tagId: number) => {
     return selectedTag === tagId ? setSelectedTag(null) : setSelectedTag(tagId);
   };
-
   return (
     <main className="home-page">
       {randomRecipe && (
         <RecipeOfTheDay
+          id={randomRecipe.id}
           title={randomRecipe.title}
           picture={randomRecipe.picture}
-          time_to_cook={randomRecipe.time_to_cook ?? "N/A"}
-          type={randomRecipe.type ?? ""}
+          time_to_cook={randomRecipe.time_to_cook}
         />
       )}
 
