@@ -61,34 +61,33 @@ const router = createBrowserRouter([
       {
         path: "/activity",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRoute>
             <ActivityPage />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRoute>
         ),
       },
       {
         path: "/add-recipe",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRoute>
             <AddRecipe />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRoute>
         ),
       },
       {
         path: "/admin",
-
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRouteAdmin>
             <AdminDashboard />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRouteAdmin>
         ),
       },
       {
         path: "/user-info",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRoute>
             <UserInfo />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRoute>
         ),
       },
       { path: "/favorites", element: <Favorites /> },

@@ -47,13 +47,12 @@ function Header() {
         <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
           {isLogged ? (
             <>
-              {context?.isAdmin ? (
-                <Link to="/admin">Mon profil</Link>
-              ) : (
-                <Link to="/user-info" onClick={toggleMenu}>
-                  Mon profil
-                </Link>
-              )}
+              <Link
+                to={context?.isAdmin ? "/admin" : "/user-info"}
+                onClick={toggleMenu}
+              >
+                Mon profil
+              </Link>
 
               <Link to="/activity" onClick={toggleMenu}>
                 Mes activités

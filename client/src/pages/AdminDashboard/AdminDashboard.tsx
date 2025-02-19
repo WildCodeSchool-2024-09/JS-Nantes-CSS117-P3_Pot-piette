@@ -8,16 +8,36 @@ import type { RecipeI } from "../../types/detail-recipe";
 function AdminDashboard() {
   const [pendingRecipes, setPendingRecipes] = useState<RecipeI[]>([]);
   const [countPending, setCountPending] = useState(0);
+  const [countRecipes, setCountRecipes] = useState(0);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/admin/recipes-pending`)
+    const token = localStorage.getItem("authToken");
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/recipes-pending`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((pendingRecipes) => setPendingRecipes(pendingRecipes));
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/admin/recipes-pending-count`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/recipes-count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((countRecipes) => setCountRecipes(countRecipes));
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/recipes-pending-count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((response) => response.json())
       .then((countPending) => setCountPending(countPending));
   }, []);
+
   return (
     <>
       <main>
@@ -25,23 +45,8 @@ function AdminDashboard() {
           <h1>Admin-dashboard</h1>
 
           <article className="activity-published-recipe">
-            <h2>Les recettes publiées</h2>
-            <section className="activity-container">
-              {/* {publishedRecipes.length > 0 ? (
-                publishedRecipes?.map((recipe) => {
-                  return (
-                    <InspirationCard
-                      key={recipe.id}
-                      picture={recipe.picture}
-                      title={recipe.title}
-                      id={recipe.id}
-                    />
-                  );
-                })
-              ) : (
-                <p>Vous n'avez publié aucun recette pour le moment</p>
-              )} */}
-            </section>
+            <h2>Les recettes publiées {countRecipes}</h2>
+            <section className="activity-container"> </section>
           </article>
 
           <article className="activity-pending-recipe">

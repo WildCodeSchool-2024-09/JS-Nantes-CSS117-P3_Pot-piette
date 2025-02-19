@@ -12,6 +12,12 @@ export interface RecipeDetailsI {
   preparation_time: number;
 }
 
+export interface RecipePending {
+  id?: number;
+  title: string;
+  picture: string;
+}
+
 export interface IngredientsRecipeI {
   recipe_id: number;
   ingredient_id: number;

@@ -1,6 +1,6 @@
 import databaseClient from "../../../database/client";
-import type { Result, Rows } from "../../../database/client";
-import type { RecipeI } from "../../types/recipe/recipe";
+import type { Rows } from "../../../database/client";
+import type { RecipePending } from "../../types/recipe/recipe";
 
 class AdminRepository {
   async readAll() {
@@ -13,11 +13,11 @@ class AdminRepository {
 
   async countAll(param: string) {
     if (param === "recipe" || param === "user") {
-      const [result] = await databaseClient.query<Result>(
-        `SELECT COUNT(*) FROM ${param}`,
+      const [result] = await databaseClient.query<Rows>(
+        `SELECT COUNT(*) as recipes_nb FROM ${param}`,
       );
 
-      return result;
+      return result[0];
     }
 
     return null;
@@ -25,12 +25,12 @@ class AdminRepository {
 
   async count(param: string, cond: number) {
     if (param === "recipe" && (cond === 0 || cond === 1)) {
-      const [result] = await databaseClient.query<Result>(
-        `SELECT COUNT(id) FROM ${param} WHERE is_published = ${cond}`,
+      const [result] = await databaseClient.query<Rows>(
+        `SELECT COUNT(id) as unpublished_nb FROM ${param} WHERE is_published = ${cond}`,
         [param, cond],
       );
 
-      return result;
+      return result[0];
     }
     return null;
   }
@@ -40,7 +40,7 @@ class AdminRepository {
       "SELECT title, picture FROM recipe WHERE is_published = 0",
     );
 
-    return rows as RecipeI[];
+    return rows as RecipePending[];
   }
 }
 

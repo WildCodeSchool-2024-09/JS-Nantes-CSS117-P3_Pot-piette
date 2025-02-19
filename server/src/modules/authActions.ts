@@ -68,19 +68,22 @@ const verifyToken: RequestHandler = async (req, res, next) => {
   try {
     const authorization = req.get("Authorization");
 
+    console.warn(authorization);
     if (!authorization) {
-      throw res.status(401).json({ message: "jwt must be provided" });
+      console.warn("wat", authorization);
+      res.status(401).json({ message: "jwt must be provided" });
+      return;
     }
     const [type, token] = authorization.split(" ");
 
     if (type !== "Bearer") {
-      throw res
-        .status(401)
-        .json({ message: "Authorization header must be Bearer" });
+      res.status(401).json({ message: "Authorization header must be Bearer" });
+      return;
     }
 
     if (!token) {
-      throw res.status(401).json({ message: "jwt must be provided" });
+      res.status(401).json({ message: "jwt must be provided" });
+      return;
     }
 
     const secretKey = process.env.APP_SECRET;

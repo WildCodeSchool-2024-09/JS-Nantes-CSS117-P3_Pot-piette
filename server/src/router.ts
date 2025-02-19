@@ -78,7 +78,6 @@ router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
  */
 
 router.use("/api", authActions.verifyToken);
-
 router.use("/api/admin", authActions.verifyToken, authActions.isAdmin);
 
 router.get("/api/admin/recipes-count", adminActions.countRecipes);

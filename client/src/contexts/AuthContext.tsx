@@ -39,8 +39,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         },
       );
 
-      console.warn(response);
-
       if (response.ok) {
         setIsLogged(true);
       } else {
