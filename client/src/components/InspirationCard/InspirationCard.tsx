@@ -7,7 +7,10 @@ function InspirationCard({ picture, title, id }: RecipeI) {
     <section className="inspiration-result">
       <figure className="inspiration-card">
         <Link to={`/recipe/${id}`}>
-          <img src={picture} alt={`Representation of ${title} card`} />
+          <img
+            src={`${import.meta.env.VITE_API_URL}${picture}`}
+            alt={`Representation of ${title} card`}
+          />
           <figcaption>{title}</figcaption>
         </Link>
       </figure>
