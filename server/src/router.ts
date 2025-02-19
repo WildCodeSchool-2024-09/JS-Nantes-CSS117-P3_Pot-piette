@@ -15,13 +15,6 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
-const storage = multer.diskStorage({
-  destination: "./public/assets/uploads/recipes",
-  filename: (req, file, callback) => {
-    callback(null, `${Date.now()}-${file.originalname}`);
-  },
-});
-const upload = multer({ storage });
 
 router.post(
   "/api/recipe/image",
@@ -69,8 +62,8 @@ router.delete("/api/users/:id", userActions.deleteUser);
 
 /* ************************************************************************* */
 
-import multer from "multer";
 import authActions from "./modules/authActions";
+import { upload } from "./services/recipeUploads";
 router.post("/api/login", authActions.login);
 router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
 
