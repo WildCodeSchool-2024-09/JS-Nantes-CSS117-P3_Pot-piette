@@ -14,4 +14,16 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   return isLogged ? children : null;
 }
 
-export default ProtectedRoute;
+function ProtectedRouteAdmin({ children }: { children: ReactNode }) {
+  const { isAdmin } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    !isAdmin && navigate("/");
+  }, [isAdmin, navigate]);
+
+  return isAdmin ? children : null;
+}
+
+export default { ProtectedRoute, ProtectedRouteAdmin };

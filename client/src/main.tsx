@@ -12,6 +12,7 @@ import ProtectedRoute from "./contexts/ProtectedRoute";
 import AccountCreation from "./pages/AcountCreation/AccountCreation";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import AddRecipe from "./pages/AddRecipe/AddRecipe";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import ConnexionPage from "./pages/ConnexionPage/ConnexionPage";
 import DetailRecipePage from "./pages/DetailRecipePage/DetailRecipePage";
 import Favorites from "./pages/Favorites/Favorites";
@@ -30,7 +31,6 @@ import UserInfo from "./pages/UserDashboard/UserDashboard";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,26 +61,33 @@ const router = createBrowserRouter([
       {
         path: "/activity",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRoute>
             <ActivityPage />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRoute>
         ),
       },
       {
         path: "/add-recipe",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRoute>
             <AddRecipe />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRoute>
         ),
       },
-
+      {
+        path: "/admin",
+        element: (
+          <ProtectedRoute.ProtectedRouteAdmin>
+            <AdminDashboard />
+          </ProtectedRoute.ProtectedRouteAdmin>
+        ),
+      },
       {
         path: "/user-info",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute.ProtectedRoute>
             <UserInfo />
-          </ProtectedRoute>
+          </ProtectedRoute.ProtectedRoute>
         ),
       },
       { path: "/favorites", element: <Favorites /> },

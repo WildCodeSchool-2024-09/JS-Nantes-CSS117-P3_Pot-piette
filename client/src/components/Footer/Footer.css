@@ -25,11 +25,31 @@ footer a {
   color: var(--secondary-color);
 }
 
+footer a:hover {
+  text-decoration: underline var(--main-color);
+}
+
+footer button {
+  background-color: var(--main-color);
+  border: none;
+  width: 8.5em;
+  color: white;
+  height: 2.5em;
+  border-radius: 8px;
+  margin: 1em 0;
+  padding: 3px;
+  cursor: pointer;
+}
+footer button:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 900px) {
   footer ul {
     width: 100vw;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
   }
 }
