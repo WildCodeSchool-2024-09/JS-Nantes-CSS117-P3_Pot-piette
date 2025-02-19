@@ -68,9 +68,7 @@ const verifyToken: RequestHandler = async (req, res, next) => {
   try {
     const authorization = req.get("Authorization");
 
-    console.warn(authorization);
     if (!authorization) {
-      console.warn("wat", authorization);
       res.status(401).json({ message: "jwt must be provided" });
       return;
     }

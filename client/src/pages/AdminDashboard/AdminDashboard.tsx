@@ -46,7 +46,6 @@ function AdminDashboard() {
 
           <article className="activity-published-recipe">
             <h2>Les recettes publiées {countRecipes}</h2>
-            <section className="activity-container"> </section>
           </article>
 
           <article className="activity-pending-recipe">
@@ -74,7 +73,7 @@ function AdminDashboard() {
 
           <section className="activity-add-recipe">
             <h2>Ajouter une recette</h2>
-            <button type="button">
+            <button type="button" className="activity-add-button">
               <Link to="/add-recipe">
                 <IoIosAdd />
               </Link>
