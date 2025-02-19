@@ -7,9 +7,10 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
   const context = useContext(AuthContext);
-  const [logo, isLogo] = useState<boolean>(false);
+  const [logo, setLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isLogged, logout } = useContext(AuthContext) || {};
+
   const toggleMenu = () => setIsOpen(!isOpen);
 
   window.onscroll = () => {
@@ -18,9 +19,9 @@ function Header() {
 
   function handleScroll() {
     if (document.documentElement.scrollTop >= 35) {
-      isLogo(true);
+      setLogo(true);
     } else if (document.body.scrollTop <= 35) {
-      isLogo(false);
+      setLogo(false);
     }
   }
 
@@ -37,7 +38,7 @@ function Header() {
       <header className="header-nav">
         <button
           type="button"
-          className={`burger ${isOpen ? "open " : ""}`}
+          className={`burger ${isOpen ? "open" : ""}`}
           onClick={toggleMenu}
         >
           <div> </div>
@@ -53,9 +54,11 @@ function Header() {
               >
                 Mon profil
               </Link>
-
               <Link to="/activity" onClick={toggleMenu}>
                 Mes activités
+              </Link>
+              <Link to="/favorites" onClick={toggleMenu}>
+                Mes favoris
               </Link>
             </>
           ) : (
@@ -79,9 +82,7 @@ function Header() {
         </Link>
         <ul>
           <li>
-            <a href="#site-search">
-              <IoSearch />
-            </a>
+            <IoSearch />
           </li>
           <li>
             {isLogged ? (
