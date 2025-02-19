@@ -23,9 +23,12 @@ function Footer() {
               <h2>Accueil</h2>
             </Link>
           </li>
-          <button type="button" onClick={handleLogout}>
-            Se déconnecter{" "}
-          </button>
+
+          <li>
+            <button type="button" onClick={handleLogout}>
+              Se déconnecter{" "}
+            </button>
+          </li>
           <li>Concocté par la team Pot'Piette</li>
         </ul>
       ) : (
