@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
+  const context = useContext(AuthContext);
   const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isLogged, logout } = useContext(AuthContext) || {};
@@ -46,9 +47,13 @@ function Header() {
         <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
           {isLogged ? (
             <>
-              <Link to="/user-info" onClick={toggleMenu}>
+              <Link
+                to={context?.isAdmin ? "/admin" : "/user-info"}
+                onClick={toggleMenu}
+              >
                 Mon profil
               </Link>
+
               <Link to="/activity" onClick={toggleMenu}>
                 Mes activités
               </Link>
@@ -74,7 +79,9 @@ function Header() {
         </Link>
         <ul>
           <li>
-            <IoSearch />
+            <a href="#site-search">
+              <IoSearch />
+            </a>
           </li>
           <li>
             {isLogged ? (
