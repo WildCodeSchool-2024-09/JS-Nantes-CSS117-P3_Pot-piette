@@ -6,10 +6,11 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
+  const context = useContext(AuthContext);
   const [logo, isLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
   const { isLogged, logout } = useContext(AuthContext) || {};
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   window.onscroll = () => {
     handleScroll();
@@ -24,9 +25,10 @@ function Header() {
   }
 
   const handleLogout = () => {
-    if (logout) {
+    if (isLogged) {
       logout();
       toast.info("Vous avez été déconnecté");
+      setIsOpen(false);
     }
   };
 
@@ -45,10 +47,15 @@ function Header() {
         <nav className={`aside-menu ${isOpen ? "visible" : ""}`}>
           {isLogged ? (
             <>
-              <Link to="/user-info" onClick={toggleMenu}>
-                Mon profil
-              </Link>
-              <Link to="/my-activity" onClick={toggleMenu}>
+              {context?.isAdmin ? (
+                <Link to="/admin">Mon profil</Link>
+              ) : (
+                <Link to="/user-info" onClick={toggleMenu}>
+                  Mon profil
+                </Link>
+              )}
+
+              <Link to="/activity" onClick={toggleMenu}>
                 Mes activités
               </Link>
             </>
@@ -67,7 +74,7 @@ function Header() {
         <Link to="/">
           <img
             src="./logoWhite.png"
-            alt="Logo"
+            alt="Logo du site potpiette affichant une toque"
             className={logo === true ? "logo-active" : "logo"}
           />
         </Link>

@@ -1,21 +1,21 @@
 import { type ReactNode, createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import type { AuthProviderI } from "../../src/types/context";
 
 // AuthContext
-interface AuthProviderI {
-  isLogged: boolean;
-  login: (token: string) => void;
-  logout: () => void;
-}
 
 export const AuthContext = createContext<AuthProviderI>({
   isLogged: false,
+  isAdmin: false,
   login: () => {},
   logout: () => {},
+  setIsAdmin: () => {},
+  setIsLogged: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLogged, setIsLogged] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     checkLogin();
@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const token = localStorage.getItem("authToken");
 
     if (!token) {
-      toast.error("As-tu pensé à t'enregistrer ?");
       return;
     }
 
@@ -40,13 +39,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         },
       );
 
+      console.warn(response);
+
       if (response.ok) {
         setIsLogged(true);
       } else {
         toast.error("N'oublie pas de t'enregistrer");
       }
     } catch (err) {
-      console.error(err);
       toast.error("Une erreur est survenue lors de la vérification.");
     }
   }
@@ -62,7 +62,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLogged, login, logout }}>
+    <AuthContext.Provider
+      value={{ isLogged, login, logout, setIsAdmin, isAdmin, setIsLogged }}
+    >
       {children}
     </AuthContext.Provider>
   );

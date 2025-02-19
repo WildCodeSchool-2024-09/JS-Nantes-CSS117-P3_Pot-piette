@@ -1,19 +1,46 @@
 import "./detail-recipe-page.css";
+import { useContext, useEffect, useState } from "react";
 import { GoClock } from "react-icons/go";
 import {
   IoIosAdd,
   IoIosRemove,
   IoIosStar,
   IoIosStarOutline,
+  IoMdHeart,
   IoMdHeartEmpty,
   IoMdShare,
 } from "react-icons/io";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import useStorage from "../../hooks/useStorage";
 import type { RecipeDetailI } from "../../types/detail-recipe";
 
 function DetailRecipePage() {
   const data = useLoaderData() as RecipeDetailI[];
   const recipeDetail = data[0];
+  const userContext = useContext(AuthContext);
+  const [isClicked, setIsClicked] = useState(false);
+  const { getStorage, handleStorage } = useStorage();
+
+  let isAuthenticated = false;
+  if (userContext) {
+    isAuthenticated = userContext.isLogged;
+  }
+
+  useEffect(() => {
+    const storage: RecipeDetailI[] | null = getStorage();
+    if (!storage) return;
+
+    const isRecipeInside = storage.find((el) => el.id === recipeDetail.id);
+    if (isRecipeInside) {
+      setIsClicked(true);
+    }
+  }, [recipeDetail.id, getStorage]);
+
+  function handleClick() {
+    setIsClicked(!isClicked);
+    return handleStorage(recipeDetail, isClicked);
+  }
 
   return (
     <main>
@@ -33,15 +60,21 @@ function DetailRecipePage() {
           </p>
         </section>
         <img
-          src={recipeDetail.picture}
+          src={`${import.meta.env.VITE_API_URL}${recipeDetail.picture}`}
           alt={`Representation of ${recipeDetail.title} recipe`}
           className="img-detail-recipe"
         />
         <section className="share-and-like-detail-recipe">
-          <IoMdHeartEmpty />
-          {recipeDetail.recipe_tag_list.map((tag) => {
-            return <p key={tag.id}>{tag.tag_name}</p>;
-          })}
+          {isAuthenticated && (
+            <button type="button" onClick={handleClick}>
+              {isClicked ? <IoMdHeart /> : <IoMdHeartEmpty />}
+            </button>
+          )}
+
+          {recipeDetail.recipe_tag_list.map((tag) => (
+            <p key={tag.id}>{tag.tag_name}</p>
+          ))}
+
           <IoMdShare />
         </section>
       </header>

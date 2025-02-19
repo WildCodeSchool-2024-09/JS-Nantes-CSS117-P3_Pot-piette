@@ -13,5 +13,13 @@ export type ConnectedContext = {
   login: (token: string) => void;
   logout: () => void;
 };
+export interface AuthProviderI {
+  isLogged: boolean;
+  isAdmin: boolean;
+  login: (token: string) => void;
+  logout: () => void;
+  setIsAdmin: (value: boolean) => void;
+  setIsLogged: (value: boolean) => void;
+}
 
 export default ConnectedContext;

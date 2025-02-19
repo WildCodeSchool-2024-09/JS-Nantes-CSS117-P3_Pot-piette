@@ -34,7 +34,7 @@ const login: RequestHandler = async (req, res) => {
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1d" });
 
-    res.json({ token, user: user.email });
+    res.json({ token, user: user.email, isAdmin: user.is_admin, id: user.id });
   } catch (err) {
     res.status(401).send(err);
   }

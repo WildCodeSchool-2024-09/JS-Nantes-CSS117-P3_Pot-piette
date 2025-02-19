@@ -1,4 +1,4 @@
-import express from "express";
+import express, { type RequestHandler } from "express";
 
 const router = express.Router();
 
@@ -15,8 +15,15 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 import recipeActions from "./modules/recipe/recipeActions";
+import { upload } from "./services/recipeUploads";
 
+router.post(
+  "/api/recipe/image",
+  upload.single("file"),
+  recipeActions.imageUpload,
+);
 router.post("/api/recipe/create", recipeActions.add);
+
 router.post("/api/recipe/title", recipeActions.addTitle);
 router.get("/api/recipes/search", recipeActions.search);
 router.get("/api/recipes", recipeActions.browse);
@@ -39,15 +46,16 @@ import tagsActions from "./modules/tags/tagActions";
 router.get("/api/tags/:id", tagsActions.read);
 /* ************************************************************************* */
 import userActions from "./modules/user/userActions";
-import validation from "./services/validation";
+
+import { registerValidator, validator } from "./services/validation";
 
 router.get("/api/users", userActions.browse);
 router.get("/api/user/published/:id", userActions.readByStatus);
 router.get("/api/user/pending/:id", userActions.readByStatusPending);
 router.post(
   "/api/users",
-  validation.registerValidator,
-  validation.validator,
+  registerValidator,
+  validator,
   authActions.hashPassword,
   userActions.add,
 );
@@ -68,12 +76,12 @@ router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
  ║       Authentication is needed below here          ║
  ╚════════════════════════════════════════════════════╝
  */
-router.get("/api/admin/recipes-count", adminActions.countRecipes);
 
 router.use("/api", authActions.verifyToken);
 
 router.use("/api/admin", authActions.verifyToken, authActions.isAdmin);
 
+router.get("/api/admin/recipes-count", adminActions.countRecipes);
 router.get("/api/admin/recipes-pending", adminActions.browseRecipes);
 router.get("/api/admin/recipes-pending-count", adminActions.countPending);
 

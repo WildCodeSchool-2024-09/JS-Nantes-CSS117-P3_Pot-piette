@@ -43,6 +43,10 @@
   display: flex;
   justify-content: space-between;
 }
+.share-and-like-detail-recipe button {
+  border: none;
+  font-size: 1.2em;
+}
 
 /** Ingredients section **/
 
