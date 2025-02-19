@@ -8,33 +8,36 @@ function AccountCreation() {
   const navigate = useNavigate();
   const dateOfTheDay = new Date().toLocaleDateString("en-CA");
 
-  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [passwordErrors, setPasswordErrors] = useState<string[]>([]);
 
-  const validatePassword = (password: string) => {
+  const validatePassword = (password: string): string[] => {
+    const errors: string[] = [];
     const minLength = /(?=.{8,})/;
     const hasUpperCase = /[A-Z]/;
     const hasNumber = /\d/;
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
 
     if (!minLength.test(password)) {
-      return "Le mot de passe doit contenir au moins 8 Caractères.";
+      errors.push("Le mot de passe doit contenir au moins 8 Caractères.");
     }
     if (!hasUpperCase.test(password)) {
-      return "Le mot de passe doit contenir au moins 1 Majuscule.";
+      errors.push("Le mot de passe doit contenir au moins 1 Majuscule.");
     }
     if (!hasNumber.test(password)) {
-      return "Le mot de passe doit contenir au moins 1 Chiffre.";
+      errors.push("Le mot de passe doit contenir au moins 1 Chiffre.");
     }
     if (!hasSpecialChar.test(password)) {
-      return "Le mot de passe doit contenir au moins 1 Caractère Spécial.";
+      errors.push(
+        "Le mot de passe doit contenir au moins 1 Caractère Spécial.",
+      );
     }
-    return null;
+    return errors;
   };
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     const password = event.target.value;
-    const error = validatePassword(password);
-    setPasswordError(error);
+    const errors = validatePassword(password);
+    setPasswordErrors(errors);
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -48,7 +51,8 @@ function AccountCreation() {
         throw new Error("Les mots de passe sont différents");
       }
 
-      if (passwordError) {
+      // Si le mot de passe est valide
+      if (passwordErrors.length > 0) {
         toast.error("Veuillez corriger les erreurs du mot de passe.");
         return;
       }
@@ -114,7 +118,15 @@ function AccountCreation() {
           placeholder="Votre mot de passe"
           onChange={handlePasswordChange}
         />
-        {passwordError && <p className="password-error">{passwordError}</p>}
+        {passwordErrors.length > 0 && (
+          <div className="password-errors">
+            {passwordErrors.map((error) => (
+              <p key={Date.now() + Math.random()} className="password-error">
+                {error}
+              </p>
+            ))}
+          </div>
+        )}
 
         <label htmlFor="confirmPassword">Confirmez le mot de passe</label>
         <input
@@ -127,7 +139,7 @@ function AccountCreation() {
         <button
           type="submit"
           className="signup-button"
-          disabled={!!passwordError}
+          disabled={passwordErrors.length > 0}
         >
           Je m'inscris
         </button>
