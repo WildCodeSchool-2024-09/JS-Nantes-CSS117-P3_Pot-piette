@@ -80,6 +80,7 @@ router.post("/api/user/verify", authActions.verifyToken, authActions.isLogged);
 router.use("/api", authActions.verifyToken);
 router.use("/api/admin", authActions.verifyToken, authActions.isAdmin);
 
+router.get("/api/admin/users-count", adminActions.countUsers);
 router.get("/api/admin/recipes-count", adminActions.countRecipes);
 router.get("/api/admin/recipes-pending", adminActions.browseRecipes);
 router.get("/api/admin/recipes-pending-count", adminActions.countPending);

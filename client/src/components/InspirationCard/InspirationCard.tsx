@@ -4,17 +4,15 @@ import "./InspirationCard.css";
 
 function InspirationCard({ picture, title, id }: RecipeI) {
   return (
-    <section className="inspiration-result">
-      <figure className="inspiration-card">
-        <Link to={`/recipe/${id}`}>
-          <img
-            src={`${import.meta.env.VITE_API_URL}${picture}`}
-            alt={`Representation of ${title} card`}
-          />
-          <figcaption>{title}</figcaption>
-        </Link>
-      </figure>
-    </section>
+    <figure className="inspiration-card">
+      <Link to={`/recipe/${id}`}>
+        <img
+          src={`${import.meta.env.VITE_API_URL}${picture}`}
+          alt={`Recette de ${title} sur le site Pot'Piette`}
+        />
+        <figcaption>{title}</figcaption>
+      </Link>
+    </figure>
   );
 }
 export default InspirationCard;

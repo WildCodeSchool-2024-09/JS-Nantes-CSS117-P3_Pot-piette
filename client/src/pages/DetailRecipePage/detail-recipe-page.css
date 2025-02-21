@@ -29,7 +29,7 @@
 
 .share-and-like-detail-recipe {
   padding: 1em 0;
-
+  align-items: center;
   & svg {
     color: var(--main-color);
     width: 2em;
@@ -146,5 +146,12 @@
 
   .ingredients-detail-recipe-container li {
     width: 10%;
+  }
+
+  .info-detail-recipe,
+  .share-and-like-detail-recipe,
+  .ingredients-detail-recipe-container,
+  .preparation-detail-recipe-container {
+    padding: 0 2em;
   }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../UserDashboard/UserDashboard.css";
+import "./admin-dashboard.css";
 import { IoIosAdd } from "react-icons/io";
 import { Link } from "react-router-dom";
 import InspirationCard from "../../components/InspirationCard/InspirationCard";
@@ -9,6 +10,7 @@ function AdminDashboard() {
   const [pendingRecipes, setPendingRecipes] = useState<RecipeI[]>([]);
   const [countPending, setCountPending] = useState(0);
   const [countRecipes, setCountRecipes] = useState(0);
+  const [countUsers, setCountUsers] = useState(0);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -36,6 +38,14 @@ function AdminDashboard() {
     })
       .then((response) => response.json())
       .then((countPending) => setCountPending(countPending));
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/users-count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((countUsers) => setCountUsers(countUsers));
   }, []);
 
   return (
@@ -52,14 +62,17 @@ function AdminDashboard() {
             <h2>Les recettes en attente {countPending}</h2>
             <section className="activity-container">
               {pendingRecipes.length > 0 ? (
-                pendingRecipes?.map((recipe) => {
+                pendingRecipes.map((recipe) => {
                   return (
-                    <InspirationCard
-                      key={recipe.id}
-                      picture={recipe.picture}
-                      title={recipe.title}
-                      id={recipe.id}
-                    />
+                    <>
+                      <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+                        <InspirationCard
+                          picture={recipe.picture}
+                          title={recipe.title}
+                          id={recipe.id}
+                        />
+                      </Link>
+                    </>
                   );
                 })
               ) : (
@@ -69,6 +82,10 @@ function AdminDashboard() {
                 </p>
               )}
             </section>
+          </article>
+
+          <article className="activity-user">
+            <h2>Les utilisateurs inscrits {countUsers}</h2>
           </article>
 
           <section className="activity-add-recipe">

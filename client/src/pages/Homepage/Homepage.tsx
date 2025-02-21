@@ -103,26 +103,25 @@ function Homepage() {
               alt={lastRecipe?.title}
             />
           </Link>
-          <figcaption>{lastRecipe?.title}</figcaption>
+          <figcaption id="site-search">{lastRecipe?.title}</figcaption>
         </figure>
       </section>
 
       {/* Mise en place de la fonction Recherche*/}
-      <section>
-        <form onSubmit={handleRecipe}>
-          <div className="home-search">
-            <input
-              type="search"
-              id="site-search"
-              name="search"
-              placeholder="Cherchez votre recette"
-            />
-            <button type="submit" className="search-button">
-              <IoSearchOutline />
-            </button>
-          </div>
-        </form>
-      </section>
+
+      <form onSubmit={handleRecipe}>
+        <div className="home-search">
+          <input
+            type="search"
+            name="search"
+            placeholder="Cherchez votre recette"
+          />
+          <button type="submit" className="search-button">
+            <IoSearchOutline />
+          </button>
+        </div>
+      </form>
+
       <section className="search-container">
         {recipes.map((recipe) => {
           return (
@@ -138,78 +137,79 @@ function Homepage() {
           );
         })}
       </section>
+      <section>
+        <h2>Inspirations</h2>
+        <section className="home-inspirations">
+          <button
+            type="button"
+            className={`inspirations ${tagIds[selectedTag || 0] === "rapide" ? "selected" : ""}`}
+            onClick={() => handleInspirationClick(1)}
+          >
+            <figure>
+              <PiHamburger />
+              <figcaption>Rapide</figcaption>
+            </figure>
+          </button>
 
-      <h2>Inspirations</h2>
-      <section className="home-inspirations">
-        <button
-          type="button"
-          className={`inspirations ${tagIds[selectedTag || 0] === "rapide" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick(1)}
-        >
-          <figure>
-            <PiHamburger />
-            <figcaption>Rapide</figcaption>
-          </figure>
-        </button>
+          <button
+            type="button"
+            className={`inspirations ${tagIds[selectedTag || 0] === "plat" ? "selected" : ""}`}
+            onClick={() => handleInspirationClick(2)}
+          >
+            <figure>
+              <PiForkKnife />
+              <figcaption>Plat</figcaption>
+            </figure>
+          </button>
 
-        <button
-          type="button"
-          className={`inspirations ${tagIds[selectedTag || 0] === "plat" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick(2)}
-        >
-          <figure>
-            <PiForkKnife />
-            <figcaption>Plat</figcaption>
-          </figure>
-        </button>
+          <button
+            type="button"
+            className={`inspirations ${tagIds[selectedTag || 0] === "healthy" ? "selected" : ""}`}
+            onClick={() => handleInspirationClick(3)}
+          >
+            <figure>
+              <LuSalad />
 
-        <button
-          type="button"
-          className={`inspirations ${tagIds[selectedTag || 0] === "healthy" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick(3)}
-        >
-          <figure>
-            <LuSalad />
+              <figcaption>Healthy</figcaption>
+            </figure>
+          </button>
 
-            <figcaption>Healthy</figcaption>
-          </figure>
-        </button>
+          <button
+            type="button"
+            className={`inspirations ${tagIds[selectedTag || 0] === "vegetarien" ? "selected" : ""}`}
+            onClick={() => handleInspirationClick(4)}
+          >
+            <figure>
+              <PiCarrot />
 
-        <button
-          type="button"
-          className={`inspirations ${tagIds[selectedTag || 0] === "vegetarien" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick(4)}
-        >
-          <figure>
-            <PiCarrot />
+              <figcaption>Végétarien</figcaption>
+            </figure>
+          </button>
 
-            <figcaption>Végétarien</figcaption>
-          </figure>
-        </button>
+          <button
+            type="button"
+            className={`inspirations ${tagIds[selectedTag || 0] === "dessert" ? "selected" : ""}`}
+            onClick={() => handleInspirationClick(5)}
+          >
+            <figure>
+              <LuCakeSlice />
 
-        <button
-          type="button"
-          className={`inspirations ${tagIds[selectedTag || 0] === "dessert" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick(5)}
-        >
-          <figure>
-            <LuCakeSlice />
+              <figcaption>Dessert</figcaption>
+            </figure>
+          </button>
 
-            <figcaption>Dessert</figcaption>
-          </figure>
-        </button>
+          <button
+            type="button"
+            className={`inspirations ${tagIds[selectedTag || 0] === "cocktail" ? "selected" : ""}`}
+            onClick={() => handleInspirationClick(6)}
+          >
+            <figure>
+              <LiaGlassMartiniAltSolid />
 
-        <button
-          type="button"
-          className={`inspirations ${tagIds[selectedTag || 0] === "cocktail" ? "selected" : ""}`}
-          onClick={() => handleInspirationClick(6)}
-        >
-          <figure>
-            <LiaGlassMartiniAltSolid />
-
-            <figcaption>Cocktail</figcaption>
-          </figure>
-        </button>
+              <figcaption>Cocktail</figcaption>
+            </figure>
+          </button>
+        </section>
       </section>
 
       <section className="inspiration-home-page">

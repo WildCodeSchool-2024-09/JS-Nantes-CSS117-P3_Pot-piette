@@ -4,7 +4,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 85vh;
+  min-height: 85vh;
+  & h1 {
+    font-size: 6em;
+    margin: 0;
+  }
 }
 .page-not-found span {
   color: var(--main-color);

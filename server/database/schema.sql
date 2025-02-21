@@ -310,7 +310,7 @@ VALUES
 (10, 19, 1, 'pincée'),
 (11, 49, 200, 'grammes'),
 (11, 10, 3, 'pièces'),
-(11, 15, 20, 'centilites'),
+(11, 15, 20, 'centilitres'),
 (11, 42, 100, 'grammes'),
 (11, 16, 100, 'grammes'),
 (11, 14, 50, 'grammes'),

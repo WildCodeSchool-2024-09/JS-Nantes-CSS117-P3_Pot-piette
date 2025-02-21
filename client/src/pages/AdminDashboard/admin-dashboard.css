@@ -1,0 +1,13 @@
+.activity-user {
+  flex-direction: column;
+  margin: 0 0 2em 0;
+}
+
+@media (min-width: 932px) {
+  .activity-user {
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+  }
+}

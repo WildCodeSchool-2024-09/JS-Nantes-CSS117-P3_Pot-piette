@@ -20,7 +20,21 @@ const countRecipes: RequestHandler = async (req, res) => {
     const recipes = await adminRepository.countAll("recipe");
 
     if (recipes) {
-      res.json(recipes.recipes_nb);
+      res.json(recipes.recipe_nb);
+    } else {
+      res.sendStatus(500);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const countUsers: RequestHandler = async (req, res) => {
+  try {
+    const users = await adminRepository.countAll("user");
+
+    if (users) {
+      res.json(users.user_nb);
     } else {
       res.sendStatus(500);
     }
@@ -43,4 +57,4 @@ const countPending: RequestHandler = async (req, res) => {
   }
 };
 
-export default { browseRecipes, countPending, countRecipes };
+export default { browseRecipes, countPending, countRecipes, countUsers };

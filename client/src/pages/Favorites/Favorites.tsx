@@ -16,14 +16,21 @@ function Favorites() {
 
   return (
     <main className="favorites-page">
-      <h1>Gestion de vos favoris </h1>
+      <h1>Vos favoris </h1>
       <ul className="favorites-recipe">
-        {data.map((recipe) => (
-          <li key={recipe.id}>
-            <h3>{recipe.title}</h3>
-            <img src={recipe.picture} alt={recipe.title} />
-          </li>
-        ))}
+        {data.length > 0 ? (
+          data.map((recipe) => (
+            <li key={recipe.id}>
+              <h3>{recipe.title}</h3>
+              <img
+                src={`${import.meta.env.VITE_API_URL}${recipe.picture}`}
+                alt={`Belle recette de ${recipe.title}`}
+              />
+            </li>
+          ))
+        ) : (
+          <p>Vous n'avez pas encore de favoris</p>
+        )}
       </ul>
     </main>
   );

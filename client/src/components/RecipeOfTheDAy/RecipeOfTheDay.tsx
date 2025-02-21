@@ -9,7 +9,10 @@ function RecipeOfTheDay({ title, picture, time_to_cook, id }: RecipeProps) {
 
       <div className="photo-recipe">
         <Link to={`/recipe/${id}`} className="recipe-link">
-          <img src={picture} alt={`Recette - ${title}`} />
+          <img
+            src={`${import.meta.env.VITE_API_URL}${picture}`}
+            alt={`Recette du jour - ${title}`}
+          />
         </Link>
         <h3 className="recipe-title">{title}</h3>
       </div>
@@ -17,7 +20,7 @@ function RecipeOfTheDay({ title, picture, time_to_cook, id }: RecipeProps) {
       <div className="clock-and-chef">
         <div className="clock-container">
           <MdOutlineAccessTime className="icon" />
-          <span>{time_to_cook} min</span>
+          <p>{time_to_cook} min</p>
         </div>
       </div>
     </section>
