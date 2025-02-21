@@ -10,19 +10,23 @@
 }
 
 .inspiration-card {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
 .inspiration-card img {
   height: 9em;
-  width: 9em;
+  width: 12em;
   border-radius: 8px;
   transition: transform .2s;
 }
-.inspiration-card > figcaption > figure {
-  text-align: center;
-}
-.inspiration-card > figcaption {
+
+.inspiration-card figcaption {
+  display: flex;
+  justify-content: center;
   color: var(--secondary-color);
   font-family: var(--secondary-font);
   font-weight: bold;
@@ -32,14 +36,17 @@
   .inspiration-result {
     background-color: transparent;
   }
+
   .inspiration-card {
-    width: 25vw;
+    width: 20vw;
   }
+
   .inspiration-card img {
     width: 20vw;
     height: 20vh;
     border-radius: 8px;
   }
+
   .inspiration-result {
     text-align: center;
   }

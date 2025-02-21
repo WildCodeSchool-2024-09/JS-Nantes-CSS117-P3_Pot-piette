@@ -2,8 +2,6 @@ export interface RecipeI {
   id?: number;
   title: string;
   picture: string;
-  time_to_cook?: number;
-  type?: string;
 }
 
 export interface RecipeDetailI extends RecipeI {

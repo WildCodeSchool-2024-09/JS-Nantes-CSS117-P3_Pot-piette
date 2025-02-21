@@ -15,7 +15,16 @@
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
-    width: 33vw;
+    width: 50vw;
     font-weight: bold;
+  }
+}
+
+@media (min-width: 932px) {
+  .button-container {
+    gap: 2em;
+    & a {
+      width: 15vw;
+    }
   }
 }

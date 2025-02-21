@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import { useContext, useState } from "react";
 import { IoLogOut, IoPerson, IoSearch } from "react-icons/io5";
@@ -6,6 +6,9 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Header() {
+  const location = useLocation();
+  const urlLocation = location.pathname;
+  const splitLocation = urlLocation.split("/");
   const context = useContext(AuthContext);
   const [logo, setLogo] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -81,9 +84,16 @@ function Header() {
           />
         </Link>
         <ul>
-          <li>
-            <IoSearch />
-          </li>
+          {splitLocation[1] === "" ? (
+            <li>
+              <a href="#site-search">
+                <IoSearch />
+              </a>
+            </li>
+          ) : (
+            ""
+          )}
+
           <li>
             {isLogged ? (
               <button type="button" onClick={handleLogout}>

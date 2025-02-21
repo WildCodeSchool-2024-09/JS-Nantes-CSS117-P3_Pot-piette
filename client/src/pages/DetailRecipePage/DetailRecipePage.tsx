@@ -49,8 +49,8 @@ function DetailRecipePage() {
         <section className="info-detail-recipe">
           <p>
             <IoIosStar />
-            <IoIosStarOutline />
-            <IoIosStarOutline />
+            <IoIosStar />
+            <IoIosStar />
             <IoIosStarOutline />
             <IoIosStarOutline />
           </p>

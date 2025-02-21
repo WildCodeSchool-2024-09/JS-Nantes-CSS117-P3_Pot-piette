@@ -160,7 +160,7 @@
 
 .header-nav ul li button {
   background-color: transparent;
-
+  cursor: pointer;
   & svg {
     height: 2em;
     width: 2em;

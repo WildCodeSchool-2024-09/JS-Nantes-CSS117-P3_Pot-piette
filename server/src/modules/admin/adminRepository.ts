@@ -14,7 +14,7 @@ class AdminRepository {
   async countAll(param: string) {
     if (param === "recipe" || param === "user") {
       const [result] = await databaseClient.query<Rows>(
-        `SELECT COUNT(*) as recipes_nb FROM ${param}`,
+        `SELECT COUNT(*) as ${param}_nb FROM ${param}`,
       );
 
       return result[0];
@@ -37,7 +37,7 @@ class AdminRepository {
 
   async readPending() {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT title, picture FROM recipe WHERE is_published = 0",
+      "SELECT id, title, picture FROM recipe WHERE is_published = 0",
     );
 
     return rows as RecipePending[];

@@ -1,7 +1,12 @@
 .favorites-recipe {
   display: flex;
-  width: 50%;
+  min-height: 57vh;
 }
+
+.favorites-page ul {
+  margin: 0;
+}
+
 .favorites-page ul li {
   list-style-type: none;
 }

@@ -21,7 +21,7 @@ function ActivityPage() {
   }, []);
 
   return (
-    <section className="activity">
+    <main className="activity">
       <h1>Vos activités</h1>
 
       <article className="activity-published-recipe">
@@ -30,20 +30,19 @@ function ActivityPage() {
           {publishedRecipes.length > 0 ? (
             publishedRecipes?.map((recipe) => {
               return (
-                <InspirationCard
-                  key={recipe.id}
-                  picture={recipe.picture}
-                  title={recipe.title}
-                  id={recipe.id}
-                />
+                <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+                  <InspirationCard
+                    picture={recipe.picture}
+                    title={recipe.title}
+                    id={recipe.id}
+                  />
+                </Link>
               );
             })
           ) : (
             <p>Vous n'avez publié aucun recette pour le moment</p>
           )}
         </section>
-
-        <p>Voir plus</p>
       </article>
 
       <article className="activity-pending-recipe">
@@ -52,12 +51,14 @@ function ActivityPage() {
           {pendingRecipes.length > 0 ? (
             pendingRecipes?.map((recipe) => {
               return (
-                <InspirationCard
-                  key={recipe.id}
-                  picture={recipe.picture}
-                  title={recipe.title}
-                  id={recipe.id}
-                />
+                <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+                  <InspirationCard
+                    key={recipe.id}
+                    picture={recipe.picture}
+                    title={recipe.title}
+                    id={recipe.id}
+                  />
+                </Link>
               );
             })
           ) : (
@@ -67,8 +68,6 @@ function ActivityPage() {
             </p>
           )}
         </section>
-
-        <p>Voir plus</p>
       </article>
 
       <section className="activity-add-recipe">
@@ -79,7 +78,7 @@ function ActivityPage() {
           </Link>
         </button>
       </section>
-    </section>
+    </main>
   );
 }
 
